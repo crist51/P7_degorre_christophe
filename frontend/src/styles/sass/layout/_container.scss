@@ -1,0 +1,339 @@
+// .Bloc_6 {
+//   width: 100%;
+//   padding: 0 10px;
+// }
+// label {
+//   width: 100%;
+//   input {
+//     display: flex;
+//     width: 90%;
+//   }
+// }
+// button {
+//   margin: 10px 0;
+
+// }
+
+// .bloc_2 p {
+//   //width: 100%;
+//   //background-color: aqua;
+//   text-align: center;
+// }
+// .bloc_1{
+//   padding: 10px;
+//   background-color: brown;
+//   article{
+//     background-image: url("../../../assets/images/parchment.jpg");
+//     margin-bottom: 15px;
+//     padding: 30px;
+//     border-radius: 33px;
+//     div{
+//       // padding: 10px;
+//       border-radius: 33px;
+//       height: 10vh;
+//       display: flex;
+//       align-items: center;
+//       flex-direction: column;
+//       justify-content: center;
+//       h3{
+//         margin-bottom: 25px;
+//       }
+//     }
+//   }
+//   a{
+//     text-align: center;
+//   }
+//   .Galllery{
+//     display: flex;
+//   }
+//   .Bloc_1Contener article{
+//     img{
+//       border-radius: 33px 0 0 33px;
+//     }
+//     div{
+//       height: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       h2{
+//         text-align: center;
+//       }
+//       p{
+//         // text-align: right;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 1024px) {
+
+//   .bloc_1_home{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     img{
+//       width: 27%;
+//       border-radius: 100%;
+//     }
+//   }
+//   .bloc_1 article{
+//     border-radius: 33px 0 0 33px;
+//   }
+//   .bloc_1 .ContenueConnect{
+//     display: flex;
+
+//     height: 80%;
+//     article{
+//       border-radius: 33px;
+//       margin: 10px;
+//       padding: 20px 10px 10px 10px;
+//       div{
+//         justify-content: space-evenly;
+//         height: 100%;
+//          h3{
+//         margin-bottom: 0;
+//       }
+//     }
+//     }
+//   }
+// }
+
+h2 {
+  margin-bottom: 10px;
+}
+aside {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  button {
+    width: 100%;
+  }
+  div {
+    margin-bottom: 10px;
+    color: #747474;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 75%;
+      overflow: hidden;
+      button {
+        border-radius: 33px;
+        color: #747474;
+        margin: 10px 0;
+      }
+      label {
+        width: 100%;
+        margin-bottom: 10px;
+        input {
+          width: 100%;
+        }
+      }
+
+      p {
+        color: $colour-invalid;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+  .bloc_6 div {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.bloc_1 {
+  background-color: #353535;
+  padding: 20px 20px;
+  margin: 40px 0;
+  overflow: hidden;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+  img {
+    width: 50%;
+    border-radius: 90%;
+    animation: rotation 5s linear 0s infinite normal forwards;
+    border: 2px solid pink;
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.bloc_1_home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .recomendation {
+    text-align: center;
+    background-color: #747474;
+    border-radius: 33px;
+    padding: 10px;
+  }
+}
+
+section {
+  background-color: #353535;
+  // width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    .bloc_titre{
+      width: 100%;
+      h2{
+      color: #747474;
+    }
+    button{
+      width: 100%;
+      border-radius: 33px;
+      animation: myAnim 5s linear 0s infinite normal forwards;
+    }
+    @keyframes myAnim {
+      0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+      }
+    
+      10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+      }
+    
+      17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+      }
+    
+      33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+      }
+    
+      45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+      }
+    }
+  }
+
+  //--------------------link avec id du post
+  article {
+    margin-top: 20px;
+    background-image: url(../../../assets/images/parchment.jpg);
+    border-radius: 33px;
+    overflow: hidden;
+    box-shadow: 12px -12px 10px 3px rgba(0, 0, 0, 0.60) inset;
+    h2 {
+      background-color: rgba(0, 0, 0, 0.205);
+    }
+    div {
+      padding: 0 20px 20px 20px;
+      :last-child {
+        text-align: right;
+        margin-top: 10px;
+      }
+    }
+  }
+  // ---------------------------------------
+}
+
+@media screen and (min-width: 640px) {
+  .corp {
+    padding-top: 0;
+    .bloc_6 div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    article {
+      background-color: aqua;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .corp {
+    height: 70vh;
+    padding: 15px;
+    overflow: scroll;
+    .bloc_6 div{
+      flex-direction: column;
+    }
+    .bloc_1 {
+      margin: 0;
+      .icon img {
+        width: 30%;
+      }
+      .recomendation p {
+        width: 55%;
+      }
+      .Bloc_1Contener_Gallery {
+        article {
+          display: flex;
+          align-items: center;
+          p {
+            width: 30vw;
+          }
+          div {
+            width: 50vw;
+            h2{
+              text-align: left;
+            }
+            p {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  main{
+    height: 82vh;
+  }
+  .corp {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    .bloc_1{
+      width: 65vw;
+      justify-content: center;
+    }
+    .Bloc_1Contener {
+      overflow: scroll;
+    }
+    .bloc_titre{
+      padding-bottom: 10px;
+    }
+    .Bloc_1Contener_Gallery{
+      width: 100%;
+      overflow: scroll;
+      article{
+        padding: 10px;
+        p{
+          border-radius: 33px 0 0 33px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

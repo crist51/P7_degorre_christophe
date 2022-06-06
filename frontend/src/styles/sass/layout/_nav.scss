@@ -1,0 +1,38 @@
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: brown;
+    padding: 10px 0 10px 0;
+    border-top: 2px double black;
+    border-bottom: 2px double black;
+    a{
+        text-decoration: none;
+        color: white;
+        font-family: sans-serif;
+    }
+}
+
+nav a {
+  background-color: brown;
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+  a {
+      border-radius: 33px   ;
+      padding: 15px 30px;
+  }
+}
+
+.NavConnect{
+  width: 100%;
+  li{
+    text-align: center;
+  }
+}
