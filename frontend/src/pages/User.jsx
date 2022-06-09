@@ -2,17 +2,22 @@
 
 import React from 'react'
 
+import Nav from "../components/Nav";
 import Aside from '../components/Aside';
+import CorpUser from '../components/User/CorpUser';
 
-function Profil() {
+function User() {
     return (
         <div>
             <main>
+            <Nav />
+            <div className="corp">
                 <Aside />
-            <h1>Je suis sur la pages Profil</h1>
+                <CorpUser />
+            </div>
             </main>
         </div>
     )
 }
 
-export default Profil;
+export default User;

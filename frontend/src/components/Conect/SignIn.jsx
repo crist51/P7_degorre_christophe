@@ -2,51 +2,50 @@ import axios from "axios";
 //import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 
-
-
-
-
 let error = " Error message du backend email & password ";
 
-
-
-const setDataAPI = (e) => {
-  const SignIn = {
-    email: e.target["email"].value,
-    password: e.target["password"].value,
-  };
-  const email = e.target["email"].value;
-  const password = e.target["password"].value;
-
-  console.log("---------- email");
-  console.log(email);
-  console.log("---------- password");
-  console.log(password);
-
-  console.log("---- rajout pour API ----");
-  console.log(SignIn);
-
-  //     axios.post(`https://jsonplaceholder.typicode.com/posts`, {
-  axios.post(
-    `http://localhost:3000/api/authentification/signup`,
-    {
-      SignIn,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  console.log("apres" + SignIn);
-};
-
-
 function SignIn() {
-  
+  const setDataAPI = (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const firstname = document.getElementById("firstname").value;
+    const lastname = document.getElementById("lastname").value;
+    const password = document.getElementById("password").value;
+
+    const SignIn = {
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+    };
+    
+    console.log("---- envoie des donnée ----");
+    console.log(SignIn);
+
+    console.log("---- envoie pour API ----");
+
+    axios.post(
+      `http://localhost:3000/api/authentification/signin`,
+      {
+        // SignIn,
+
+        email: email,
+        firstname: firstname,
+        lastname: lastname,
+        password: password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
+
   return (
     <div>
-      <form className="bloc_6" onSubmit={alert('gelge')}>
+      <form className="bloc_6" onSubmit={setDataAPI}>
+        {/* onSubmit={alert("gelge" )} */}
         <div>
           <label htmlFor="email">
             <input
@@ -65,6 +64,24 @@ function SignIn() {
               placeholder="Votre mot de passe"
             />
           </label>
+
+          <label htmlFor="nom">
+            <input
+              type="text"
+              name="nom"
+              id="firstname"
+              placeholder="Votre nom"
+            />
+          </label>
+
+          <label htmlFor="prenom">
+            <input
+              type="text"
+              name="prenom"
+              id="lastname"
+              placeholder="Votre prenom"
+            />
+          </label>
         </div>
         <div>
           <p className="error" id="emailErrorMsg">
@@ -72,8 +89,11 @@ function SignIn() {
           </p>
         </div>
         {/* <Link to="/"> */}
-        <button type="submit" onClick={setDataAPI}>C'est partie</button>
         {/* </Link> */}
+        <button type="submit">
+          {/* onClick={setDataAPI} */}
+          C'est partie
+        </button>
       </form>
     </div>
   );

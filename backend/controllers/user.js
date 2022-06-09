@@ -10,15 +10,16 @@ const result = dotenv.config();
 const mysqlconnection = require('../db/db.mysql');
 const password = require('../middleware/password');
 
-exports.signup = (req, res, next) => {
-    const emailCrypto = cryptojs.HmacSHA256(req.body.email, `${process.env.cryptojs_key}`).toString();
+exports.signIn = (req, res, next) => {
     console.log(req.body);
+    const emailCrypto = cryptojs.HmacSHA256(req.body.email, `${process.env.cryptojs_key}`).toString();
     bcrypt.hash(req.body.password, 10)//10 tour de hachage
         .then(hash => {
-            //mysql--BD
             const user = {
                 email: emailCrypto,
-                password: hash
+                lastname: req.body.lastname,
+                firstname: req.body.firstname,
+                password: hash,
             };
             mysqlconnection.query(
                 'INSERT INTO user SET ?', user, (error, results, fields) => {
@@ -37,7 +38,7 @@ exports.signup = (req, res, next) => {
 
 //============================================================================================================
 
-exports.login = (req, res, next) => { // login user
+exports.signUp = (req, res, next) => { // signUp user
     console.log(req.body);
     const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.cryptojs_key}`).toString();
     console.log("----> emailCrypto <----");

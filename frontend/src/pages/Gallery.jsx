@@ -3,7 +3,7 @@
 import React from "react";
 
 import Aside from "../components/Aside";
-import CorpGallery from "../components/CorpGallery";
+import CorpGallery from "../components/Gallery/CorpGallery";
 import Nav from "../components/Nav";
 
 function Gallery() {

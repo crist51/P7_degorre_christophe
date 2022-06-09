@@ -174,7 +174,9 @@ aside {
     }
   }
 }
-
+article, .Bloc_1Contener, .Bloc_1Contener_Gallery{
+  width: 100%;
+}
 .bloc_1_home {
   display: flex;
   flex-direction: column;
@@ -262,9 +264,6 @@ section {
       flex-direction: row;
       justify-content: center;
     }
-    article {
-      background-color: aqua;
-    }
   }
 }
 
@@ -293,9 +292,6 @@ section {
           }
           div {
             width: 50vw;
-            h2{
-              text-align: left;
-            }
             p {
               width: 100%;
             }
@@ -308,10 +304,11 @@ section {
 
 @media screen and (min-width: 1024px) {
   main{
-    height: 82vh;
+    height: 75vh;
   }
   .corp {
     display: flex;
+    overflow: hidden;
     gap: 0;
     justify-content: space-between;
     .bloc_1{
@@ -320,14 +317,20 @@ section {
     }
     .Bloc_1Contener {
       overflow: scroll;
+      overflow-x: hidden;
     }
     .bloc_titre{
       padding-bottom: 10px;
     }
+    section article{
+      border-radius: 33px 0 0 33px;
+    }
     .Bloc_1Contener_Gallery{
       width: 100%;
       overflow: scroll;
-      article{
+      overflow-x: hidden;
+      h2{
+        border-radius: 33px;
         padding: 10px;
         p{
           border-radius: 33px 0 0 33px;

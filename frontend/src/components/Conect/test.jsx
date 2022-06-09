@@ -10,7 +10,7 @@ function CorpPost() {
   return isOpen ? (
     <main className="corp">
       <aside className="bloc_2">
-        <button onClick={() => setIsOpen(false)}>
+        <button onClick={( ) => setIsOpen(false)}>
           Vous avez un compte passez par ici
         </button>
         <div>
@@ -25,7 +25,7 @@ function CorpPost() {
   ) : (
     <main className="corp">
       <aside className="bloc_2">
-        <button onClick={() => setIsOpen(true)}>
+        <button onClick={( ) => setIsOpen(true)}>
           Pas de compte inscrivez-vous
         </button>
         <div>

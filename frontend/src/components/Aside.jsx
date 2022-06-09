@@ -16,8 +16,8 @@ function Aside() {
       );
       //setData(result.data);
       setData(result.data[0]);
-      console.log(result.data);
-      console.log(result.data[0]);
+      // console.log(result.data);
+      // console.log(result.data[0]);
     };
 
     fetchData();
