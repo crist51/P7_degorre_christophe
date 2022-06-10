@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  img {
+    object-fit: cover;
+    //width: 100vw;
+    height: 75px;
+  }
+
+  p {
+    text-align: center;
+    margin: 5px;
+  }
+}
+
+h1 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 5vw;
+}
+
+@media screen and (min-width: 640px) {
+  .banner {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+    img {
+      width: 450px;
+    }
+    div {
+      height: 45px;
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      // border: 15px ridge black;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {//galaxy fold
+  .banner {
+    height: 15vh;
+  }
+}

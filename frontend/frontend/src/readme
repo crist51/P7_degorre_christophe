@@ -1,0 +1,26 @@
+# voir pour l'autentification
+    je n'arrive pas a recuperer la reponse de la requete post
+    ||
+    quand je l'aurais 
+    faut que je mete un if si token &  je doi delander une direction sur HOME
+    du coup je devrais avoir l'ID
+    la solution intermediaire  c'est de basculer l'id du user dans params de l'url
+
+    quand j'aurais l'id je dois metre l'id dans la req 'put' de user & post_media & post_galery
+
+# je dois voir pour recuperer les message de mon api pour afficher les eventuelle erreur relever du backend
+
+# faire foncitionner le chemin pour l'image
+
+# faire fonctionner route delete
+    faire fonctionner la rote delete de user 
+    post & galery user pour l'administrateur
+
+# retourner la lectuer des read
+
+# les plus
+metre un chargement le temps que les post || les multimedia s'affiche
+changer le mot de passe et l'email
+afficher l'email
+select sur les equipe || le post
+mail to avec react pour envoyer un message perso ou pour contacté un adm

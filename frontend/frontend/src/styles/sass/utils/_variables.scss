@@ -1,0 +1,17 @@
+$colour-primari: black;
+$colour-white: #fff;
+$colour-invalid: #DB464B;
+
+$color-lien: rgb(0, 0, 0);
+
+$colour-btn: linear-gradient(0deg, rgb(190, 6, 190), pink);
+$colour-gris:#f2f2f2;
+
+$colour-one:#9356DC;
+$colour-two:#FF79DA;
+$colour-three:#99E2D0;
+
+$marge:5vw;
+@media screen and (min-width:670px){//sa prend pas
+    $marge:10vw;
+}
