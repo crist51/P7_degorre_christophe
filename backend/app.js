@@ -1,11 +1,8 @@
 const express = require('express');
-//const mongoose = require ('./db/db.mongoose')
 const mysql = require('./db/db.mysql');
 
-//appelle les var d'environement pour ce faire  (${process.env."non var"})
 const dotenv = require ('dotenv');
 const result = dotenv.config();
-//==============================
 
 const postRoutes = require ('./routes/post');
 const userRoutes = require ('./routes/user');

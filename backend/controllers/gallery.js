@@ -12,11 +12,9 @@ exports.createGallery = (req, res, next) => {
   const gallery = {
     gallery_titre: req.body.gallery_titre,
     gallery_texte: req.body.gallery_texte,
-    gallery_media: req.body.gallery_media,
+    //gallery_media: req.body.gallery_media,
     gallery_userId: req.body.gallery_userId,
-    
-    //gallery_userId: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
-    gallery_texte: req.body.gallery_texte
+    gallery_media: `${req.protocol}://${req.get('host')}/images/${req.body.gallery_media}`,
   };
 
   //console.log(gallery);
@@ -82,8 +80,6 @@ exports.modifyGallery = (req, res, next) => {
   console.log(' ------- req.params.id ------');
   const id = (req.params.id)
   console.log(id);// = 1
-  
-  
   
   //non tester avec postman------------------------------------------------
   const galleryObject = req.file ?
