@@ -1,6 +1,6 @@
 import axios from "axios";
 //import React, { useState } from "react";
-
+// import { Link } from "react-router-dom";
 
 let error = " Error message du backend email & password ";
 
@@ -25,8 +25,9 @@ function SignIn() {
     console.log("---- envoie pour API ----");
 
     axios.post(
-      `http://localhost:3000/api/authentification/signup`,
+      `http://localhost:3000/api/authentification/signUp`,
       {
+        // SignIn,
 
         email: email,
         firstname: firstname,
@@ -36,11 +37,19 @@ function SignIn() {
       {
         headers: {
           "Content-Type": "application/json",
-        },
-      }
-    );
-  };
-
+        },  
+      })
+      //------------------------Allerte warning
+      .then(
+        (res) => (
+          console.log("---- retourAPI ----"),
+          console.log(res.status),
+          console.log(res.data)
+        )
+      )
+      .catch((err) => console.log("Oh no", err)); // Ici, le cas d'erreur
+    }
+      
   return (
     <div>
       <form className="bloc_6" onSubmit={setDataAPI}>

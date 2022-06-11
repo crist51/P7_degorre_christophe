@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 
 function SignIn() {
   let error = " Error message du backend email & password ";
@@ -13,28 +12,33 @@ function SignIn() {
       email: email,
       password: password,
     };
-    console.log("---- envoie des donnée ----");
+    console.log("---- envoie API ----");
     console.log(SignUp);
 
-    console.log("---- envoie pour API ----");
-
-    axios.post(
-      `http://localhost:3000/api/authentification/signin`,
-      {
-        email: email,
-        password: password,
-      },
-      console.log(email + " " + password),
-      {
-        headers: {
-          "Content-Type": "application/json",
+    axios
+      .post(
+        `http://localhost:3000/api/authentification/signIn`,
+        {
+          email: email,
+          password: password,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
 
+      //------------------------Allerte warning
+      .then(
+        (res) => (
+          console.log("---- retourAPI ----"),
+          console.log(res.status),
+          console.log(res.data)
+        )
+      )
+      .catch((err) => console.log("Oh no", err)); // Ici, le cas d'erreur
   };
-
-
 
   return (
     <div>
