@@ -5,7 +5,7 @@ import SignIn from "./SignIn.jsx";
 import SignUp from "./SignUp.jsx";
 
 function CorpPost() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return isOpen ? (
     <main className="corp">

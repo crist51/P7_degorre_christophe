@@ -9,8 +9,7 @@ import {
 
 // importing Component's
 
-//import  Navigation  from './components/Navigation';
-// import Nav from "./components/Nav";
+// import  Navigation  from './components/Navigation';
 
 // import Banner from "./components/Header/Banner";
 import Footer from "./components/Footer";
@@ -28,7 +27,6 @@ export const App = () => {
   return (
     <Router>
       {/* <Banner /> */}
-      {/* <Nav /> */}
       <Routes>
         <Route path="/acceuil" element={<Accueil />} />
         <Route path="/" element={<Home />} />

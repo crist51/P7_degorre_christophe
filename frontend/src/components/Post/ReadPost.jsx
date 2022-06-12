@@ -9,10 +9,7 @@ function ReadPost() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("http://localhost:3000/api/post");
-      console.log(result);
       setData(result.data.results);
-      //'https://jsonplaceholder.typicode.com/posts',
-      // console.log(result.data);
     };
     fetchData();
   }, []); //permet d'arreter le rappelle a l'API infini
@@ -28,13 +25,6 @@ function ReadPost() {
               <p>{item.post_userId}</p>
             </div>
           </article>
-          // <article key={item.id}>
-          //   <h2>{item.title}</h2>
-          //   <div>
-          //     <p>{item.body}</p>
-          //     <p>{item.userId}</p>
-          //   </div>
-          // </article>
         ))}
       </div>
     </Fragment>

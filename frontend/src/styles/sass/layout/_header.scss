@@ -29,6 +29,7 @@ h1 {
   .banner {
     display: flex;
     align-items: center;
+    flex-direction: row;
     width: 100vw;
     justify-content: space-between;
     img {

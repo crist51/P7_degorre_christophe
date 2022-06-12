@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav() {
+
+    const deconect = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = "http://localhost:3001/acceuil/"
+    }
+
     return (
         // <div>
         <>
@@ -17,7 +24,7 @@ function Nav() {
                         <li>Multimedia</li>
                     </Link>
                     <Link to="/acceuil/">
-                        <li>Deconexion</li>
+                        <li onClick={deconect}>Deconexion</li>
                     </Link>
                 </ul>
             </nav>

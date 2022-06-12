@@ -1,53 +1,51 @@
 import logo from "../assets/images/moi.jpg";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import axios from "axios";
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from "react";
 
 // //---------------------------------------------------
 
 function Aside() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+
+  const id = 16;
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        'https://jsonplaceholder.typicode.com/users',
-      );
+      const result = await axios(`http://localhost:3000/api/user/${id}`);
       //setData(result.data);
-      setData(result.data[0]);
-      // console.log(result.data);
-      // console.log(result.data[0]);
+      setData(result.data.results);
+      console.log(result.data.results);
     };
 
     fetchData();
-  }, [])//permet d'arreter le rappelle a l'API infini
+  }, []);
 
   return (
     <Fragment>
-
-
-      <aside className="bloc_2">
-
-
-        <div>
-          <img alt="logo profil" src={logo} />
-          <div>
-            <ul>
-              <li>
-                <span>{data.name}</span>  {data.username}
-              </li>
-              <li>email : {data.email}</li>
-            </ul>
-            <Link to="/user">
+  
+          <aside className="bloc_2">
+         {data.map((item) => (
+            <div key={item.userId}>
+              <img alt="logo profil" src={logo} />
+              <div>
+              <ul>
+               <li>
+                <span>{item.lastname}</span> {item.firstname}
+                </li>
+                <li>description : {item.description}</li>
+              </ul> 
+              <Link to="/user">
               <p>Modifié votre profil</p>
             </Link>
-          </div>
-        </div>
+              </div>
+            </div>
+            ))}
+          </aside>        
 
-      </aside>
     </Fragment>
-  )
+  );
 }
 
 export default Aside;
