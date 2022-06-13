@@ -2,7 +2,7 @@ import axios from "axios";
 //import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 
-let error = " Error message du backend email & password ";
+let error = " Champ vide ";
 
 let userConnect = JSON.parse(localStorage.getItem("key"));
 userConnect = [];
@@ -43,17 +43,21 @@ function SignIn() {
           },
         }
       )
-      .then(
-        (res) => (
-          // mehose pour enregistre dans le local storage //
-          userConnect.push(res.data),
-          localStorage.setItem("key", JSON.stringify(userConnect)),
-          (window.location.href = "http://localhost:3001")
-          // -------------------------------------------- //
-        ))
-      
-      .catch((err) => console.log("Oh non", err)) // Ici, le cas d'erreur
-
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        console.log("je suis inscrit");
+        // mehose pour enregistre dans le local storage //
+      userConnect.push(res.data)
+      localStorage.setItem("key", JSON.stringify(userConnect))
+        //(window.location.href = "http://localhost:3001");
+        // -------------------------------------------- //
+      })
+      .catch((err) => {
+        console.log(err.response.data.error);
+        document.getElementById("emailErrorMsg").innerHTML =
+          err.response.data.error;
+      }); // Ici, le cas d'erreur
   };
 
   return (
@@ -66,6 +70,7 @@ function SignIn() {
               name="email"
               id="email"
               placeholder="Votre email"
+              required
             />
           </label>
 
@@ -75,6 +80,8 @@ function SignIn() {
               name="password"
               id="password"
               placeholder="Votre mot de passe"
+              minLength={4}
+              required
             />
           </label>
 
@@ -84,6 +91,7 @@ function SignIn() {
               name="nom"
               id="firstname"
               placeholder="Votre nom"
+              required
             />
           </label>
 
@@ -93,6 +101,7 @@ function SignIn() {
               name="prenom"
               id="lastname"
               placeholder="Votre prenom"
+              required
             />
           </label>
         </div>

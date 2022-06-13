@@ -34,7 +34,9 @@ export const App = () => {
         <Route path="/multimedia" element={<Gallery />} />
         <Route path="/user" element={<User />} />
 
+        <Route path="*" element={<Accueil />} />
         <Route path="*" component={() => <h2>404 Not Found </h2>} />
+
       </Routes>
       <Footer/>
     </Router>

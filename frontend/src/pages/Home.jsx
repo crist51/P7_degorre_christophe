@@ -9,6 +9,12 @@ import Recomendation from "../components/Recomendation";
 import ContenueConnect from "../components/ContenueConnect";
 
 function Home() {
+  
+  if (localStorage.length == 0) {
+  window.location.href = "http://localhost:3001/acceuil/"  
+  }
+  
+
   return (
     <div>
       <main>

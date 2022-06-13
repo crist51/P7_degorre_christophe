@@ -1,7 +1,7 @@
 import axios from "axios";
 //import { Link } from 'react-router-dom';
 
-let error = " Error message du backend email & password ";
+let error = " Champ vide ";
 
 let userConnect = JSON.parse(localStorage.getItem("key"))
 userConnect = [];
@@ -34,17 +34,20 @@ function SignIn() {
         }
       )
       .then(
-        (res) => (
-          console.log(res.status),
-          console.log(res.data),
-          // mehose pour enregistre dans le local storage //
-          userConnect.push(res.data),
-          localStorage.setItem("key", JSON.stringify(userConnect)),
-          window.location.href = "http://localhost:3001"
-          // -------------------------------------------- //
-        )
+        (res) => {
+          console.log(res.status)
+          console.log(res.data)
+            // mehose pour enregistre dans le local storage //
+            userConnect.push(res.data)
+            localStorage.setItem("key", JSON.stringify(userConnect))
+            window.location.href = "http://localhost:3001"
+            // -------------------------------------------- //
+        }
       )
-      .catch((err) => console.log("Oh no", err)); // Ici, le cas d'erreur
+      .catch((err) => {
+        console.log(err.response.data.error);
+        document.getElementById("emailErrorMsg").innerHTML=err.response.data.error
+      }); // Ici, le cas d'erreur
   };
 
   return (
@@ -57,6 +60,7 @@ function SignIn() {
               name="Titre"
               id="email"
               placeholder="votre email"
+              required
             />
           </label>
 
@@ -66,6 +70,7 @@ function SignIn() {
               name="password"
               id="password"
               placeholder="votre mot de passe"
+              required
             />
           </label>
         </div>

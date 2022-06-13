@@ -7,6 +7,11 @@ import CorpGallery from "../components/Gallery/CorpGallery";
 import Nav from "../components/Nav";
 
 function Gallery() {
+
+  if (localStorage.length == 0) {
+    window.location.href = "http://localhost:3001/acceuil/"  
+    }
+
   return (
     <div>
       <main>

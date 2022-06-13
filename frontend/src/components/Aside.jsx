@@ -7,16 +7,17 @@ import React, { Fragment, useState, useEffect } from "react";
 // //---------------------------------------------------
 
 function Aside() {
-  const [data, setData] = useState([]);
+  let userConnect = JSON.parse(localStorage.getItem("key"));
+  const id = userConnect[0].userId;
 
-  const id = 16;
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(`http://localhost:3000/api/user/${id}`);
       //setData(result.data);
       setData(result.data.results);
-      console.log(result.data.results);
+      //console.log(result.data.results);
     };
 
     fetchData();

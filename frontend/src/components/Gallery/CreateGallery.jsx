@@ -3,7 +3,14 @@ import React from "react";
 
 function CreateGallery() {
 
+  // ---------- on recupere id du user ---------- //
+  let userConnect = JSON.parse(localStorage.getItem("key"));
+  const id = userConnect[0].userId;
+ console.log(userConnect);
+
   const setDataAPI = (e) => {
+
+
     
     e.preventDefault();
 
@@ -16,14 +23,12 @@ function CreateGallery() {
     const gallery_media = document.getElementById("gallery_media").value;//document.getElementById('file-id').value
     const gallery_texte = document.getElementById("gallery_texte").value;
 
-    const gallery_userId = "36";
-
     const gallery = [
       {
         gallery_titre: gallery_titre,
         gallery_media: gallery_media,
         gallery_texte: gallery_texte,
-        gallery_userId: gallery_userId,
+        gallery_userId: id,
       },
     ];
 
@@ -36,7 +41,7 @@ function CreateGallery() {
         gallery_titre: gallery_titre,
         gallery_media: gallery_media,
         gallery_texte: gallery_texte,
-        gallery_userId: gallery_userId,
+        gallery_userId: id,
       },
       {
         headers: {
@@ -44,6 +49,7 @@ function CreateGallery() {
         },
       }
     );
+    console.log("gallery create")
   };
 
   return (

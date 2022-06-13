@@ -14,7 +14,7 @@ function CorpPost() {
           Vous avez un compte passez par ici
         </button>
         <div>
-          <h2>Inscrivez-vous</h2>
+          <h2>Connection</h2>
           <SignIn />
         </div>
       </aside>
@@ -29,7 +29,7 @@ function CorpPost() {
           Pas de compte inscrivez-vous
         </button>
         <div>
-          <h2>Connection</h2>
+          <h2>Inscrivez-vous</h2>
           <SignUp />
         </div>
       </aside>

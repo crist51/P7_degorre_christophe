@@ -3,18 +3,11 @@ import axios from "axios";
 
 
 function CreatePost() {
-let id= undefined
+
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("key"));
-  ///console.log(userConnect[0].results.insertId);
-  // const id = userConnect[0].userId
-if (userConnect[0].results.insertId !== undefined) {
-  const id = userConnect[0].results.insertId
-}else{
-  const id = userConnect[0].userId
-}
-
-  // userConnect[0].results.insertId
+  const id = userConnect[0].userId;
+ console.log(userConnect);
 
   const setDataAPI = (e) => {
     e.preventDefault();
@@ -34,7 +27,9 @@ if (userConnect[0].results.insertId !== undefined) {
           "Content-Type": "application/json",
         },
       },
-      console.log("post create")
+      console.log("post create"),
+      window.location.href = "http://localhost:3001/post"
+
     )
   };
 
@@ -45,13 +40,13 @@ if (userConnect[0].results.insertId !== undefined) {
           <label htmlFor="titre" className="Bloc_5">
             Titres
           </label>
-          <input type="text" name="post_titre" id="post_titre" />
+          <input type="text" name="post_titre" id="post_titre" required />
         </div>
         <div>
           <label htmlFor="message" className="Bloc_5">
             Message
           </label>
-          <textarea id="post_contenue" name="post_contenue"></textarea>
+          <textarea id="post_contenue" name="post_contenue" required></textarea>
         </div>
         <button type="submit">Postez votre Message</button>
       </form>

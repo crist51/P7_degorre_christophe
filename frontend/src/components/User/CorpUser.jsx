@@ -3,11 +3,16 @@ import axios from "axios";
 
 // import Delete from "./Delete";
 
-const userId = 16
-const id = userId;
+
 
 export default function UpdateUser() {
   const [data, setData] = useState([]);
+
+    // ---------- on recupere id du user ---------- //
+    let userConnect = JSON.parse(localStorage.getItem("key"));
+    const id = userConnect[0].userId;
+   console.log(userConnect);
+  
 
 
   useEffect(() => {
@@ -39,7 +44,7 @@ export default function UpdateUser() {
     });
   };
 
-  const onDelete = (id) => {
+  const onDelete = (e) => {
     axios.delete(`http://localhost:3000/api/user/${id}`)
     .then (() => {
       console.log("compte supprimer");
