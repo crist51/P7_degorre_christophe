@@ -4,7 +4,7 @@ import axios from "axios";
 
 let error = " Champ vide ";
 
-let userConnect = JSON.parse(localStorage.getItem("key"));
+let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
 
 function SignIn() {
@@ -52,7 +52,7 @@ function SignIn() {
         // mehose pour enregistre dans le local storage //
         userConnect.push(res.data);
          localStorage.setItem(
-           "key",
+           "auth",
           JSON.stringify(userConnect)
         )
         (window.location.href = "http://localhost:3001");

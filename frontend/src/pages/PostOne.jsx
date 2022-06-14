@@ -1,28 +1,26 @@
-// route Post
-
 import React from "react";
 
+import Aside from "../components/Aside";
+import ReadOnePost from "../components/Post/ReadOnePost";
 import Nav from "../components/Nav";
 
-function PostOne() {
+function Post() {
 
-  //recuperation id
-var str = window.location.href
-console.log(str);
-var url = new URL(str);
-var id = url.searchParams.get("id")
-console.log(id);
+  if (localStorage.length === 0) {
+    window.location.href = "http://localhost:3001/acceuil/"  
+    }
     
   return (
     <div>
       <main>
         <Nav />
         <div className="corp">
-          <h1>test</h1>
+          <Aside />
+          <ReadOnePost />
         </div>
       </main>
     </div>
   );
 }
 
-export default PostOne;
+export default Post;

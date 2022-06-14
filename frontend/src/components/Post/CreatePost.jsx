@@ -2,7 +2,7 @@ import axios from "axios";
 
 function CreatePost() {
   // ---------- on recupere info local storage ---------- //
-  let userConnect = JSON.parse(localStorage.getItem("key"));
+  let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
   const post_author = userConnect[0].firstname + " " + userConnect[0].lastname;
   const validToken = userConnect[0].token;

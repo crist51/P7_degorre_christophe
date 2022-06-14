@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 let error = " Champ vide ";
 
-let userConnect = JSON.parse(localStorage.getItem("key"));
+let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
 
 function SignIn() {
@@ -37,7 +37,7 @@ function SignIn() {
         console.log(res.data);
         // mehose pour enregistre dans le local storage //
         userConnect.push(res.data);
-        localStorage.setItem("key", JSON.stringify(userConnect));
+        localStorage.setItem("auth", JSON.stringify(userConnect));
         window.location.href = "http://localhost:3001";
         // -------------------------------------------- //
       })

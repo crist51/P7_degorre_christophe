@@ -34,7 +34,9 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<Post />} />
 
-        <Route path="post/:id" element={<PostOne />} />
+        {/* <Route path="/:id" element={<PostOne />} /> */}
+        <Route path="post/one" element={<PostOne />} />
+
 
 
         <Route path="/multimedia" element={<Gallery />} />

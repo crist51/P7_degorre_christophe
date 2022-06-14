@@ -1,14 +1,8 @@
 import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-//import posteOneRoute from "./posteOneRoute";
 
 
-
-// //---------------------------------------------------
-
-function ReadPost() {
+function ReadUser() {
   const [data, setData] = useState([]);
 
   let userConnect = JSON.parse(localStorage.getItem("auth"));
@@ -22,7 +16,7 @@ function ReadPost() {
     };
 
     const fetchData = async () => {
-      const result = await axios(`http://localhost:3000/api/post`, config);
+      const result = await axios(`http://localhost:3000/api/user`, config);
       // console.log(result.data.results);
       setData(result.data.results);
     };
@@ -31,30 +25,21 @@ function ReadPost() {
 
   return (
     <Fragment>
-      {/* <posteOneRoute /> */}
-      {/* //{ata.map((data => (<Link to={'post/' + item.post_id} />)} */}
       <div className="Bloc_1Contener">
         {data.map((item) => (
             // <Link to={"/" + item.post_id}>
-            <Link to={"one/?id=" + item.post_id}>
               <article>
-                <h2>{item.post_titre}</h2>
+                <h2>{item.firstname}</h2>
                 <div>
-                  <p>{item.post_contenue}</p>
-                  <p>{item.post_author}</p>
+                  <p>{item.lastname}</p>
+                  <p>{item.city}</p>
                 </div>
+                <p>{item.description}</p>
               </article>
-            </Link>
         ))}
         </div>
     </Fragment>
   );
 }
 
-export default ReadPost;
-
-{
-  /* <Link to="/acceuil/">
-<li onClick={deconect}>Deconexion</li>
-</Link> */
-}
+export default ReadUser

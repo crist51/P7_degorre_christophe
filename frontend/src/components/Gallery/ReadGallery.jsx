@@ -19,7 +19,7 @@ function ReadGallery() {
     <Fragment>
       <div className="Bloc_1Contener_Gallery">
         {data.map((item) => (
-          <article key={item.gallery_id}>
+          <article>
             <p>
               <img src={item.gallery_media} alt=""></img>
             </p>

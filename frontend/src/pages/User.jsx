@@ -11,7 +11,7 @@ function User() {
     if (localStorage.length == 0) {
         window.location.href = "http://localhost:3001/acceuil/"  
         }
-        
+
     return (
         <div>
             <main>

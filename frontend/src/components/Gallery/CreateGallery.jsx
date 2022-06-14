@@ -4,7 +4,7 @@ import React from "react";
 function CreateGallery() {
 
   // ---------- on recupere id du user ---------- //
-  let userConnect = JSON.parse(localStorage.getItem("key"));
+  let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
  console.log(userConnect);
 

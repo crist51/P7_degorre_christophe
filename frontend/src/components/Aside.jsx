@@ -8,7 +8,7 @@ import React, { Fragment, useState, useEffect } from "react";
 
 function Aside() {
   // ---------- on recupere id du user ---------- //
-  let userConnect = JSON.parse(localStorage.getItem("key"));
+  let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
   const validToken = userConnect[0].token;
 

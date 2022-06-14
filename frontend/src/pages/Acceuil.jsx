@@ -4,10 +4,6 @@ import React from "react";
 
 import Test from "../components/Conect/test";
 
-
-
-
-
 function Acceuil() {
   
   return (
