@@ -21,7 +21,7 @@ import Accueil from "./pages/Acceuil";
 import Post from "./pages/Post";
 import Gallery from "./pages/Gallery";
 import User from "./pages/User";
-import Gallery from "./pages/PosteOne";
+ import PostOne from "./pages/PostOne";
 
 
 
@@ -33,6 +33,8 @@ export const App = () => {
         <Route path="/acceuil" element={<Accueil />} />
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<Post />} />
+
+        <Route path="post/:id" element={<PostOne />} />
 
 
         <Route path="/multimedia" element={<Gallery />} />
