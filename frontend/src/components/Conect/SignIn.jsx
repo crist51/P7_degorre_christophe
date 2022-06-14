@@ -1,13 +1,12 @@
 import axios from "axios";
-//import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 let error = " Champ vide ";
 
-let userConnect = JSON.parse(localStorage.getItem("key"))
+let userConnect = JSON.parse(localStorage.getItem("key"));
 userConnect = [];
 
 function SignIn() {
-
   const setDataAPI = (e) => {
     e.preventDefault();
     const email = document.getElementById("email").value;
@@ -33,20 +32,19 @@ function SignIn() {
           },
         }
       )
-      .then(
-        (res) => {
-          console.log(res.status)
-          console.log(res.data)
-            // mehose pour enregistre dans le local storage //
-            userConnect.push(res.data)
-            localStorage.setItem("key", JSON.stringify(userConnect))
-            window.location.href = "http://localhost:3001"
-            // -------------------------------------------- //
-        }
-      )
+      .then((res) => {
+        console.log(res.status);
+        console.log(res.data);
+        // mehose pour enregistre dans le local storage //
+        userConnect.push(res.data);
+        localStorage.setItem("key", JSON.stringify(userConnect));
+        window.location.href = "http://localhost:3001";
+        // -------------------------------------------- //
+      })
       .catch((err) => {
         console.log(err.response.data.error);
-        document.getElementById("emailErrorMsg").innerHTML=err.response.data.error
+        document.getElementById("emailErrorMsg").innerHTML =
+          err.response.data.error;
       }); // Ici, le cas d'erreur
   };
 
@@ -80,9 +78,7 @@ function SignIn() {
             {error}
           </p>
         </div>
-        {/* <Link to="/"> */}
         <button type="submit">C'est Re-partie</button>
-        {/* </Link>; */}
       </form>
     </div>
   );

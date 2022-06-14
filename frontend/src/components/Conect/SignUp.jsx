@@ -26,7 +26,7 @@ function SignIn() {
     ];
 
     console.log("---- envoie des donnée ----");
-    console.log(SignIn);
+    console.log(SignUp);
 
     axios
       .post(
@@ -44,13 +44,18 @@ function SignIn() {
         }
       )
       .then((res) => {
+        console.log("---- res ----");
         console.log(res);
+        console.log("---- res.dada ----");
         console.log(res.data);
         console.log("je suis inscrit");
         // mehose pour enregistre dans le local storage //
-      userConnect.push(res.data)
-      localStorage.setItem("key", JSON.stringify(userConnect))
-        //(window.location.href = "http://localhost:3001");
+        userConnect.push(res.data);
+         localStorage.setItem(
+           "key",
+          JSON.stringify(userConnect)
+        )
+        (window.location.href = "http://localhost:3001");
         // -------------------------------------------- //
       })
       .catch((err) => {

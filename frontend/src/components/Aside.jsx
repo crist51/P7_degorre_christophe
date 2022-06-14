@@ -7,44 +7,50 @@ import React, { Fragment, useState, useEffect } from "react";
 // //---------------------------------------------------
 
 function Aside() {
+  // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("key"));
   const id = userConnect[0].userId;
+  const validToken = userConnect[0].token;
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(`http://localhost:3000/api/user/${id}`);
-      //setData(result.data);
-      setData(result.data.results);
-      //console.log(result.data.results);
+    let config = {
+      headers: {
+        Authorization: "Bearer " + validToken,
+      },
     };
 
+    const fetchData = async () => {
+      const result = await axios(
+        `http://localhost:3000/api/user/${id}`,
+        config
+      );
+      // console.log(result.data.results);
+      setData(result.data.results);
+    };
     fetchData();
   }, []);
-
   return (
     <Fragment>
-  
-          <aside className="bloc_2">
-         {data.map((item) => (
-            <div key={item.userId}>
-              <img alt="logo profil" src={logo} />
-              <div>
+      <aside className="bloc_2">
+        {data.map((item) => (
+          <div key={item.userId}>
+            <img alt="logo profil" src={logo} />
+            <div>
               <ul>
-               <li>
-                <span>{item.lastname}</span> {item.firstname}
+                <li>
+                  <span>{item.lastname}</span> {item.firstname}
                 </li>
                 <li>description : {item.description}</li>
-              </ul> 
+              </ul>
               <Link to="/user">
-              <p>Modifié votre profil</p>
-            </Link>
-              </div>
+                <p>Modifié votre profil</p>
+              </Link>
             </div>
-            ))}
-          </aside>        
-
+          </div>
+        ))}
+      </aside>
     </Fragment>
   );
 }

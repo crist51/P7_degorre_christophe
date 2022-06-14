@@ -6,21 +6,26 @@ import axios from "axios";
 
 
 export default function UpdateUser() {
+  
+  // ---------- on recupere id du user ---------- //
+  let userConnect = JSON.parse(localStorage.getItem("key"));
+  const id = userConnect[0].userId;
+  const validToken = userConnect[0].token;
+  
   const [data, setData] = useState([]);
 
-    // ---------- on recupere id du user ---------- //
-    let userConnect = JSON.parse(localStorage.getItem("key"));
-    const id = userConnect[0].userId;
-   console.log(userConnect);
-  
-
+  let config = {
+    headers: {
+      Authorization: "Bearer " + validToken,
+    },
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(`http://localhost:3000/api/user/${id}`);
-      setData(result.data.results);
-      console.log(result.data.results);
 
+    const fetchData = async () => {
+      const result = await axios(`http://localhost:3000/api/user/${id}`,config);
+      setData(result.data.results);
+      // console.log(result.data.results);
     };
     fetchData();
   }, []);
@@ -37,7 +42,7 @@ export default function UpdateUser() {
     console.log("---- rajout pour API ----");
     console.log(user);
 
-    axios.put(`http://localhost:3000/api/user/${id}`, user, {
+    axios.put(`http://localhost:3000/api/user/${id}`, user,config, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -45,7 +50,7 @@ export default function UpdateUser() {
   };
 
   const onDelete = (e) => {
-    axios.delete(`http://localhost:3000/api/user/${id}`)
+    axios.delete(`http://localhost:3000/api/user/${id}`,config)
     .then (() => {
       console.log("compte supprimer");
       window.location.href = "http://localhost:3001/acceuil/"

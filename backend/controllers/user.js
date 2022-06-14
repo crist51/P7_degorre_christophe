@@ -34,17 +34,21 @@ exports.signUp = (req, res, next) => {
               res.status(401).json({ error: "utilisateur déja éxistant" });
               console.log('email deja dans la bd');
             } else {
+              //generation du token
+              const token = jwt.sign(
+                { userId: results.insertId },
+                `${process.env.JWT_token}`,
+                { expiresIn: "24h" }
+              );
+              console.log("---------------token------------------");
+              console.log(token);
               res.status(201).json({
                 userId: results.insertId,
                 mail: req.body.email,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                token
               });
-              const user = {
-                userId: results.insertId,
-                mail: req.body.email,
-
-              };
-              console.log("---------------log de connexion------------------");
-              console.log(user);
             }
           }
         );
@@ -94,9 +98,11 @@ exports.signIn = (req, res, next) => {
               console.log("---------------token------------------");
               console.log(token);
               res.status(200).json({
-                admin: results[0].admin,
                 userId: results[0].userId,
                 mail: req.body.email,
+                firstname:results[0].firstname,
+                lastname:results[0].lastname,
+                admin: results[0].admin,
                 token,
               });
               console.log("---------------log de connexion------------------");

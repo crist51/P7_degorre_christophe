@@ -21,6 +21,8 @@ import Accueil from "./pages/Acceuil";
 import Post from "./pages/Post";
 import Gallery from "./pages/Gallery";
 import User from "./pages/User";
+import Gallery from "./pages/PosteOne";
+
 
 
 export const App = () => {
@@ -31,11 +33,14 @@ export const App = () => {
         <Route path="/acceuil" element={<Accueil />} />
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<Post />} />
+
+
         <Route path="/multimedia" element={<Gallery />} />
         <Route path="/user" element={<User />} />
 
         <Route path="*" element={<Accueil />} />
         <Route path="*" component={() => <h2>404 Not Found </h2>} />
+
 
       </Routes>
       <Footer/>

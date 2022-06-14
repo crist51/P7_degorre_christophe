@@ -1,27 +1,41 @@
 import axios from "axios";
 
-
-
 function CreatePost() {
-
-  // ---------- on recupere id du user ---------- //
+  // ---------- on recupere info local storage ---------- //
   let userConnect = JSON.parse(localStorage.getItem("key"));
   const id = userConnect[0].userId;
- console.log(userConnect);
+  const post_author = userConnect[0].firstname + " " + userConnect[0].lastname;
+  const validToken = userConnect[0].token;
 
   const setDataAPI = (e) => {
     e.preventDefault();
     // ---------- on recupere les info et on les envoie ---------- //
     const post_titre = document.getElementById("post_titre").value;
     const post_contenue = document.getElementById("post_contenue").value;
-    
+
+    const post = {
+      post_titre: post_titre,
+      post_contenue: post_contenue,
+      post_userId: id,
+      post_author: post_author,
+    };
+    console.log(post);
+
+    let config = {
+      headers: {
+        Authorization: "Bearer " + validToken,
+      },
+    };
+
     axios.post(
       `http://localhost:3000/api/post`,
+      
       {
         post_titre: post_titre,
         post_contenue: post_contenue,
         post_userId: id,
-      },
+        post_author: post_author,
+      },config,
       {
         headers: {
           "Content-Type": "application/json",
@@ -29,8 +43,7 @@ function CreatePost() {
       },
       console.log("post create"),
       window.location.href = "http://localhost:3001/post"
-
-    )
+    );
   };
 
   return (
