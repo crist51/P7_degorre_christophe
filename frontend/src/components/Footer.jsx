@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
       <footer>
-        <p>Contacter un administateur non fonctionnelle</p>
+        <button onClick={() => window.location = 'aUpdate@gmail.com'}>📧 Contacter un administateur 📧</button>
         <h2>Groupomania ensemble dans une nouvelle aire</h2>
       </footer>
     </>

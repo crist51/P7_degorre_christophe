@@ -12,9 +12,9 @@ function ReadPost() {
   const [data, setData] = useState([]);
 
   let userConnect = JSON.parse(localStorage.getItem("auth"));
-  const validToken = userConnect[0].token;
-
+  
   useEffect(() => {
+    const validToken = userConnect[0].token;
     let config = {
       headers: {
         Authorization: "Bearer " + validToken,
@@ -23,26 +23,21 @@ function ReadPost() {
 
     const fetchData = async () => {
       const result = await axios(`http://localhost:3000/api/post`, config);
-      // console.log(result.data.results);
       setData(result.data.results);
     };
     fetchData();
+    
   }, []);
-
+  
   return (
     <Fragment>
-      {/* <posteOneRoute /> */}
-      {/* //{ata.map((data => (<Link to={'post/' + item.post_id} />)} */}
       <div className="Bloc_1Contener">
         {data.map((item) => (
-            // <Link to={"/" + item.post_id}>
-            <Link to={"one/?id=" + item.post_id}>
+            <Link to={"onePost/?id=" + item.post_id}>
               <article>
                 <h2>{item.post_titre}</h2>
-                <div>
                   <p>{item.post_contenue}</p>
-                  <p>{item.post_author}</p>
-                </div>
+                  <p className="author">{item.post_author}</p>
               </article>
             </Link>
         ))}
@@ -52,9 +47,3 @@ function ReadPost() {
 }
 
 export default ReadPost;
-
-{
-  /* <Link to="/acceuil/">
-<li onClick={deconect}>Deconexion</li>
-</Link> */
-}

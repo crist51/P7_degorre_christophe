@@ -2,14 +2,13 @@
 
 import React from "react";
 
-import Test from "../components/Conect/test";
+import CorpConect from "../components/Conect/CorpConect";
 
 function Acceuil() {
-  
   return (
-    <>
-      <Test/>
-    </>
+    <main>
+        <CorpConect />
+    </main>
   );
 }
 

@@ -1,0 +1,19 @@
+.Bloc_7{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        display: flex;
+        justify-content: flex-start;
+    }
+    p{
+        margin: 15px 15px 0 15px;
+        width: 25px;
+        text-align: center;
+        background-color: azure;
+        border: 2px double black;
+    }
+    button{
+        width: 150px;
+    }
+}

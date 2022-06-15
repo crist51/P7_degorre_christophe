@@ -13,10 +13,11 @@ $horloge_1: "Jura", "Orbitron", sans-serif;
 
 h1,
 h2,
-h3 {
+h3,.h2 {
   font-family: $font_1;
   font-weight: bolder;
   text-align: center;
+  font-size: large;
 }
 
 .acceuil p{
@@ -26,4 +27,16 @@ h3 {
 
 a{
   @include lien
+}
+
+.Bloc_6{
+  label{
+    margin: 10px 0;
+    color: white;
+  }
+  .underline{
+    height: 2px;
+    background-color: white;
+    margin-bottom: 5px;
+  }
 }

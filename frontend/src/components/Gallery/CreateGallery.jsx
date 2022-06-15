@@ -2,25 +2,18 @@ import axios from "axios";
 import React from "react";
 
 function CreateGallery() {
-
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
- console.log(userConnect);
+  console.log(userConnect);
+  const gallery_author = userConnect[0].firstname + " " + userConnect[0].lastname;
+  const validToken = userConnect[0].token;
 
   const setDataAPI = (e) => {
-
-
-    
     e.preventDefault();
-
-    // const gallery_titre = e.target["titre"].value
-    // const gallery_media =  e.target["gallery_media"].value
-    // const gallery_texte=  e.target["description"].value
-
-
+    // ---------- on recupere les info et on les envoie ---------- //
     const gallery_titre = document.getElementById("gallery_titre").value;
-    const gallery_media = document.getElementById("gallery_media").value;//document.getElementById('file-id').value
+    const gallery_media = document.getElementById("gallery_media").value; //document.getElementById('file-id').value
     const gallery_texte = document.getElementById("gallery_texte").value;
 
     const gallery = [
@@ -29,11 +22,18 @@ function CreateGallery() {
         gallery_media: gallery_media,
         gallery_texte: gallery_texte,
         gallery_userId: id,
+        gallery_author: gallery_author,
       },
     ];
 
     console.log("---- envoie pour API ----");
     console.log(gallery);
+
+    let config = {
+      headers: {
+        Authorization: "Bearer " + validToken,
+      },
+    };
 
     axios.post(
       `http://localhost:3000/api/gallery`,
@@ -42,14 +42,15 @@ function CreateGallery() {
         gallery_media: gallery_media,
         gallery_texte: gallery_texte,
         gallery_userId: id,
-      },
+        gallery_author: gallery_author
+      },config,
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    console.log("gallery create")
+    console.log("gallery create");
   };
 
   return (
@@ -64,6 +65,7 @@ function CreateGallery() {
             name="titre"
             placeholder="titre"
             id="gallery_titre"
+            required
           />
         </div>
 
@@ -76,6 +78,7 @@ function CreateGallery() {
             name="gallery_media"
             placeholder="fichier"
             id="gallery_media"
+            required
           />
         </div>
 

@@ -5,7 +5,7 @@ const templateUserCtrl = require('../controllers/templateUser');
 const auth = require('../middleware/auth')
 
 router.get('/:id', auth, templateUserCtrl.getOneTemplateUser);
-//router.get('/', auth, templateUserCtrl.getAllTemplateUser);
+router.get('/', auth, templateUserCtrl.getAllTemplateUser);
 router.put('/:id', auth, templateUserCtrl.modifyTemplateUser);
 router.delete('/:id', auth, templateUserCtrl.deleteTemplateUser);
 

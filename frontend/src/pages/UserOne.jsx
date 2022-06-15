@@ -1,7 +1,7 @@
 import React from "react";
 
 import MyUser from "../components/User/MyUser";
-import ReadOnePost from "../components/Post/ReadOnePost";
+import ReadOneUser from "../components/User/ReadOneUser";
 import Nav from "../components/Nav";
 
 function Post() {
@@ -14,7 +14,7 @@ function Post() {
       <Nav />
       <div className="corp">
         <MyUser />
-        <ReadOnePost />
+        <ReadOneUser />
       </div>
     </main>
   );

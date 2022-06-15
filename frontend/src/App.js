@@ -2,16 +2,13 @@ import React from "react";
 
 import {
   BrowserRouter as Router /*, Switch*/,
-  // BrowserRouter as Router, Switch,
   Route,
   Routes,
 } from "react-router-dom";
 
-// importing Component's
 
-// import  Navigation  from './components/Navigation';
 
-// import Banner from "./components/Header/Banner";
+import Banner from "./components/Header/Banner";
 import Footer from "./components/Footer";
 
 import "./styles/sass/main.scss";
@@ -23,24 +20,28 @@ import Gallery from "./pages/Gallery";
 import User from "./pages/User";
  import PostOne from "./pages/PostOne";
 
+ import MultimediaOne from "./pages/GalleryOne";
+ import UserOne from "./pages/UserOne";
+
 
 
 export const App = () => {
+
   return (
     <Router>
-      {/* <Banner /> */}
+      <Banner />
       <Routes>
         <Route path="/acceuil" element={<Accueil />} />
         <Route path="/" element={<Home />} />
+
         <Route path="/post" element={<Post />} />
-
-        {/* <Route path="/:id" element={<PostOne />} /> */}
-        <Route path="post/one" element={<PostOne />} />
-
-
+        <Route path="post/onePost" element={<PostOne />} />
 
         <Route path="/multimedia" element={<Gallery />} />
+        <Route path="multimedia/onemultimedia" element={<MultimediaOne />} />
+        
         <Route path="/user" element={<User />} />
+        <Route path="user/oneuser" element={<UserOne />} />
 
         <Route path="*" element={<Accueil />} />
         <Route path="*" component={() => <h2>404 Not Found </h2>} />

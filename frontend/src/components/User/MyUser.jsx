@@ -1,4 +1,4 @@
-import logo from "../assets/images/moi.jpg";
+import logo from "../../assets/images/moi.jpg";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +6,7 @@ import React, { Fragment, useState, useEffect } from "react";
 
 // //---------------------------------------------------
 
-function Aside() {
+function MyUser() {
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
@@ -39,8 +39,8 @@ function Aside() {
             <img alt="logo profil" src={logo} />
             <div>
               <ul>
-                <li>
-                  <span>{item.lastname}</span> {item.firstname}
+                <li className="h2">
+                {item.firstname} {item.lastname} 
                 </li>
                 <li>description : {item.description}</li>
               </ul>
@@ -55,4 +55,4 @@ function Aside() {
   );
 }
 
-export default Aside;
+export default MyUser;

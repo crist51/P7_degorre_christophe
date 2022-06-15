@@ -1,4 +1,4 @@
-const Publicate = require('../models/Publicate');
+// //const Publicate = require('../models/Publicate');
 
 // exports.likePost = (req, res, next) => {
 //     const like = req.body.like;
@@ -27,6 +27,17 @@ const Publicate = require('../models/Publicate');
 //             .catch(error => res.status(400).json({ error }))
 //     }
 // };
+
+
+
+
+
+
+
+
+
+
+
 
 
 // exports.likeGallery = (req, res, next) => {

@@ -17,7 +17,7 @@ function CorpPost() {
       <CreatePost />
     </section>
   ) : (
-    <section id="bloc_1" className="bloc_1">
+    <section className="bloc_1">
       <div className="bloc_titre">
         <h2>Post</h2>
         <button onClick={() => setIsOpen(true)}>Postez un nouveau post</button>

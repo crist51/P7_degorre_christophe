@@ -14,6 +14,7 @@ exports.createGallery = (req, res, next) => {
     gallery_texte: req.body.gallery_texte,
     //gallery_media: req.body.gallery_media,
     gallery_userId: req.body.gallery_userId,
+    gallery_author:req.body.gallery_author,
     gallery_media: `${req.protocol}://${req.get('host')}/images/${req.body.gallery_media}`,
   };
 

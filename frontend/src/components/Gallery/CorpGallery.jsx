@@ -17,12 +17,10 @@ function CorpGallery() {
       <CreateGallery />
     </section>
   ) : (
-    <section id="bloc_1" className="bloc_1">
+    <section className="bloc_1">
       <div className="bloc_titre">
         <h2>Multimedia</h2>
-        <button onClick={() => setIsOpen(true)}>
-          Postez un nouveau messagge
-        </button>
+        <button onClick={() => setIsOpen(true)}>Postez un nouveau messagge</button>
       </div>
       <ReadGallery />
     </section>

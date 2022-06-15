@@ -1,102 +1,3 @@
-// .Bloc_6 {
-//   width: 100%;
-//   padding: 0 10px;
-// }
-// label {
-//   width: 100%;
-//   input {
-//     display: flex;
-//     width: 90%;
-//   }
-// }
-// button {
-//   margin: 10px 0;
-
-// }
-
-// .bloc_2 p {
-//   //width: 100%;
-//   //background-color: aqua;
-//   text-align: center;
-// }
-// .bloc_1{
-//   padding: 10px;
-//   background-color: brown;
-//   article{
-//     background-image: url("../../../assets/images/parchment.jpg");
-//     margin-bottom: 15px;
-//     padding: 30px;
-//     border-radius: 33px;
-//     div{
-//       // padding: 10px;
-//       border-radius: 33px;
-//       height: 10vh;
-//       display: flex;
-//       align-items: center;
-//       flex-direction: column;
-//       justify-content: center;
-//       h3{
-//         margin-bottom: 25px;
-//       }
-//     }
-//   }
-//   a{
-//     text-align: center;
-//   }
-//   .Galllery{
-//     display: flex;
-//   }
-//   .Bloc_1Contener article{
-//     img{
-//       border-radius: 33px 0 0 33px;
-//     }
-//     div{
-//       height: 100%;
-//       display: flex;
-//       flex-direction: column;
-//       h2{
-//         text-align: center;
-//       }
-//       p{
-//         // text-align: right;
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 1024px) {
-
-//   .bloc_1_home{
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     img{
-//       width: 27%;
-//       border-radius: 100%;
-//     }
-//   }
-//   .bloc_1 article{
-//     border-radius: 33px 0 0 33px;
-//   }
-//   .bloc_1 .ContenueConnect{
-//     display: flex;
-
-//     height: 80%;
-//     article{
-//       border-radius: 33px;
-//       margin: 10px;
-//       padding: 20px 10px 10px 10px;
-//       div{
-//         justify-content: space-evenly;
-//         height: 100%;
-//          h3{
-//         margin-bottom: 0;
-//       }
-//     }
-//     }
-//   }
-// }
-
 h2 {
   margin-bottom: 10px;
 }
@@ -174,7 +75,9 @@ aside {
     }
   }
 }
-article, .Bloc_1Contener, .Bloc_1Contener_Gallery{
+article,
+.Bloc_1Contener
+{
   width: 100%;
 }
 .bloc_1_home {
@@ -191,17 +94,16 @@ article, .Bloc_1Contener, .Bloc_1Contener_Gallery{
 
 section {
   background-color: #353535;
-  // width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-    .bloc_titre{
-      width: 100%;
-      h2{
+  .bloc_titre {
+    width: 100%;
+    h2 {
       color: #747474;
     }
-    button{
+    button {
       width: 100%;
       border-radius: 33px;
       animation: myAnim 5s linear 0s infinite normal forwards;
@@ -212,49 +114,89 @@ section {
         transform: scale(1);
         transform-origin: center center;
       }
-    
+
       10% {
         animation-timing-function: ease-in;
         transform: scale(0.91);
       }
-    
+
       17% {
         animation-timing-function: ease-out;
         transform: scale(0.98);
       }
-    
+
       33% {
         animation-timing-function: ease-in;
         transform: scale(0.87);
       }
-    
+
       45% {
         animation-timing-function: ease-out;
         transform: scale(1);
       }
     }
   }
-
+  label {
+    width: 100%;
+    display: block;
+  }
+  input {
+    width: 100%;
+    display: block;
+  }
+  textarea {
+    width: 100%;
+    display: block;
+    height: 150px;
+  }
+}
+button {
+  width: 100%;
+  align-items: center;
+  //margin-top: 15px;
+}
+.corp .bloc_img{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  article{
+    width: 300px;
+    margin: 20px 10px;
+    border-radius: 33px;
+    h2{
+      margin:0;
+      padding: 10px 0;
+    }
+  }
+}
   //--------------------link avec id du post
   article {
     margin-top: 20px;
     background-image: url(../../../assets/images/parchment.jpg);
     border-radius: 33px;
     overflow: hidden;
-    box-shadow: 12px -12px 10px 3px rgba(0, 0, 0, 0.60) inset;
+    box-shadow: 12px -12px 10px 3px rgba(0, 0, 0, 0.6) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     h2 {
       background-color: rgba(0, 0, 0, 0.205);
+      width: 100%;
     }
-    div {
-      padding: 0 20px 20px 20px;
-      :last-child {
+    p {
+      padding: 0 0 20px 10px;
+      width: 98%;
+    }
+      .author{
+        background-color: rgba(0,0,0,0.205);
         text-align: right;
-        margin-top: 10px;
+        width: 50%;
+        border-radius: 33px 0 0 0;
       }
-    }
   }
+  
   // ---------------------------------------
-}
+
 
 @media screen and (min-width: 640px) {
   .corp {
@@ -272,7 +214,7 @@ section {
     height: 70vh;
     padding: 15px;
     overflow: scroll;
-    .bloc_6 div{
+    .bloc_6 div {
       flex-direction: column;
     }
     .bloc_1 {
@@ -283,27 +225,12 @@ section {
       .recomendation p {
         width: 55%;
       }
-      .Bloc_1Contener_Gallery {
-        article {
-          display: flex;
-          align-items: center;
-          p {
-            width: 30vw;
-          }
-          div {
-            width: 50vw;
-            p {
-              width: 100%;
-            }
-          }
-        }
-      }
     }
   }
 }
 
 @media screen and (min-width: 1024px) {
-  main{
+  main {
     height: 75vh;
   }
   .corp {
@@ -311,7 +238,7 @@ section {
     overflow: hidden;
     gap: 0;
     justify-content: space-between;
-    .bloc_1{
+    .bloc_1 {
       width: 65vw;
       justify-content: center;
     }
@@ -319,24 +246,36 @@ section {
       overflow: scroll;
       overflow-x: hidden;
     }
-    .bloc_titre{
+    .bloc_titre {
       padding-bottom: 10px;
     }
-    section article{
+    section article {
       border-radius: 33px 0 0 33px;
+      h2{
+        margin: 0;
+      }
     }
-    .Bloc_1Contener_Gallery{
+    .Bloc_1Contener {
       width: 100%;
       overflow: scroll;
       overflow-x: hidden;
-      h2{
-        border-radius: 33px;
+      h2 {
         padding: 10px;
-        p{
+        p {
           border-radius: 33px 0 0 33px;
           overflow: hidden;
         }
       }
+      .bloc_oneImg{
+        display: flex;
+        width: 100%;
+        img{
+          width: 50%;
+          
+          margin-right: 10px;
+        }
+      }
     }
+
   }
 }

@@ -3,10 +3,10 @@ import Horloge from './Horloge';
 
 function Banner() {
   return (
-      <header className='banner'>
+      <div className='banner'>
         <img src={logo} alt='Groupomania'/>
         <Horloge />
-      </header>
+      </div>
   )
 }
 

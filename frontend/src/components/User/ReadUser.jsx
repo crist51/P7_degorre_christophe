@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
+import logo from "../../assets/images/moi.jpg";
 
 function ReadUser() {
   const [data, setData] = useState([]);
@@ -17,7 +19,6 @@ function ReadUser() {
 
     const fetchData = async () => {
       const result = await axios(`http://localhost:3000/api/user`, config);
-      // console.log(result.data.results);
       setData(result.data.results);
     };
     fetchData();
@@ -25,21 +26,20 @@ function ReadUser() {
 
   return (
     <Fragment>
-      <div className="Bloc_1Contener">
+      <div className="Bloc_1Contener bloc_img">
         {data.map((item) => (
-            // <Link to={"/" + item.post_id}>
-              <article>
-                <h2>{item.firstname}</h2>
-                <div>
-                  <p>{item.lastname}</p>
-                  <p>{item.city}</p>
-                </div>
-                <p>{item.description}</p>
-              </article>
+          <Link to={"oneUser/?id=" + item.userId}>
+            <article>
+              <h2>
+                {item.firstname} {item.lastname}
+              </h2>
+              <img alt="logo profil" src={logo} />
+            </article>
+          </Link>
         ))}
-        </div>
+      </div>
     </Fragment>
   );
 }
 
-export default ReadUser
+export default ReadUser;

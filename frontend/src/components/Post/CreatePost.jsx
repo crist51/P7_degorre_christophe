@@ -47,19 +47,21 @@ function CreatePost() {
   };
 
   return (
-    <div className="Bloc_1Contener_Gallery">
+    <div className="Bloc_1Contener">
       <form className="Bloc_6" onSubmit={setDataAPI}>
         <div>
           <label htmlFor="titre" className="Bloc_5">
             Titres
           </label>
-          <input type="text" name="post_titre" id="post_titre" required />
+          <div className="underline"></div>
+          <input type="text" name="post_titre" id="post_titre" maxLength={255} required />
         </div>
         <div>
           <label htmlFor="message" className="Bloc_5">
             Message
           </label>
-          <textarea id="post_contenue" name="post_contenue" required></textarea>
+          <div className="underline"></div>
+          <textarea id="post_contenue" name="post_contenue"maxLength={1000} required></textarea>
         </div>
         <button type="submit">Postez votre Message</button>
       </form>
