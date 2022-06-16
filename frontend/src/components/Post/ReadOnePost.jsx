@@ -25,7 +25,6 @@ function PostOne() {
       const result = await axios(
         `http://localhost:3000/api/post/${id}`,
         config,
-        config
       );
       setData(result.data.results);
       if (
@@ -39,8 +38,9 @@ function PostOne() {
     };
     fetchData();
   }, []);
-
+  
   const onDelete = (e) => {
+    
     axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
       console.log("post supprimer");
       window.location.href = "http://localhost:3001/post/";

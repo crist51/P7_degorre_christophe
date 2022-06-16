@@ -55,9 +55,9 @@ exports.modifyTemplateUser = (req, res, next) => {
 
   //non tester avec postman------------------------------------------------
   mysqlconnection.query(
-    "UPDATE `user` SET `lastname`=?, `firstname`=?, `city`=?, `user_imageUrl`=?, `description`=? WHERE userId = ?",
-    [req.body.lastname, req.body.firstname, req.body.city, user_imageUrl, req.body.description, id], //id sur les req.body
-    console.log(req.body.lastname, req.body.firstname, req.body.city, user_imageUrl, req.body.description),
+    "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
+    [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
+    console.log(req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste),
     (error, results) => {
       if (error) {
         res.status(404).json({ error }), console.log(error);

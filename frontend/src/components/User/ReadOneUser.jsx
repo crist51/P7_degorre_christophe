@@ -28,18 +28,8 @@ function PostOne() {
         config,
         config
       );
-      setData(result.data.results);
       console.log(result.data.results);
-      console.log("valleur null");
-      if (result.data.results[0].city==null) {
-        result.data.results[0].city="non défini"
-      };
-      if (result.data.results[0].description==null) {
-        result.data.results[0].description="non défini"
-      };
-      if (result.data.results[0].user_imageUrl==null) {
-        result.data.results[0].user_imageUrl=logo
-      };
+      setData(result.data.results);
     };
     fetchData();
   }, []);
@@ -58,13 +48,19 @@ function PostOne() {
                 {item.lastname}
               </h2>
               <div className="bloc_oneImg">
-                <img alt="logo profil" src={item.user_imageUrl} />
+                <img alt="logo profil" src={logo} />
                 <div>
                   <dl>
-                    <dt>Un mot sur {item.lastname}</dt>
+                    <dt>Un mot sur {item.lastname} :</dt>
                     <dd>{item.description}</dd>
-                    <dt>ville </dt>
-                    <dd>{item.city}</dd>
+                  </dl>
+                  <dl>
+                    <dt>Affectation :</dt>
+                    <dd>{item.affectation}</dd>
+                  </dl>
+                  <dl>
+                    <dt>Poste :</dt>
+                    <dd>{item.poste}</dd>
                   </dl>
                   <p></p>
                 </div>

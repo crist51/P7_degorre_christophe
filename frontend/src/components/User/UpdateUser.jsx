@@ -4,8 +4,7 @@ import axios from "axios";
 // import Delete from "./Delete";
 
 export default function UpdateUser() {
-
-  let msg_update = "modification demandé"
+  let msg_update = "modification demandé";
 
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
@@ -34,12 +33,21 @@ export default function UpdateUser() {
 
   const setDataAPI = (e) => {
     e.preventDefault();
+
+    const firstname = document.getElementById("firstname").value;
+    const lastname = document.getElementById("lastname").value;
+    const affectation = document.getElementById("affectation").value;
+    const user_imageUrl = document.getElementById("user_imageUrl").value;
+    const description = document.getElementById("description").value;
+    const poste = document.getElementById("poste").value;
+
     const user = {
-      firstname: e.target["firstname"].value,
-      lastname: e.target["lastname"].value,
-      city: e.target["city"].value,
-      user_imageUrl: e.target["user_imageUrl"].value,
-      description: e.target["description"].value,
+      firstname: firstname,
+      lastname: lastname,
+      affectation: affectation,
+      user_imageUrl: user_imageUrl,
+      description: description,
+      poste: poste,
     };
     console.log("---- rajout pour API ----");
     console.log(user);
@@ -49,10 +57,9 @@ export default function UpdateUser() {
         "Content-Type": "application/json",
       },
     });
-    document.getElementById("msg_update").innerHTML =
-    msg_update = 'modification effectuer'
-    console.log(msg_update);
-    window.location.href = "http://localhost:3001";
+    document.getElementById("msg_update").innerHTML = msg_update =
+      "modification effectuer";
+    //window.location.href = "http://localhost:3001";
   };
 
   const onDelete = (e) => {
@@ -67,6 +74,7 @@ export default function UpdateUser() {
       <div className="Bloc_1Contener">
         {data.map((item) => (
           <form className="Bloc_6" onSubmit={setDataAPI} key={item.userId}>
+            {/* <form className="Bloc_6" key={item.userId}> */}
             <div>
               <label htmlFor="firstname" className="Bloc_5">
                 firstname
@@ -75,6 +83,7 @@ export default function UpdateUser() {
               <input
                 type="text"
                 name="firstname"
+                id="firstname"
                 defaultValue={item.firstname}
               />
 
@@ -86,26 +95,28 @@ export default function UpdateUser() {
                 type="texte"
                 name="lastname"
                 defaultValue={item.lastname}
+                id="lastname"
               />
 
-              <label htmlFor="city" className="Bloc_5">
+              <label htmlFor="affectation" className="Bloc_5">
                 votre ville
               </label>
               <div className="underline"></div>
-              <input type="texte" name="city" defaultValue={item.city} />
+              <input
+                type="texte"
+                id="affectation"
+                name="affectation"
+                defaultValue={item.affectation}
+              />
 
               <label htmlFor="Media" className="Bloc_5">
                 Choisir une image :
               </label>
               <div className="underline"></div>
 
-              <input type="file" name="user_imageUrl" />
+              <input type="file" id="user_imageUrl" name="user_imageUrl" />
 
-              <label
-                htmlFor="decription"
-                className="Bloc_5"
-                defaultValue={item.decription}
-              >
+              <label htmlFor="decription" className="Bloc_5">
                 un mot sur vous
               </label>
               <div className="underline"></div>
@@ -114,19 +125,35 @@ export default function UpdateUser() {
                 type="texte"
                 name="description"
                 defaultValue={item.description}
+                id="description"
               />
+
+              <label htmlFor="poste">Poste de travaille:</label>
+
+              <select name="poste" id="poste" defaultValue={item.poste}>
+                <option value="non renseigné">-- non renseigné --</option>
+                <option value="Employé">Employé</option>
+                <option value="administration">administration</option>
+                <option value="Chef d'équipe">Chef d'équipe</option>
+                <option value="Responsable secteur">Goldfish</option>
+                <option value="Direction">Parrot</option>
+              </select>
             </div>
-            <p id="msg_update">{msg_update}</p>
-            <button type="submit">modifier votre profil</button>
+            {/* <button type="submit">modifier votre profil</button> */}
+            <div className="button_row">
+              <button type="submit" onClick={() => setDataAPI()}>
+                update
+              </button>
+              <p id="msg_update">{msg_update}</p>
+              <button type="submit" onClick={() => onDelete(data.id)}>
+                supprimer votre compte
+              </button>
+            </div>
           </form>
         ))}
       </div>
       {/* <Delete /> */}
-      <div>
-        <button type="submit" onClick={() => onDelete(data.id)}>
-          supprimer votre compte
-        </button>
-      </div>
+      <div></div>
     </>
   );
 }

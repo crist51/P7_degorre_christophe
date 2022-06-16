@@ -10,11 +10,14 @@ function CreateGallery() {
   const validToken = userConnect[0].token;
 
   const setDataAPI = (e) => {
+    
     e.preventDefault();
     // ---------- on recupere les info et on les envoie ---------- //
     const gallery_titre = document.getElementById("gallery_titre").value;
     const gallery_media = document.getElementById("gallery_media").value; //document.getElementById('file-id').value
     const gallery_texte = document.getElementById("gallery_texte").value;
+    const filename = document.getElementById("gallery_media").file; //document.getElementById('file-id').value
+
 
     const gallery = [
       {
@@ -23,6 +26,7 @@ function CreateGallery() {
         gallery_texte: gallery_texte,
         gallery_userId: id,
         gallery_author: gallery_author,
+        filename:filename
       },
     ];
 
@@ -42,7 +46,8 @@ function CreateGallery() {
         gallery_media: gallery_media,
         gallery_texte: gallery_texte,
         gallery_userId: id,
-        gallery_author: gallery_author
+        gallery_author: gallery_author,
+        filename:filename
       },config,
       {
         headers: {

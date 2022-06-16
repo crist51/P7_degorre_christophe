@@ -17,3 +17,16 @@
         width: 150px;
     }
 }
+
+
+.button_row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    button{
+        width: 25%;
+    }
+    p{
+        color: white;
+    }
+}
