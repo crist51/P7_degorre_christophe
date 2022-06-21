@@ -1,10 +1,10 @@
 import React from "react";
 
 import MyUser from "../components/User/MyUser";
-import ReadOnePost from "../components/Post/ReadOnePost";
+import ReadOneGallery from "../components/Gallery/ReadOneGallery";
 import Nav from "../components/Nav";
 
-function Post() {
+function GalleryOne() {
   if (localStorage.length === 0) {
     window.location.href = "http://localhost:3001/acceuil/";
   }
@@ -14,10 +14,10 @@ function Post() {
       <Nav />
       <div className="corp">
         <MyUser />
-        <ReadOnePost />
+        <ReadOneGallery />
       </div>
     </main>
   );
 }
 
-export default Post;
+export default GalleryOne;

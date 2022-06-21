@@ -2,12 +2,6 @@ import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-//import posteOneRoute from "./posteOneRoute";
-
-
-
-// //---------------------------------------------------
-
 function ReadPost() {
   const [data, setData] = useState([]);
 

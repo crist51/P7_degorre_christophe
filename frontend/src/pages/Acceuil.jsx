@@ -1,5 +1,3 @@
-//route sign-In & Login
-
 import React from "react";
 
 import CorpConect from "../components/Conect/CorpConect";

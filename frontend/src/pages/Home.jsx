@@ -1,5 +1,3 @@
-// route Arrivée apres la conexion
-
 import React from "react";
 
 import Nav from "../components/Nav";

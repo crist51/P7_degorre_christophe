@@ -2,9 +2,7 @@ import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/images/moi.jpg";
-
-// //---------------------------------------------------
+//---------------------------------------------------
 
 function ReadGallery() {
   const [data, setData] = useState([]);
@@ -35,7 +33,7 @@ function ReadGallery() {
           <Link to={"onemultimedia/?id=" + item.gallery_id}>
             <article>
               <h2>{item.gallery_titre}</h2>
-              <img alt="logo profil" src={logo} />
+              <img alt="image post" src={item.gallery_media} />
             </article>
           </Link>
         ))}

@@ -1,5 +1,3 @@
-//route Gallery
-
 import React from "react";
 
 import MyUser from "../components/User/MyUser";

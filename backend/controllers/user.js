@@ -7,9 +7,9 @@ const dotenv = require("dotenv");
 const result = dotenv.config();
 
 const mysqlconnection = require("../db/db.mysql");
-// const password = require("../middleware/password");
 
 exports.signUp = (req, res, next) => {
+  console.log(req.body);
   const emailCrypto = cryptojs
     .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
     .toString();
@@ -21,6 +21,8 @@ exports.signUp = (req, res, next) => {
           lastname: req.body.lastname,
           firstname: req.body.firstname,
           password: hash,
+          //image par default
+          user_imageUrl:"http://localhost:3000/images/icon.png1655814589710.png",
         };
         console.log("---- Avent envoie ----");
         console.log(user);

@@ -2,8 +2,6 @@ import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/images/moi.jpg";
-
 function ReadUser() {
   const [data, setData] = useState([]);
 
@@ -33,7 +31,7 @@ function ReadUser() {
               <h2>
                 {item.firstname} {item.lastname}
               </h2>
-              <img alt="logo profil" src={logo} />
+              <img alt="logo profil" src={item.user_imageUrl} />
             </article>
           </Link>
         ))}

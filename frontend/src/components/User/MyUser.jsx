@@ -1,5 +1,3 @@
-import logo from "../../assets/images/moi.jpg";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
@@ -36,7 +34,7 @@ function MyUser() {
       <aside className="bloc_2">
         {data.map((item) => (
           <div key={item.userId}>
-            <img alt="logo profil" src={logo} />
+            <img alt="logo profil" src={item.user_imageUrl} />
             <div>
               <ul>
                 <li className="h2">

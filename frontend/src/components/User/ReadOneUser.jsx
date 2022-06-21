@@ -1,8 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 
-import logo from "../../assets/images/moi.jpg";
-
 function PostOne() {
   //recuperation de search param
   var str = window.location.href;
@@ -36,39 +34,37 @@ function PostOne() {
 
   return (
     <Fragment>
+          {data.map((item) => (
       <section className="bloc_1">
         <div className="bloc_titre">
-          <h2>Post</h2>
+          <h2>                {item.firstname}
+                {item.lastname}</h2>
         </div>
         <div className="Bloc_1Contener">
-          {data.map((item) => (
             <article className="">
-              <h2>
-                {item.firstname}
-                {item.lastname}
-              </h2>
+
               <div className="bloc_oneImg">
-                <img alt="logo profil" src={logo} />
+                <img alt="logo profil" src={item.user_imageUrl} />
                 <div>
                   <dl>
                     <dt>Un mot sur {item.lastname} :</dt>
-                    <dd>{item.description}</dd>
+                    <dd>{item.description ||"Pas d'information"}</dd>
                   </dl>
                   <dl>
                     <dt>Affectation :</dt>
-                    <dd>{item.affectation}</dd>
+                    <dd>{item.affectation ||"Non comuniqué"}</dd>
                   </dl>
                   <dl>
                     <dt>Poste :</dt>
-                    <dd>{item.poste}</dd>
+                    <dd>{item.poste ||"Non comuniqué"}</dd>
                   </dl>
                   <p></p>
                 </div>
               </div>
             </article>
-          ))}
         </div>
       </section>
+          ))}
     </Fragment>
   );
 }

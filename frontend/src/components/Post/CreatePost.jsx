@@ -1,4 +1,6 @@
+import React from "react";
 import axios from "axios";
+
 
 function CreatePost() {
   // ---------- on recupere info local storage ---------- //
@@ -42,7 +44,7 @@ function CreatePost() {
         },
       },
       console.log("post create"),
-      window.location.href = "http://localhost:3001/post"
+      //window.location.href = "http://localhost:3001/post"
     );
   };
 

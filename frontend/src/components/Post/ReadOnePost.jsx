@@ -24,7 +24,7 @@ function PostOne() {
     const fetchData = async () => {
       const result = await axios(
         `http://localhost:3000/api/post/${id}`,
-        config,
+        config
       );
       setData(result.data.results);
       if (
@@ -38,47 +38,33 @@ function PostOne() {
     };
     fetchData();
   }, []);
-  
+
   const onDelete = (e) => {
-    
     axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
       console.log("post supprimer");
-      window.location.href = "http://localhost:3001/post/";
+      //window.location.href = "http://localhost:3001/post/";
     });
   };
 
   return (
     <Fragment>
-      <section className="bloc_1">
-        <div className="bloc_titre">
-          <h2>Post</h2>
-        </div>
-        <div className="Bloc_1Contener">
-          {data.map((item) => (
+      {data.map((item) => (
+        <section className="bloc_1">
+          <div className="bloc_titre">
+            <h2>{item.post_titre}</h2>
+          </div>
+          <div className="Bloc_1Contener">
             <article>
-              <h2>{item.post_titre}</h2>
-                <p>{item.post_contenue}</p>
-                <p className="author">{item.post_author}</p>
+              <p>{item.post_contenue}</p>
+              <p className="author">{item.post_author}</p>
             </article>
-          ))}
-          {/* <div className="Bloc_7">
-            <div>
-            <p>1</p>
-            <button type="submit" onClick={() => onDelete(data.id)}>
-              +
-            </button>
-            <p>0</p>
-            <button type="submit" onClick={() => onDelete(data.id)}>  
-            -
-            </button>
-            </div>
-          </div> */}
 
             <button type="submit" onClick={() => onDelete(data.id)}>
               supprimer
             </button>
-        </div>
-      </section>
+          </div>
+        </section>
+      ))}
     </Fragment>
   );
 }
