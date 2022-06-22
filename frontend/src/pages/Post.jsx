@@ -5,7 +5,7 @@ import CorpPost from "../components//Post/CorpPost";
 import Nav from "../components/Nav";
 
 function Post() {
-  if (localStorage.length == 0) {
+  if (localStorage.length === 0) {
     window.location.href = "http://localhost:3001/acceuil/";
   }
 
@@ -13,7 +13,7 @@ function Post() {
     <main>
       <Nav />
         <div className="corp">
-        <MyUser />
+        {/* <MyUser /> */}
         <CorpPost />
       </div>
     </main>

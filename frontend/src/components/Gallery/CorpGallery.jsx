@@ -9,7 +9,7 @@ function CorpGallery() {
   return isOpen ? (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h2>Multimedia</h2>
+        <h1>Multimedia</h1>
         <button onClick={() => setIsOpen(false)}>
           Femez le formulaire de création de messagge
         </button>
@@ -19,8 +19,8 @@ function CorpGallery() {
   ) : (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h2>Multimedia</h2>
-        <button onClick={() => setIsOpen(true)}>Postez un nouveau messagge</button>
+        <h1>Multimedia</h1>
+        <button className="post" onClick={() => setIsOpen(true)}>Postez un nouveau messagge</button>
       </div>
       <ReadGallery />
     </section>

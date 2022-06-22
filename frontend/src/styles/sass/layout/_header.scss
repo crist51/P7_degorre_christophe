@@ -3,29 +3,34 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .banner {
+  background: linear-gradient(white, #333333);
   img {
     object-fit: cover;
     //width: 100vw;
     height: 75px;
   }
-
-  p {
-    text-align: center;
-    margin: 5px;
+  div{
+    padding:15px;
+    background-color: #333333;
+    margin-bottom: 15px ridge pink;
+    border: 4px ridge pink;
+  
+    p {
+      color: pink;
+      background-color: #333333;
+      text-align: center;
+    }
   }
 }
 
-h1 {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  font-size: 5vw;
-}
 
-@media screen and (min-width: 640px) {
+
+@media screen and (min-width: 768px) {
+
   .banner {
     display: flex;
     align-items: center;
@@ -43,10 +48,5 @@ h1 {
       justify-content: space-evenly;
       // border: 15px ridge black;
     }
-  }
-}
-@media screen and (min-width: 1024px) {//galaxy fold
-  .banner {
-    height: 15vh;
   }
 }

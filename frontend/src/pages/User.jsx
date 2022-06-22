@@ -1,3 +1,5 @@
+// route Profil
+
 import React from "react";
 
 import MyUser from "../components/User/MyUser";
@@ -5,7 +7,7 @@ import Nav from "../components/Nav";
 import CorpUser from "../components/User/CorpUser";
 
 function User() {
-  if (localStorage.length == 0) {
+  if (localStorage.length === 0) {
     window.location.href = "http://localhost:3001/acceuil/";
   }
 
@@ -13,7 +15,6 @@ function User() {
     <main>
       <Nav />
       <div className="corp">
-        <MyUser />
         <CorpUser />
       </div>
     </main>

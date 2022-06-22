@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// import Delete from "./Delete";
+
 export default function UpdateUser() {
   let msg_update = "modification demandé";
 
@@ -24,74 +26,46 @@ export default function UpdateUser() {
         config
       );
       setData(result.data.results);
+      // console.log(result.data.results);
     };
     fetchData();
   }, []);
 
-  const updateuser = (ab) => {
-    ab.preventDefault();
+  const setDataAPI = (e) => {
+    //e.preventDefault();
 
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const affectation = document.getElementById("affectation").value;
+    //const user_imageUrl = document.getElementById("user_imageUrl").value;
     const description = document.getElementById("description").value;
     const poste = document.getElementById("poste").value;
-    const user_imageUrl =
-      document.getElementById("user_imageUrl").files[0].name;
-    const file = document.getElementById("user_imageUrl").files[0];
 
     const user = {
       firstname: firstname,
       lastname: lastname,
       affectation: affectation,
+      user_imageUrl: "icon.png1655753820253.png",
       description: description,
       poste: poste,
-      user_imageUrl: user_imageUrl,
     };
-
-    console.log("---- envoie pour API ----");
+    console.log("---- rajout pour API ----");
     console.log(user);
-    console.log(file);
 
-    let data = new FormData();
-    data.append("user", JSON.stringify(user));
-    data.append("file", file);
-
-    console.log("----------data----------");
-    console.log(data);
-
-    axios.put(
-      `http://localhost:3000/api/user/${id}`,
-      data,
-      config,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Accept: "application/json",
-          type: "formData",
-        },
+    axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
+      headers: {
+        "Content-Type": "application/json",
       },
-      console.log("enfin")
-    );
-    //-------------------
-
-    // axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+    });
     document.getElementById("msg_update").innerHTML = msg_update =
       "modification effectuer";
-    console.log("modif effectuer");
     //window.location.href = "http://localhost:3001";
   };
 
-  const onDelete = (event) => {
-    event.preventDefault();
-
+  const onDelete = (e) => {
     axios.delete(`http://localhost:3000/api/user/${id}`, config).then(() => {
       console.log("compte supprimer");
-      //window.location.href = "http://localhost:3001/acceuil/";
+      window.location.href = "http://localhost:3001/acceuil/";
     });
   };
 
@@ -99,11 +73,11 @@ export default function UpdateUser() {
     <>
       <div className="Bloc_1Contener">
         {data.map((item) => (
-          <form className="Bloc_6" onSubmit={updateuser} key={item.userId}>
+          <form className="Bloc_6" onSubmit={setDataAPI} key={item.userId}>
             {/* <form className="Bloc_6" key={item.userId}> */}
             <div>
               <label htmlFor="firstname" className="Bloc_5">
-                firstname
+                Votre nom
               </label>
               <div className="underline"></div>
               <input
@@ -111,11 +85,10 @@ export default function UpdateUser() {
                 name="firstname"
                 id="firstname"
                 defaultValue={item.firstname}
-                required
               />
 
               <label htmlFor="lastname" className="Bloc_5">
-                lastname
+                Votre prenom
               </label>
               <div className="underline"></div>
               <input
@@ -123,22 +96,22 @@ export default function UpdateUser() {
                 name="lastname"
                 defaultValue={item.lastname}
                 id="lastname"
-                required
               />
 
               <label htmlFor="affectation" className="Bloc_5">
-                votre ville d'affectation
+                votre ville
               </label>
               <div className="underline"></div>
               <input
                 type="texte"
                 id="affectation"
                 name="affectation"
-                defaultValue={item.affectation || "non renseigne"}
+                placeholder="Paris"
+                defaultValue={item.affectation}
               />
 
               <label htmlFor="Media" className="Bloc_5">
-                Choisir une image :
+                Choisir une image  (non implemnté):
               </label>
               <div className="underline"></div>
 
@@ -152,17 +125,14 @@ export default function UpdateUser() {
               <input
                 type="texte"
                 name="description"
-                defaultValue={item.description || "non renseigné"}
+                defaultValue={item.description}
                 id="description"
+                placeholder="Il faut croire en ces rêves"
               />
 
               <label htmlFor="poste">Poste de travaille:</label>
 
-              <select
-                name="poste"
-                id="poste"
-                defaultValue={item.poste || "non renseigné"}
-              >
+              <select name="poste" id="poste" defaultValue={item.poste}>
                 <option value="non renseigné">-- non renseigné --</option>
                 <option value="Employé">Employé</option>
                 <option value="administration">administration</option>
@@ -172,7 +142,9 @@ export default function UpdateUser() {
             </div>
             {/* <button type="submit">modifier votre profil</button> */}
             <div className="button_row">
-              <button type="submit">update</button>
+              <button type="submit" onClick={() => setDataAPI()}>
+                Sauvegarder les maudification
+              </button>
               <p id="msg_update">{msg_update}</p>
               <button type="submit" onClick={() => onDelete(data.id)}>
                 supprimer votre compte

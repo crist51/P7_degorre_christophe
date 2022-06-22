@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-//---------------------------------------------------
+// //---------------------------------------------------
 
 function ReadGallery() {
   const [data, setData] = useState([]);
@@ -30,10 +30,10 @@ function ReadGallery() {
     <Fragment>
       <div className="Bloc_1Contener bloc_img">
         {data.map((item) => (
-          <Link to={"onemultimedia/?id=" + item.gallery_id}>
-            <article>
+          <Link to={"oneGallery/?id=" + item.gallery_id}>
+            <article className="article_img">
               <h2>{item.gallery_titre}</h2>
-              <img alt="image post" src={item.gallery_media} />
+              <img alt="post multimedia" src={item.gallery_media} />
             </article>
           </Link>
         ))}

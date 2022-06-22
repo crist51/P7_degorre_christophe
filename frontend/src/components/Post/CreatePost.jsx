@@ -1,6 +1,4 @@
-import React from "react";
 import axios from "axios";
-
 
 function CreatePost() {
   // ---------- on recupere info local storage ---------- //
@@ -44,7 +42,7 @@ function CreatePost() {
         },
       },
       console.log("post create"),
-      //window.location.href = "http://localhost:3001/post"
+      window.location.href = "http://localhost:3001/post"
     );
   };
 
@@ -56,14 +54,14 @@ function CreatePost() {
             Titres
           </label>
           <div className="underline"></div>
-          <input type="text" name="post_titre" id="post_titre" maxLength={255} required />
+          <input className="h2" type="text" name="post_titre" id="post_titre" placeholder="Le titre" maxLength={255} required />
         </div>
         <div>
           <label htmlFor="message" className="Bloc_5">
             Message
           </label>
           <div className="underline"></div>
-          <textarea id="post_contenue" name="post_contenue"maxLength={1000} required></textarea>
+          <textarea id="post_contenue" className="p" name="post_contenue"maxLength={1000} placeholder="le contenue de votre poste" required></textarea>
         </div>
         <button type="submit">Postez votre Message</button>
       </form>

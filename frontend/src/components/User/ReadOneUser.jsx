@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 
+
 function PostOne() {
   //recuperation de search param
   var str = window.location.href;
@@ -34,37 +35,36 @@ function PostOne() {
 
   return (
     <Fragment>
-          {data.map((item) => (
-      <section className="bloc_1">
-        <div className="bloc_titre">
-          <h2>                {item.firstname}
-                {item.lastname}</h2>
-        </div>
-        <div className="Bloc_1Contener">
-            <article className="">
-
-              <div className="bloc_oneImg">
-                <img alt="logo profil" src={item.user_imageUrl} />
+      {data.map((item) => (
+        <section className="bloc_1">
+          <div className="bloc_titre">
+            <h2>
+              {item.firstname}
+              {item.lastname}
+            </h2>
+          </div>
+          <div className="Bloc_1Contener bloc1_img">
+            <article>
+                <img alt="logo profil" src={item.user_imageUrl || "http://localhost:3000/images/icon.png1655753820253.png"} />
                 <div>
                   <dl>
                     <dt>Un mot sur {item.lastname} :</dt>
-                    <dd>{item.description ||"Pas d'information"}</dd>
+                    <dd>{item.description || "Non renseigné"}</dd>
                   </dl>
                   <dl>
-                    <dt>Affectation :</dt>
-                    <dd>{item.affectation ||"Non comuniqué"}</dd>
+                    <dt>Ville d'affectation :</dt>
+                    <dd>{item.affectation || "Non renseigné"}</dd>
                   </dl>
                   <dl>
                     <dt>Poste :</dt>
-                    <dd>{item.poste ||"Non comuniqué"}</dd>
+                    <dd>{item.poste ||"Non renseigné"}</dd>
                   </dl>
                   <p></p>
                 </div>
-              </div>
             </article>
-        </div>
-      </section>
-          ))}
+          </div>
+        </section>
+      ))}
     </Fragment>
   );
 }

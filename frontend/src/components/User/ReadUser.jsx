@@ -27,11 +27,11 @@ function ReadUser() {
       <div className="Bloc_1Contener bloc_img">
         {data.map((item) => (
           <Link to={"oneUser/?id=" + item.userId}>
-            <article>
+            <article className="article_img">
               <h2>
                 {item.firstname} {item.lastname}
               </h2>
-              <img alt="logo profil" src={item.user_imageUrl} />
+              <img alt="image_profil" src={item.user_imageUrl ||"http://localhost:3000/images/icon.png1655753820253.png"} />
             </article>
           </Link>
         ))}

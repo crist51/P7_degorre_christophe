@@ -1,54 +1,65 @@
-import { Link } from "react-router-dom";
-import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 
-// //---------------------------------------------------
 
 function MyUser() {
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
-  const id = userConnect[0].userId;
   const validToken = userConnect[0].token;
+  const id = userConnect[0].userId
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + validToken,
-      },
-    };
+  let config = {
+    headers: {
+      Authorization: "Bearer " + validToken,
+    },
+  };
 
+  useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
         `http://localhost:3000/api/user/${id}`,
+        config,
         config
       );
-      // console.log(result.data.results);
       setData(result.data.results);
     };
     fetchData();
   }, []);
+
   return (
     <Fragment>
-      <aside className="bloc_2">
-        {data.map((item) => (
-          <div key={item.userId}>
-            <img alt="logo profil" src={item.user_imageUrl} />
-            <div>
-              <ul>
-                <li className="h2">
-                {item.firstname} {item.lastname} 
-                </li>
-                <li>description : {item.description}</li>
-              </ul>
-              <Link to="/user">
-                <p>Modifié votre profil</p>
-              </Link>
-            </div>
+      {data.map((item) => (
+        <>
+          <div className="bloc_titre">
+            <h2>
+              {item.firstname}
+              {item.lastname}
+            </h2>
           </div>
-        ))}
-      </aside>
+          <div className="Bloc_1Contener bloc1_img">
+            <article>
+                <img alt="logo profil" src={item.user_imageUrl || "http://localhost:3000/images/icon.png1655753820253.png"} />
+                <div>
+                  <dl>
+                    <dt>Un mot sur {item.lastname} :</dt>
+                    <dd>{item.description || "Non renseigné"}</dd>
+                  </dl>
+                  <dl>
+                    <dt>Ville d'affectation :</dt>
+                    <dd>{item.affectation || "Non renseigné"}</dd>
+                  </dl>
+                  <dl>
+                    <dt>Poste :</dt>
+                    <dd>{item.poste || "Non renseigné"}</dd>
+                  </dl>
+                  <p></p>
+                </div>
+            </article>
+          </div>
+        </>
+      ))}
     </Fragment>
   );
 }

@@ -4,7 +4,7 @@ import MyUser from "../components/User/MyUser";
 import ReadOneUser from "../components/User/ReadOneUser";
 import Nav from "../components/Nav";
 
-function Post() {
+function UserOne() {
   if (localStorage.length === 0) {
     window.location.href = "http://localhost:3001/acceuil/";
   }
@@ -13,11 +13,10 @@ function Post() {
     <main>
       <Nav />
       <div className="corp">
-        <MyUser />
         <ReadOneUser />
       </div>
     </main>
   );
 }
 
-export default Post;
+export default UserOne;

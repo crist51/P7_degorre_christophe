@@ -17,9 +17,6 @@ mysqlconnection.connect((err) => {
     if(err){
         console.log( `error conecting: ${err}`);
     }
-    // else{
-    //    console.log(`connected as id ${mysqlconnection.threadId}`);
-    // }
 });
 
 module.exports = mysqlconnection;

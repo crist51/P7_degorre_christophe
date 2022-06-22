@@ -46,44 +46,18 @@ exports.getAllTemplateUser = (req, res, next) => {
 //============================================================================================================
 
 exports.modifyTemplateUser = (req, res, next) => {
+  console.log(" ------- req.params.id ------");
   const id = req.params.id;
-  const userObject = JSON.parse(req.body.user);
-  console.log("-- body --");
+  console.log(id); // = 1
+  console.log('-----------avent-----------');
   console.log(req.body);
-  console.log("-- Object --");
-  console.log(userObject);
-  const user = {
-    lastname: userObject.lastname,
-    firstname: userObject.firstname,
-    affectation: userObject.affectation,
-    description: userObject.description,
-    poste: userObject.poste,
-    user_imageUrl: `${req.protocol}://${req.get("host")}/images/${
-      req.file.filename
-    }`,
-  };
-  console.log("----user ----");
-  console.log(user);
+  const user_imageUrl = `${req.protocol}://${req.get('host')}/images/${req.body.user_imageUrl}`;
+
   //non tester avec postman------------------------------------------------
   mysqlconnection.query(
     "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
-    [
-      req.body.lastname,
-      req.body.firstname,
-      req.body.affectation,
-      user_imageUrl,
-      req.body.description,
-      req.body.poste,
-      id,
-    ], //id sur les req.body
-    console.log(
-      req.body.lastname,
-      req.body.firstname,
-      req.body.affectation,
-      user_imageUrl,
-      req.body.description,
-      req.body.poste
-    ),
+    [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
+    console.log(req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste),
     (error, results) => {
       if (error) {
         res.status(404).json({ error }), console.log(error);
@@ -93,7 +67,18 @@ exports.modifyTemplateUser = (req, res, next) => {
     console.log("-------------------- Resultat -------------------"),
     console.log("user update")
   );
-};
+
+
+};  
+
+
+
+
+
+
+
+
+
 
 //============================================================================================================
 

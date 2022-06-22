@@ -2,6 +2,12 @@ import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+//import posteOneRoute from "./posteOneRoute";
+
+
+
+// //---------------------------------------------------
+
 function ReadPost() {
   const [data, setData] = useState([]);
 
@@ -30,7 +36,6 @@ function ReadPost() {
             <Link to={"onePost/?id=" + item.post_id}>
               <article>
                 <h2>{item.post_titre}</h2>
-                  <p>{item.post_contenue}</p>
                   <p className="author">{item.post_author}</p>
               </article>
             </Link>

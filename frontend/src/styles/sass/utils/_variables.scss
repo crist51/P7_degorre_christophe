@@ -12,6 +12,7 @@ $colour-two:#FF79DA;
 $colour-three:#99E2D0;
 
 $marge:5vw;
-@media screen and (min-width:670px){//sa prend pas
-    $marge:10vw;
-}
+$marges:10vw;
+
+$margeArticle: 25px;
+$paddingArticle: 15px;

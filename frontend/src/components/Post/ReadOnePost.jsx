@@ -24,7 +24,7 @@ function PostOne() {
     const fetchData = async () => {
       const result = await axios(
         `http://localhost:3000/api/post/${id}`,
-        config
+        config,
       );
       setData(result.data.results);
       if (
@@ -40,9 +40,10 @@ function PostOne() {
   }, []);
 
   const onDelete = (e) => {
+
     axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
       console.log("post supprimer");
-      //window.location.href = "http://localhost:3001/post/";
+      window.location.href = "http://localhost:3001/post/";
     });
   };
 
@@ -51,14 +52,20 @@ function PostOne() {
       {data.map((item) => (
         <section className="bloc_1">
           <div className="bloc_titre">
-            <h2>{item.post_titre}</h2>
+            <h1>{item.post_titre}</h1>
           </div>
-          <div className="Bloc_1Contener">
+          <div className="Bloc_1Contener bloc1_img">
             <article>
               <p>{item.post_contenue}</p>
               <p className="author">{item.post_author}</p>
             </article>
-
+            <div className="avis">
+              <button>commentaire</button>
+              <div>
+                <button><i class="fa-solid fa-thumbs-up"></i></button>
+                <button><i class="fa-solid fa-thumbs-down"></i></button>
+              </div>
+            </div>
             <button type="submit" onClick={() => onDelete(data.id)}>
               supprimer
             </button>

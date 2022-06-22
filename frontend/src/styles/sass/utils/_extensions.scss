@@ -1,0 +1,23 @@
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 25px;
+    img {
+      width: 50%;
+      border-radius: 90%;
+      animation: rotation 5s linear 0s infinite normal forwards;
+      border: 2px solid pink;
+    }
+    @keyframes rotation {
+      0% {
+        transform: rotate(0);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  

@@ -1,32 +1,125 @@
-.Bloc_7{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    div{
-        display: flex;
-        justify-content: flex-start;
-    }
-    p{
-        margin: 15px 15px 0 15px;
-        width: 25px;
-        text-align: center;
-        background-color: azure;
-        border: 2px double black;
-    }
-    button{
-        width: 150px;
-    }
+textarea,
+input,
+button {
+  resize: none;
+  width: 100%;
+  outline: none;
+  border: none;
 }
 
+button {
+  border-radius: 33px;
+  margin-top: 10px;
+}
 
-.button_row{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    button{
-        width: 25%;
-    }
-    p{
-        color: white;
-    }
+textarea {
+  height: 60vw;
+  padding: 40px 0;
+  text-align: justify;
+}
+
+input {
+  height: 25px;
+  text-align: center;
+}
+
+textarea,
+input {
+  box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
+  border-radius: 50px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+button:hover {
+  box-shadow: 10px 5px 10px 5px rgba(255, 192, 203, 0.3);
+}
+
+.underline {
+  margin-top: 5px;
+  animation: flash 500ms ease 0s infinite alternate forwards;
+  height: 2px;
+  text-decoration: solid;
+}
+
+.post {
+  animation: vibration 2s linear 0s 1 normal none;
+}
+
+.avis{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 25px;
+	button{
+		color: $colour-invalid;
+		box-shadow: none;
+	}
+	:nth-child(1){
+		width: 50%;
+	}
+	div{
+		display: flex;
+		gap: 15px;
+		button{
+		 border-radius: 0;
+		 width: 25px !important;	
+		 padding: 2px;		
+		};
+	}
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes vibration {
+	0% {
+		transform: translate(0);
+	}
+
+	10% {
+		transform: translate(-2px, -2px);
+	}
+
+	20% {
+		transform: translate(2px, -2px);
+	}
+
+	30% {
+		transform: translate(-2px, 2px);
+	}
+
+	40% {
+		transform: translate(2px, 2px);
+	}
+
+	50% {
+		transform: translate(-2px, -2px);
+	}
+
+	60% {
+		transform: translate(2px, -2px);
+	}
+
+	70% {
+		transform: translate(-2px, 2px);
+	}
+
+	80% {
+		transform: translate(-2px, -2px);
+	}
+
+	90% {
+		transform: translate(2px, -2px);
+	}
+
+	100% {
+		transform: translate(0);
+	}
 }

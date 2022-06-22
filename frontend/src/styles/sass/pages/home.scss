@@ -1,13 +1,21 @@
-.bloc_2 {
-  background-color: #353535;
-  div {
-    
-  }
+body {
+  background-color: #333333;
 }
 
-
-
-
-@media screen and (min-width: 640px) {
-
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .Bloc_1Contener {
+    width: 100%;
+    .icon {
+      margin-top: 75px;
+      ;
+    }
+  }
+}
+.Bloc_1Contener a:hover h2{
+  background-color: pink;
+  color: black;
 }

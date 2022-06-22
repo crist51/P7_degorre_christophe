@@ -1,5 +1,7 @@
 import React from "react";
 
+// import Mailto from 'react-mailto';
+
 function Footer() {
   return (
     <>

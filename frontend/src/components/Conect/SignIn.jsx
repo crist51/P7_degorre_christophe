@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 let error = " Champ vide ";
 
@@ -12,12 +11,8 @@ function SignIn() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const SignUp = {
-      email: email,
-      password: password,
-    };
     console.log("---- envoie API ----");
-    console.log(SignUp);
+    console.log(email + password);
 
     axios
       .post(
@@ -33,9 +28,8 @@ function SignIn() {
         }
       )
       .then((res) => {
-        console.log(res.status);
         console.log(res.data);
-        // mehose pour enregistre dans le local storage //
+        // methode pour enregistre dans le local storage //
         userConnect.push(res.data);
         localStorage.setItem("auth", JSON.stringify(userConnect));
         window.location.href = "http://localhost:3001";

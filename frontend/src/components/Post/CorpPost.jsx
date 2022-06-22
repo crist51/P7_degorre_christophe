@@ -9,7 +9,7 @@ function CorpPost() {
   return isOpen ? (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h2>Post</h2>
+        <h1>Post</h1>
         <button onClick={() => setIsOpen(false)}>
           Femez le formulaire de création de messagge
         </button>
@@ -19,8 +19,8 @@ function CorpPost() {
   ) : (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h2>Post</h2>
-        <button onClick={() => setIsOpen(true)}>Postez un nouveau post</button>
+        <h1>Post</h1>
+        <button className="post" onClick={() => setIsOpen(true)}>Postez un nouveau post</button>
       </div>
       <ReadPost />
     </section>

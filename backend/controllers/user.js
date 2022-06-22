@@ -9,20 +9,18 @@ const result = dotenv.config();
 const mysqlconnection = require("../db/db.mysql");
 
 exports.signUp = (req, res, next) => {
-  console.log(req.body);
   const emailCrypto = cryptojs
     .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
     .toString();
     bcrypt
-      .hash(req.body.password, 10) //10 tour de hachage
+      .hash(req.body.password, 10)
       .then((hash) => {
         const user = {
           email: emailCrypto,
           lastname: req.body.lastname,
           firstname: req.body.firstname,
           password: hash,
-          //image par default
-          user_imageUrl:"http://localhost:3000/images/icon.png1655814589710.png",
+          user_imageUrl: "http://localhost:3000/images/icon.png1655753820253.png"
         };
         console.log("---- Avent envoie ----");
         console.log(user);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ReadUser from "./ReadUser";
+import MyUser from "./MyUser";
 import UpdateUser from "./UpdateUser";
 
 function CorpPost() {
@@ -9,20 +9,20 @@ function CorpPost() {
   return isOpen ? (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h1>Parametre du compte</h1>
-        <button onClick={() => setIsOpen(false)}>Liste des utilisateurs</button>
+        <h1>Mon Compte</h1>
+        <button onClick={() => setIsOpen(false)}>Retour a votre compte, pensez à sauvegarder</button>
       </div>
       <UpdateUser />
     </section>
   ) : (
     <section className="bloc_1">
       <div className="bloc_titre">
-        <h1>Liste des utilisateurs</h1>
+        <h1>Mon Compte</h1>
         <button onClick={() => setIsOpen(true)}>
           modification de votre compte
         </button>
       </div>
-      <ReadUser />
+      <MyUser />
     </section>
   );
 }

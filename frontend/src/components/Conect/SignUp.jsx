@@ -14,20 +14,8 @@ function SignIn() {
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const password = document.getElementById("password").value;
-
-    const SignUp = [
-      {
-        email: email,
-        firstname: firstname,
-        lastname: lastname,
-        password: password,
-        id: undefined,
-      },
-    ];
-
-    console.log("---- envoie des donnée ----");
-    console.log(SignUp);
-
+console.log("-- email --");
+    console.log(email);
     axios
       .post(
         `http://localhost:3000/api/authentification/signUp`,

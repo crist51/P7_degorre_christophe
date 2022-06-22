@@ -1,281 +1,97 @@
-h2 {
-  margin-bottom: 10px;
-}
-aside {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  button {
-    width: 100%;
-  }
-  div {
-    margin-bottom: 10px;
-    color: #747474;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 75%;
-      overflow: hidden;
-      button {
-        border-radius: 33px;
-        color: #747474;
-        margin: 10px 0;
-      }
-      label {
-        width: 100%;
-        margin-bottom: 10px;
-        input {
-          width: 100%;
-        }
-      }
+.corp {
+  padding: 0 $marge 0 $marge;
 
-      p {
-        color: $colour-invalid;
-        text-align: center;
-        width: 100%;
-        margin-top: 10px;
-      }
-    }
-  }
-  .bloc_6 div {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-}
-.bloc_1 {
-  background-color: #353535;
-  padding: 20px 20px;
-  margin: 40px 0;
-  overflow: hidden;
-}
-.icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 25px;
-  img {
-    width: 50%;
-    border-radius: 90%;
-    animation: rotation 5s linear 0s infinite normal forwards;
-    border: 2px solid pink;
-  }
-  @keyframes rotation {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-}
-article,
-.Bloc_1Contener
-{
-  width: 100%;
-}
-.bloc_1_home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .recomendation {
-    text-align: center;
-    background-color: #747474;
-    border-radius: 33px;
-    padding: 10px;
-  }
-}
-
-section {
-  background-color: #353535;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   .bloc_titre {
-    width: 100%;
-    h2 {
-      color: #747474;
-    }
-    button {
-      width: 100%;
-      border-radius: 33px;
-      animation: myAnim 5s linear 0s infinite normal forwards;
-    }
-    @keyframes myAnim {
-      0% {
-        animation-timing-function: ease-out;
-        transform: scale(1);
-        transform-origin: center center;
-      }
-
-      10% {
-        animation-timing-function: ease-in;
-        transform: scale(0.91);
-      }
-
-      17% {
-        animation-timing-function: ease-out;
-        transform: scale(0.98);
-      }
-
-      33% {
-        animation-timing-function: ease-in;
-        transform: scale(0.87);
-      }
-
-      45% {
-        animation-timing-function: ease-out;
-        transform: scale(1);
-      }
-    }
-  }
-  label {
-    width: 100%;
-    display: block;
-  }
-  input {
-    width: 100%;
-    display: block;
-  }
-  textarea {
-    width: 100%;
-    display: block;
-    height: 150px;
-  }
-}
-button {
-  width: 100%;
-  align-items: center;
-  //margin-top: 15px;
-}
-.corp .bloc_img{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  article{
-    width: 300px;
-    margin: 20px 10px;
-    border-radius: 33px;
-    h2{
-      margin:0;
-      padding: 10px 0;
-    }
-  }
-}
-  //--------------------link avec id du post
-  article {
-    margin-top: 20px;
-    background-image: url(../../../assets/images/parchment.jpg);
-    border-radius: 33px;
+    margin: 10px 0 15px 0;
     overflow: hidden;
-    box-shadow: 12px -12px 10px 3px rgba(0, 0, 0, 0.6) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    h2 {
-      background-color: rgba(0, 0, 0, 0.205);
-      width: 100%;
-    }
-    p {
-      padding: 0 0 20px 10px;
-      width: 98%;
-    }
-      .author{
-        background-color: rgba(0,0,0,0.205);
-        text-align: right;
-        width: 50%;
-        border-radius: 33px 0 0 0;
-      }
+    width: 100%;
   }
-  
-  // ---------------------------------------
-
-
-@media screen and (min-width: 640px) {
-  .corp {
-    padding-top: 0;
-    .bloc_6 div {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+  .bloc1_img{
+    article div{
+      padding: 20px 10px;
     }
   }
+}
+article {
+  background-color: #333333;
+  box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
+  border-radius: 50px;
+  margin-bottom: $margeArticle;
+  overflow: hidden;
+  h2 {
+    color: white;
+    padding-bottom: 10px;
+  }
+  h2 + p {
+    color: pink;
+    text-align: justify;
+    padding: 10px 0;
+    padding: 0 5px;
+  }
+  :last-child {
+    color: white;
+    text-align: center;
+  }
+}
+.bloc1_img{
+  article{
+    p{
+      padding: 22px 10px;
+    }
+    +p{
+      padding: 0;
+    }
+  }
+}
+
+.article_img {
+  padding: 0;
+  img {
+    width: 100%;
+  }
+}
+
+a:hover article h2 {
+  color: black;
+  background-color: pink;
 }
 
 @media screen and (min-width: 768px) {
-  .corp {
-    height: 70vh;
-    padding: 15px;
-    overflow: scroll;
-    .bloc_6 div {
-      flex-direction: column;
+  .Bloc_1Contener{
+    padding: 100px 0;
+  }
+  .bloc_img {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 30px;
+
+
+    article {
+      width: 40vw;
     }
-    .bloc_1 {
-      margin: 0;
-      .icon img {
-        width: 30%;
-      }
-      .recomendation p {
-        width: 55%;
-      }
+  }
+  .bloc1_img{
+    background-color: #333333;
+    padding: 25px;
+    width: 50vw !important;
+    article{
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }
 
-@media screen and (min-width: 1024px) {
-  main {
-    height: 75vh;
-  }
-  .corp {
-    display: flex;
-    overflow: hidden;
-    gap: 0;
-    justify-content: space-between;
-    .bloc_1 {
-      width: 65vw;
-      justify-content: center;
-    }
-    .Bloc_1Contener {
-      overflow: scroll;
-      overflow-x: hidden;
-    }
-    .bloc_titre {
-      padding-bottom: 10px;
-    }
-    section article {
-      border-radius: 33px 0 0 33px;
-      h2{
-        margin: 0;
-      }
-    }
-    .Bloc_1Contener {
-      width: 100%;
-      overflow: scroll;
-      overflow-x: hidden;
-      h2 {
-        padding: 10px;
-        p {
-          border-radius: 33px 0 0 33px;
-          overflow: hidden;
-        }
-      }
-      .bloc_oneImg{
-        display: flex;
-        width: 100%;
-        img{
-          width: 50%;
-          
-          margin-right: 10px;
-        }
-      }
-    }
+@media screen and (min-width: 992px) {
+  .bloc_img article {
+    width: 22vw;
 
+    img {
+      height: 35vh;
+    }
   }
 }

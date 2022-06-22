@@ -1,10 +1,11 @@
+// route Profil
+
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
-import ReadOneGallery from "../components/Gallery/ReadOneGallery";
 import Nav from "../components/Nav";
+import CorpMyUser from "../components/User/CorpMyUser";
 
-function GalleryOne() {
+function User() {
   if (localStorage.length === 0) {
     window.location.href = "http://localhost:3001/acceuil/";
   }
@@ -13,11 +14,10 @@ function GalleryOne() {
     <main>
       <Nav />
       <div className="corp">
-        {/* <MyUser /> */}
-        <ReadOneGallery />
+        <CorpMyUser />
       </div>
     </main>
   );
 }
 
-export default GalleryOne;
+export default User;
