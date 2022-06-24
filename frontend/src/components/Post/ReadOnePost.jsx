@@ -9,7 +9,7 @@ function PostOne() {
 
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
-  //const userId = userConnect[0].userId;
+  const userId = userConnect[0].userId;
   const validToken = userConnect[0].token;
 
   const [data, setData] = useState([]);
@@ -19,6 +19,9 @@ function PostOne() {
       Authorization: "Bearer " + validToken,
     },
   };
+
+  let messageBTN = "retour";
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,20 +34,25 @@ function PostOne() {
         result.data.results[0].post_userId == userConnect[0].userId ||
         userConnect[0].admin == 1
       ) {
-        console.log("j'ai le droit de suppimer");
-      } else {
-        console.log("je suis un looser");
+        //si je suis authentifié j'apparais le btn suprimer
+        const sup = document.getElementById("auth")
+        sup.textContent = "supprimer"
       }
     };
     fetchData();
   }, []);
 
-  const onDelete = (e) => {
+  const onDelete = (ca) => {
+    const ab = document.getElementById("idAuthor").innerHTML;
 
-    axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
-      console.log("post supprimer");
-      window.location.href = "http://localhost:3001";
-    });
+    //is userID corespond au Id qui a creer l'objet
+    if (ab == userId || userConnect[0].admin == 1) {
+      axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
+        window.location.href = "http://localhost:3001/post";
+      });
+    } else {
+      window.location.href = "http://localhost:3001/post";
+    };
   };
 
   return (
@@ -53,6 +61,7 @@ function PostOne() {
         <section className="bloc_1">
           <div className="bloc_titre">
             <h1>{item.post_titre}</h1>
+            <p className="user_imgUrl" id="idAuthor">{item.post_userId}</p>
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>
@@ -62,12 +71,12 @@ function PostOne() {
             <div className="avis">
               <button>commentaire</button>
               <div>
-                <button><i class="fa-solid fa-thumbs-up"></i></button>
+                <button id="like"><i class="fa-solid fa-thumbs-up"></i></button>
                 <button><i class="fa-solid fa-thumbs-down"></i></button>
               </div>
             </div>
-            <button type="submit" onClick={() => onDelete(data.id)}>
-              supprimer
+            <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+              {messageBTN}
             </button>
           </div>
         </section>

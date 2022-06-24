@@ -27,7 +27,6 @@ function PostOne() {
         config,
         config
       );
-      console.log(result.data.results);
       setData(result.data.results);
     };
     fetchData();

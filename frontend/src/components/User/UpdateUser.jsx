@@ -63,10 +63,6 @@ export default function UpdateUser() {
   const update = (ab) => {
     ab.preventDefault();
 
-
-
-
-
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const affectation = document.getElementById("affectation").value;

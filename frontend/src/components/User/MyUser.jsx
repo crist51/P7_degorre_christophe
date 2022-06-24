@@ -33,7 +33,6 @@ function MyUser() {
 
   const onDelete = (e) => {
     axios.delete(`http://localhost:3000/api/user/${id}`, config).then(() => {
-      console.log("compte supprimer");
       localStorage.clear();
       window.location.href = "http://localhost:3001/acceuil/";
     });

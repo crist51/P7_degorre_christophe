@@ -12,8 +12,7 @@ function SignIn() {
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const password = document.getElementById("password").value;
-console.log("-- email --");
-    console.log(email);
+
     axios
       .post(
         `http://localhost:3000/api/authentification/signUp`,
@@ -29,13 +28,8 @@ console.log("-- email --");
           },
         }
       )
-      .then((res) => {
-        console.log("---- res ----");
-        console.log(res);
-        console.log("---- res.dada ----");
-        console.log(res.data);
-        console.log("je suis inscrit");
-        // mehose pour enregistre dans le local storage //
+      .then((res) => {;
+        //save local storage
         userConnect.push(res.data);
          localStorage.setItem(
            "auth",
@@ -45,10 +39,9 @@ console.log("-- email --");
         // -------------------------------------------- //
       })
       .catch((err) => {
-        console.log(err.response.data.error);
         document.getElementById("emailErrorMsg").innerHTML =
           err.response.data.error;
-      }); // Ici, le cas d'erreur
+      });
   };
 
   return (
