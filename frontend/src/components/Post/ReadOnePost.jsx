@@ -43,7 +43,7 @@ function PostOne() {
 
     axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
       console.log("post supprimer");
-      window.location.href = "http://localhost:3001/post/";
+      window.location.href = "http://localhost:3001";
     });
   };
 

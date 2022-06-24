@@ -28,6 +28,17 @@ function MyUser() {
     fetchData();
   }, []);
 
+
+  
+
+  const onDelete = (e) => {
+    axios.delete(`http://localhost:3000/api/user/${id}`, config).then(() => {
+      console.log("compte supprimer");
+      localStorage.clear();
+      window.location.href = "http://localhost:3001/acceuil/";
+    });
+  };
+
   return (
     <Fragment>
       {data.map((item) => (
@@ -58,6 +69,12 @@ function MyUser() {
                 </div>
             </article>
           </div>
+
+          <button type="submit" onClick={() => onDelete(data.id)}>
+          supprimer votre compte
+        </button>
+
+          
         </>
       ))}
     </Fragment>

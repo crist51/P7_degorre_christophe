@@ -40,10 +40,10 @@ function GalleryOne() {
   }, []);
 
   const onDelete = (e) => {
-
+    e.preventDefault();
     axios.delete(`http://localhost:3000/api/gallery/${id}`, config).then(() => {
       console.log("multimedia supprimer");
-      window.location.href = "http://localhost:3001/gallery/";
+      window.location.href = "http://localhost:3001";
     });
   };
 
@@ -63,10 +63,10 @@ function GalleryOne() {
               </div>
             </article>
             <div className="avis">
-              <button>commentaire</button>
+              <button>Commentaire</button>
               <div>
-                <button><i class="fa-solid fa-thumbs-up"></i></button>
-                <button><i class="fa-solid fa-thumbs-down"></i></button>
+                <button><i class="fa-solid fa-thumbs-up"></i>1</button>
+                <button><i class="fa-solid fa-thumbs-down"></i>0</button>
               </div>
             </div>
 

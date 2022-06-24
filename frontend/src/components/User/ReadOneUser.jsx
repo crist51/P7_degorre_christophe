@@ -38,10 +38,10 @@ function PostOne() {
       {data.map((item) => (
         <section className="bloc_1">
           <div className="bloc_titre">
-            <h2>
+            <h1>
               {item.firstname}
               {item.lastname}
-            </h2>
+            </h1>
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>

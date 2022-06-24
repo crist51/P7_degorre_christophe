@@ -1,16 +1,18 @@
 const fs = require('fs');
-
-// const auth = require('../middleware/auth');
 const mysqlconnection = require('../db/db.mysql');
-const { log } = require('console');
 
 
 //======================================================= create =======================================================
 
 exports.createGallery = (req, res, next) => {
   const galleryObject = JSON.parse(req.body.gallery);
+  console.log('-----------req.file-----------');
+  console.log(req.file);
+  console.log('-----------body-----------');
   console.log(req.body);
-  console.log(galleryObject);
+  console.log('-----------req-----------');
+
+ // console.log(galleryObject);
   const gallery = {
     gallery_titre: galleryObject.gallery_titre,
     gallery_texte: galleryObject.gallery_texte,

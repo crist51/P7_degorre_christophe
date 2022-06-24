@@ -8,10 +8,10 @@ function CorpPost() {
   const [isOpen, setIsOpen] = useState(true);
 
   return isOpen ? (
-    <main className="corp">
+    <div className="corp">
       <aside className="bloc_2">
         <button onClick={( ) => setIsOpen(false)}>
-          Pas de compte passez par ici !!
+        Pas de compte? inscrivez-vous !!
         </button>
         <div>
           <h2>Connection</h2>
@@ -21,12 +21,12 @@ function CorpPost() {
       <section className="bloc_1">
         <ContenueConnect />
       </section>
-    </main>
+    </div>
   ) : (
     <main className="corp">
       <aside className="bloc_2">
         <button onClick={( ) => setIsOpen(true)}>
-          Pas de compte inscrivez-vous
+          Vous avez déja un compte? inscrivez vous !!
         </button>
         <div>
           <h2>Inscrivez-vous</h2>

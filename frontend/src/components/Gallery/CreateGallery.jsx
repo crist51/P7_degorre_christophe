@@ -17,8 +17,7 @@ function CreateGallery() {
     const gallery_titre = document.getElementById("gallery_titre").value;
     const gallery_media =  document.getElementById("gallery_media").files[0].name;
     const gallery_texte = document.getElementById("gallery_texte").value;
-    const file = document.getElementById("gallery_media").files[0]; //document.getElementById('file-id').value
-
+    const file = document.getElementById("gallery_media").files[0];
 
     const gallery = 
       {

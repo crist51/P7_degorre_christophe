@@ -1,6 +1,5 @@
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
 import ReadOneGallery from "../components/Gallery/ReadOneGallery";
 import Nav from "../components/Nav";
 
@@ -13,7 +12,6 @@ function GalleryOne() {
     <main>
       <Nav />
       <div className="corp">
-        {/* <MyUser /> */}
         <ReadOneGallery />
       </div>
     </main>

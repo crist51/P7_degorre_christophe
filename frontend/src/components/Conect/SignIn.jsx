@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let error = " Champ vide ";
+let error = "";
 
 let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
@@ -46,7 +46,7 @@ function SignIn() {
     <div>
       <form className="bloc_6" onSubmit={setDataAPI}>
         <div>
-          <label htmlFor="email">
+          <label htmlFor="email">Email</label>
             <input
               type="email"
               name="Titre"
@@ -54,9 +54,9 @@ function SignIn() {
               placeholder="votre email"
               required
             />
-          </label>
+          
 
-          <label htmlFor="password">
+          <label htmlFor="password">Pasword</label>
             <input
               type="password"
               name="password"
@@ -64,7 +64,7 @@ function SignIn() {
               placeholder="votre mot de passe"
               required
             />
-          </label>
+          
         </div>
         <div>
           {" "}

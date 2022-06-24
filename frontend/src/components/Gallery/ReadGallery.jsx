@@ -30,7 +30,7 @@ function ReadGallery() {
     <Fragment>
       <div className="Bloc_1Contener bloc_img">
         {data.map((item) => (
-          <Link to={"oneGallery/?id=" + item.gallery_id}>
+          <Link to={"oneGallery/?id=" + item.gallery_id} title="lien vers post multimedia">
             <article className="article_img">
               <h2>{item.gallery_titre}</h2>
               <img alt="post multimedia" src={item.gallery_media} />

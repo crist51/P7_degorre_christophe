@@ -7,21 +7,13 @@ header {
 }
 
 .banner {
-  background: linear-gradient(white, #333333);
   img {
     object-fit: cover;
-    //width: 100vw;
     height: 75px;
   }
   div{
-    padding:15px;
-    background-color: #333333;
-    margin-bottom: 15px ridge pink;
-    border: 4px ridge pink;
-  
+    padding:15px;  
     p {
-      color: pink;
-      background-color: #333333;
       text-align: center;
     }
   }

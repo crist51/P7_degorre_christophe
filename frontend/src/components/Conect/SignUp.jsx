@@ -1,8 +1,6 @@
 import axios from "axios";
-//import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 
-let error = " Champ vide ";
+let error = "";
 
 let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
@@ -57,7 +55,7 @@ console.log("-- email --");
     <div>
       <form className="bloc_6" onSubmit={setDataAPI}>
         <div>
-          <label htmlFor="email">
+          <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -65,9 +63,9 @@ console.log("-- email --");
               placeholder="Votre email"
               required
             />
-          </label>
+          
 
-          <label htmlFor="password">
+          <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
               name="password"
@@ -76,9 +74,9 @@ console.log("-- email --");
               minLength={4}
               required
             />
-          </label>
+          
 
-          <label htmlFor="nom">
+          <label htmlFor="nom">Nom</label>
             <input
               type="text"
               name="nom"
@@ -86,9 +84,9 @@ console.log("-- email --");
               placeholder="Votre nom"
               required
             />
-          </label>
+          
 
-          <label htmlFor="prenom">
+          <label htmlFor="prenom">Prenom</label>
             <input
               type="text"
               name="prenom"
@@ -96,7 +94,7 @@ console.log("-- email --");
               placeholder="Votre prenom"
               required
             />
-          </label>
+          
         </div>
         <div>
           <p className="error" id="emailErrorMsg">

@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('./db/db.mysql');
+const path = require('path');
 
 const dotenv = require ('dotenv');
 const result = dotenv.config();
@@ -30,5 +31,7 @@ app.use((req, res, next) => {
   console.log('Requête reçue !');
   next();
 });
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;

@@ -1,8 +1,5 @@
-//route Gallery
-
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
 import CorpGallery from "../components/Gallery/CorpGallery";
 import Nav from "../components/Nav";
 
@@ -15,7 +12,6 @@ function Gallery() {
     <main>
       <Nav />
       <div className="corp">
-        {/* <MyUser /> */}
         <CorpGallery />
       </div>
     </main>
