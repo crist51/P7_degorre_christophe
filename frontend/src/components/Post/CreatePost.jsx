@@ -19,7 +19,6 @@ function CreatePost() {
       post_userId: id,
       post_author: post_author,
     };
-    console.log(post);
 
     let config = {
       headers: {
@@ -41,7 +40,6 @@ function CreatePost() {
           "Content-Type": "application/json",
         },
       },
-      console.log("post create"),
       window.location.href = "http://localhost:3001/post"
     );
   };

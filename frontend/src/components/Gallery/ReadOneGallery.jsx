@@ -9,7 +9,7 @@ function GalleryOne() {
 
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
-  //const userId = userConnect[0].userId;
+  const userId = userConnect[0].userId;
   const validToken = userConnect[0].token;
 
   const [data, setData] = useState([]);
@@ -20,6 +20,9 @@ function GalleryOne() {
     },
   };
 
+  let messageBTN = "retour";
+
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -28,23 +31,29 @@ function GalleryOne() {
       );
       setData(result.data.results);
       if (
-        result.data.results[0].gallery_userId === userConnect[0].userId ||
-        userConnect[0].admin === 1
+        result.data.results[0].gallery_userId == userConnect[0].userId ||
+        userConnect[0].admin == 1
       ) {
-        console.log("j'ai le droit de suppimer");
-      } else {
-        console.log("je suis un looser");
+        //si je suis authentifié j'apparais le btn suprimer
+        const sup = document.getElementById("auth")
+        sup.textContent = "supprimer"
       }
     };
     fetchData();
   }, []);
 
   const onDelete = (e) => {
+    const ab = document.getElementById("idAuthor").innerHTML;
 
-    axios.delete(`http://localhost:3000/api/gallery/${id}`, config).then(() => {
-      console.log("multimedia supprimer");
-      window.location.href = "http://localhost:3001/gallery/";
-    });
+    //is userID corespond au Id qui a creer l'objet
+    if (ab == userId || userConnect[0].admin == 1) {
+      axios.delete(`http://localhost:3000/api/gallery/${id}`, config).then(() => {
+        window.location.href = "http://localhost:3001/multimedia";
+      });
+
+    } else {
+      window.location.href = "http://localhost:3001/multimedia";
+    };
   };
 
   return (
@@ -53,25 +62,26 @@ function GalleryOne() {
         <section className="bloc_1">
           <div className="bloc_titre">
             <h1>{item.gallery_titre}</h1>
+            <p className="user_imgUrl" id="idAuthor">{item.gallery_userId}</p>
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>
-              <img alt="post multimedia" src={item.gallery_media} />
+              <img alt="post multimedia" src={item.gallery_media || "http://localhost:3000/images/icon.png1655753820253.png"} />
               <div>
                 <p>{item.gallery_contenue || "pas de description"}</p>
                 <p className="author">{item.gallery_author}</p>
               </div>
             </article>
             <div className="avis">
-              <button>commentaire</button>
+              <button>Commentaire</button>
               <div>
-                <button><i class="fa-solid fa-thumbs-up"></i></button>
-                <button><i class="fa-solid fa-thumbs-down"></i></button>
+                <button><i class="fa-solid fa-thumbs-up"></i>1</button>
+                <button><i class="fa-solid fa-thumbs-down"></i>0</button>
               </div>
             </div>
 
-            <button type="submit" onClick={() => onDelete(data.id)}>
-              supprimer
+            <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+              {messageBTN}
             </button>
           </div>
         </section>

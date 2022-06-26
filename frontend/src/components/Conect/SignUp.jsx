@@ -1,8 +1,6 @@
 import axios from "axios";
-//import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 
-let error = " Champ vide ";
+let error = "";
 
 let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
@@ -14,8 +12,7 @@ function SignIn() {
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const password = document.getElementById("password").value;
-console.log("-- email --");
-    console.log(email);
+
     axios
       .post(
         `http://localhost:3000/api/authentification/signUp`,
@@ -31,13 +28,8 @@ console.log("-- email --");
           },
         }
       )
-      .then((res) => {
-        console.log("---- res ----");
-        console.log(res);
-        console.log("---- res.dada ----");
-        console.log(res.data);
-        console.log("je suis inscrit");
-        // mehose pour enregistre dans le local storage //
+      .then((res) => {;
+        //save local storage
         userConnect.push(res.data);
          localStorage.setItem(
            "auth",
@@ -47,17 +39,16 @@ console.log("-- email --");
         // -------------------------------------------- //
       })
       .catch((err) => {
-        console.log(err.response.data.error);
         document.getElementById("emailErrorMsg").innerHTML =
           err.response.data.error;
-      }); // Ici, le cas d'erreur
+      });
   };
 
   return (
     <div>
       <form className="bloc_6" onSubmit={setDataAPI}>
         <div>
-          <label htmlFor="email">
+          <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -65,9 +56,9 @@ console.log("-- email --");
               placeholder="Votre email"
               required
             />
-          </label>
+          
 
-          <label htmlFor="password">
+          <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
               name="password"
@@ -76,9 +67,9 @@ console.log("-- email --");
               minLength={4}
               required
             />
-          </label>
+          
 
-          <label htmlFor="nom">
+          <label htmlFor="nom">Nom</label>
             <input
               type="text"
               name="nom"
@@ -86,9 +77,9 @@ console.log("-- email --");
               placeholder="Votre nom"
               required
             />
-          </label>
+          
 
-          <label htmlFor="prenom">
+          <label htmlFor="prenom">Prenom</label>
             <input
               type="text"
               name="prenom"
@@ -96,7 +87,7 @@ console.log("-- email --");
               placeholder="Votre prenom"
               required
             />
-          </label>
+          
         </div>
         <div>
           <p className="error" id="emailErrorMsg">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// import Delete from "./Delete";
-
 export default function UpdateUser() {
   let msg_update = "modification demandé";
 
@@ -26,135 +24,201 @@ export default function UpdateUser() {
         config
       );
       setData(result.data.results);
-      // console.log(result.data.results);
     };
     fetchData();
   }, []);
 
   const setDataAPI = (e) => {
-    //e.preventDefault();
+    // e.preventDefault();
+
+    // console.log("je suis dans le mauvais");
+
+
+    // const firstname = document.getElementById("firstname").value;
+    // const lastname = document.getElementById("lastname").value;
+    // const affectation = document.getElementById("affectation").value;
+    // const description = document.getElementById("description").value;
+    // const poste = document.getElementById("poste").value;
+
+    // const user = {
+    //   firstname: firstname,
+    //   lastname: lastname,
+    //   affectation: affectation,
+    //   user_imageUrl: "icon.png1655753820253.png",
+    //   description: description,
+    //   poste: poste,
+    // };
+    // console.log("---- rajout pour API ----");
+    // console.log(user);
+
+    //   axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    //   document.getElementById("msg_update").innerHTML = msg_update =
+    //     "modification effectuer";
+  };
+
+  const update = (ab) => {
+    ab.preventDefault();
 
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const affectation = document.getElementById("affectation").value;
-    //const user_imageUrl = document.getElementById("user_imageUrl").value;
     const description = document.getElementById("description").value;
     const poste = document.getElementById("poste").value;
 
-    const user = {
+    let user =
+    {
       firstname: firstname,
       lastname: lastname,
       affectation: affectation,
-      user_imageUrl: "icon.png1655753820253.png",
       description: description,
       poste: poste,
-    };
-    console.log("---- rajout pour API ----");
-    console.log(user);
+    }
 
-    axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
+    const inputFile = document.getElementById("user_imageUrl").files
+    console.log(inputFile);
+
+    if (inputFile.length == 1) {
+      console.log("j'enrejistre avec file");
+      const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
+      const file = document.getElementById("user_imageUrl").files[0];
+      //j'ajoute dans l'objet user 1 valeur
+      user.user_imageUrl = user_imageUrl;
+
+      console.log("---- envoie pour API ----");
+      console.log(user);
+      console.log(file);
+
+      let data = new FormData()
+      data.append('user', JSON.stringify(user))
+      data.append('file', file)
+
+      axios.put(`http://localhost:3000/api/user/${id}`,
+        data,
+        config,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json",
+            "type": "formData"
+          },
+        }
+      );
+      console.log("image modifié");
+    } else {
+      console.log("j'enregistre sans file");
+      
+      console.log(user);
+
+      const sup = document.getElementById("sup").innerHTML;
+      console.log(sup);
+      user.user_imageUrl = sup;
+
+   console.log(user);
+
+      axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    document.getElementById("msg_update").innerHTML = msg_update =
-      "modification effectuer";
-    //window.location.href = "http://localhost:3001";
+      console.log("update modifié");
+    }
+    document.getElementById("msg_update").innerHTML = msg_update = "modification effectuer avec succes";
   };
 
-  const onDelete = (e) => {
-    axios.delete(`http://localhost:3000/api/user/${id}`, config).then(() => {
-      console.log("compte supprimer");
-      window.location.href = "http://localhost:3001/acceuil/";
-    });
-  };
+
 
   return (
     <>
       <div className="Bloc_1Contener">
         {data.map((item) => (
-          <form className="Bloc_6" onSubmit={setDataAPI} key={item.userId}>
-            {/* <form className="Bloc_6" key={item.userId}> */}
-            <div>
-              <label htmlFor="firstname" className="Bloc_5">
-                Votre nom
-              </label>
-              <div className="underline"></div>
-              <input
-                type="text"
-                name="firstname"
-                id="firstname"
-                defaultValue={item.firstname}
-              />
+          <form className="Bloc_6" onSubmit={update} key={item.userId}>
+            <label htmlFor="firstname" className="Bloc_5">
+              Votre nom
+            </label>
+            <p id="sup">{item.user_imageUrl}</p>
+            <div className="underline"></div>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              defaultValue={item.firstname}
+            />
 
-              <label htmlFor="lastname" className="Bloc_5">
-                Votre prenom
-              </label>
-              <div className="underline"></div>
-              <input
-                type="texte"
-                name="lastname"
-                defaultValue={item.lastname}
-                id="lastname"
-              />
+            <label htmlFor="lastname" className="Bloc_5">
+              Votre prenom
+            </label>
+            <div className="underline"></div>
+            <input
+              type="texte"
+              name="lastname"
+              defaultValue={item.lastname}
+              id="lastname"
+            />
 
-              <label htmlFor="affectation" className="Bloc_5">
-                votre ville
-              </label>
-              <div className="underline"></div>
-              <input
-                type="texte"
-                id="affectation"
-                name="affectation"
-                placeholder="Paris"
-                defaultValue={item.affectation}
-              />
+            <label htmlFor="affectation" className="Bloc_5">
+              votre ville
+            </label>
+            <div className="underline"></div>
+            <input
+              type="texte"
+              id="affectation"
+              name="affectation"
+              placeholder="Paris"
+              defaultValue={item.affectation || "pas renseigné"}
+            />
 
-              <label htmlFor="Media" className="Bloc_5">
-                Choisir une image  (non implemnté):
-              </label>
-              <div className="underline"></div>
+            <label htmlFor="decription" className="Bloc_5">
+              un mot sur vous
+            </label>
+            <div className="underline"></div>
 
-              <input type="file" id="user_imageUrl" name="user_imageUrl" />
+            <input
+              type="texte"
+              name="description"
+              defaultValue={item.description || "pas renseigné"}
+              id="description"
+              placeholder="Il faut croire en ces rêves"
+            />
 
-              <label htmlFor="decription" className="Bloc_5">
-                un mot sur vous
-              </label>
-              <div className="underline"></div>
+            <label htmlFor="poste">Poste de travaille:</label>
+            <div className="underline"></div>
 
-              <input
-                type="texte"
-                name="description"
-                defaultValue={item.description}
-                id="description"
-                placeholder="Il faut croire en ces rêves"
-              />
+            <select name="poste" id="poste" defaultValue={item.poste}>
+              <option value="non renseigné">-- non renseigné --</option>
+              <option value="Employé">Employé</option>
+              <option value="administration">administration</option>
+              <option value="Chef d'équipe">Chef d'équipe</option>
+              <option value="Direction">Direction</option>
+            </select>
 
-              <label htmlFor="poste">Poste de travaille:</label>
+            <label htmlFor="user_imageUrl" className="Bloc_5">
+              Choisir une image:
+            </label>
+            <div className="underline"></div>
+            <input type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
+            />
 
-              <select name="poste" id="poste" defaultValue={item.poste}>
-                <option value="non renseigné">-- non renseigné --</option>
-                <option value="Employé">Employé</option>
-                <option value="administration">administration</option>
-                <option value="Chef d'équipe">Chef d'équipe</option>
-                <option value="Direction">Direction</option>
-              </select>
-            </div>
-            {/* <button type="submit">modifier votre profil</button> */}
+
+            <p id="user_imageUrl">{item.user_imageUrl}</p>
+
             <div className="button_row">
-              <button type="submit" onClick={() => setDataAPI()}>
-                Sauvegarder les maudification
-              </button>
-              <p id="msg_update">{msg_update}</p>
-              <button type="submit" onClick={() => onDelete(data.id)}>
-                supprimer votre compte
-              </button>
+              <div className="button_row">
+
+                <button type="submit">
+                  Sauvegarder les changement
+                </button>
+                <p id="msg_update">{msg_update}</p>
+              </div>
             </div>
           </form>
+
         ))}
       </div>
-      {/* <Delete /> */}
-      <div></div>
+
     </>
-  );
+  )
 }

@@ -102,8 +102,8 @@ exports.signIn = (req, res, next) => {
                 mail: req.body.email,
                 firstname:results[0].firstname,
                 lastname:results[0].lastname,
-                admin: results[0].admin,
                 token,
+                admin: results[0].admin,
               });
               console.log("---------------log de connexion------------------");
               console.log({

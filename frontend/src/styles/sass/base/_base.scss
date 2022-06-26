@@ -24,8 +24,59 @@ header ,nav{
 }
 
 textarea,
-input {
+input, label {
   background-color: #333333;
   color: pink;
+}
 
+h1, h2{
+  color: white;
+}
+
+error{
+  color: red;
+}
+
+p{
+  color: pink;
+}
+
+.banner {
+  background: linear-gradient(white, #333333);
+  div{
+    background-color: #333333;
+    border: 4px ridge pink;
+    p {
+      color: pink;
+    }
+  }
+}
+
+
+
+.bloc1_img{
+  background-color: #333333;
+}
+
+a:hover article h2 {
+  color: black;
+  background-color: pink;
+}
+
+article {
+  background-color: #333333;
+  box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
+  h2 {
+    color: white;
+  }
+  h2 + p {
+    color: pink;
+  }
+  :last-child {
+    color: white;
+  }
+}
+
+#sup{
+  display: none;
 }

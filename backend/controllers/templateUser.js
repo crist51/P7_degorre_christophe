@@ -5,7 +5,6 @@ const mysqlconnection = require("../db/db.mysql");
 exports.getOneTemplateUser = (req, res, next) => {
   try {
     const id = req.params.id;
-    //console.log(id);
     mysqlconnection.query(
       "SELECT * FROM `user` WHERE `userId` = ?",
       [id],
@@ -13,9 +12,9 @@ exports.getOneTemplateUser = (req, res, next) => {
         if (error) {
           res.json({ error });
         } else {
-          res.status(200).json({ results }),
-            console.log("-------------------- Resultat -------------------"),
-            console.log("getOneUser " + id);
+          res.status(200).json({ results })
+          // console.log("-------------------- Resultat -------------------"),
+          // console.log("getOneUser " + id);
         }
       }
     );
@@ -46,14 +45,15 @@ exports.getAllTemplateUser = (req, res, next) => {
 //============================================================================================================
 
 exports.modifyTemplateUser = (req, res, next) => {
-  console.log(" ------- req.params.id ------");
-  const id = req.params.id;
-  console.log(id); // = 1
-  console.log('-----------avent-----------');
-  console.log(req.body);
-  const user_imageUrl = `${req.protocol}://${req.get('host')}/images/${req.body.user_imageUrl}`;
 
-  //non tester avec postman------------------------------------------------
+  console.log(' ------- req.params.id ------');
+  const id = (req.params.id)
+  console.log(id);
+  console.log(' ------- req.body ------');
+  console.log(req.body);
+
+const user_imageUrl = req.body.user_imageUrl
+
   mysqlconnection.query(
     "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
     [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
@@ -69,7 +69,7 @@ exports.modifyTemplateUser = (req, res, next) => {
   );
 
 
-};  
+};
 
 
 

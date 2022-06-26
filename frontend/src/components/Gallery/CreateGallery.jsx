@@ -5,7 +5,6 @@ function CreateGallery() {
   // ---------- on recupere id du user ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
   const id = userConnect[0].userId;
-  //console.log(userConnect);
   const gallery_author =
     userConnect[0].firstname + " " + userConnect[0].lastname;
   const validToken = userConnect[0].token;
@@ -17,8 +16,7 @@ function CreateGallery() {
     const gallery_titre = document.getElementById("gallery_titre").value;
     const gallery_media =  document.getElementById("gallery_media").files[0].name;
     const gallery_texte = document.getElementById("gallery_texte").value;
-    const file = document.getElementById("gallery_media").files[0]; //document.getElementById('file-id').value
-
+    const file = document.getElementById("gallery_media").files[0];
 
     const gallery = 
       {
@@ -55,7 +53,7 @@ function CreateGallery() {
         },
       }
     );
-    console.log("gallery create");
+    window.location.href = "http://localhost:3001/multimedia";
   };
 
   return (

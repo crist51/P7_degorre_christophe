@@ -1,6 +1,5 @@
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
 import CorpPost from "../components//Post/CorpPost";
 import Nav from "../components/Nav";
 
@@ -13,7 +12,6 @@ function Post() {
     <main>
       <Nav />
         <div className="corp">
-        {/* <MyUser /> */}
         <CorpPost />
       </div>
     </main>

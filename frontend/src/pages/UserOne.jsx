@@ -1,6 +1,5 @@
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
 import ReadOneUser from "../components/User/ReadOneUser";
 import Nav from "../components/Nav";
 

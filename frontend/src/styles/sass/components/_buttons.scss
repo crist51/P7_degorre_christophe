@@ -1,5 +1,7 @@
 textarea,
 input,
+select,
+opition,
 button {
   resize: none;
   width: 100%;
@@ -13,12 +15,12 @@ button {
 }
 
 textarea {
-  height: 60vw;
+  height: 250px;
   padding: 40px 0;
   text-align: justify;
 }
 
-input {
+input, select, option {
   height: 25px;
   text-align: center;
 }
@@ -51,7 +53,6 @@ button:hover {
 	justify-content: space-between;
 	margin-bottom: 25px;
 	button{
-		color: $colour-invalid;
 		box-shadow: none;
 	}
 	:nth-child(1){
@@ -62,11 +63,15 @@ button:hover {
 		gap: 15px;
 		button{
 		 border-radius: 0;
-		 width: 25px !important;	
-		 padding: 2px;		
+		 width: 40px !important;	
+		 padding: 2px;
+		i{
+			margin: 0 5px 0 0;
+		}
 		};
 	}
 }
+.user_imgUrl{display: none;}
 
 @keyframes flash {
   0% {

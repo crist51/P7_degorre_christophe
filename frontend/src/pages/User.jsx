@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import MyUser from "../components/User/MyUser";
 import Nav from "../components/Nav";
 import CorpUser from "../components/User/CorpUser";
 
