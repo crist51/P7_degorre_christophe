@@ -69,7 +69,7 @@ export default function UpdateUser() {
     const description = document.getElementById("description").value;
     const poste = document.getElementById("poste").value;
 
-    const user =
+    let user =
     {
       firstname: firstname,
       lastname: lastname,
@@ -113,23 +113,20 @@ export default function UpdateUser() {
       
       console.log(user);
 
+      const sup = document.getElementById("sup").innerHTML;
+      console.log(sup);
+      user.user_imageUrl = sup;
 
-      let data = new FormData()
-      data.append('user', JSON.stringify(user))
+   console.log(user);
 
-      axios.put(`http://localhost:3000/api/user/${id}`,
-        data,
-        config,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json",
-            "type": "formData"
-          },
-        }
-      );
+      axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
       console.log("update modifié");
     }
+    document.getElementById("msg_update").innerHTML = msg_update = "modification effectuer avec succes";
   };
 
 
@@ -142,6 +139,7 @@ export default function UpdateUser() {
             <label htmlFor="firstname" className="Bloc_5">
               Votre nom
             </label>
+            <p id="sup">{item.user_imageUrl}</p>
             <div className="underline"></div>
             <input
               type="text"
@@ -203,6 +201,8 @@ export default function UpdateUser() {
             <div className="underline"></div>
             <input type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
             />
+
+
             <p id="user_imageUrl">{item.user_imageUrl}</p>
 
             <div className="button_row">
