@@ -72,13 +72,13 @@ function GalleryOne() {
                 <p className="author">{item.gallery_author}</p>
               </div>
             </article>
-            <div className="avis">
+            {/* <div className="avis">
               <button>Commentaire</button>
               <div>
                 <button><i class="fa-solid fa-thumbs-up"></i>1</button>
                 <button><i class="fa-solid fa-thumbs-down"></i>0</button>
               </div>
-            </div>
+            </div> */}
 
             <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
               {messageBTN}
