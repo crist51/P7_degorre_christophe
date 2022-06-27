@@ -46,24 +46,24 @@ export default function UpdateUser() {
       poste: poste,
     }
 
-    const inputFile = document.getElementById("user_imageUrl").files
-    console.log(inputFile);
+    // const inputFile = document.getElementById("user_imageUrl").files
+    // console.log(inputFile);
 
-    if (inputFile.length == 1) {
-      console.log("j'enrejistre avec file");
-      const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
-      const file = document.getElementById("user_imageUrl").files[0];
+    // if (inputFile.length == 1) {
+      // console.log("j'enrejistre avec file");
+      // const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
+      // const file = document.getElementById("user_imageUrl").files[0];
 
-      //j'ajoute dans l'objet valeur user_imageUrl
-      user.user_imageUrl = user_imageUrl;
+      // //j'ajoute dans l'objet valeur user_imageUrl
+      // user.user_imageUrl = user_imageUrl;
 
-      console.log("---- envoie pour API ----");
-      console.log(user);
-      console.log(file);
+      // console.log("---- envoie pour API ----");
+      // console.log(user);
+      // console.log(file);
 
-      let data = new FormData()
-      data.append('user', JSON.stringify(user))
-      data.append('file', file)
+      // let data = new FormData()
+      // data.append('user', JSON.stringify(user))
+      // data.append('file', file)
       
 
       // axios.put(`http://localhost:3000/api/user/${id}`,
@@ -80,7 +80,7 @@ export default function UpdateUser() {
       // console.log("image modifié");
 
       
-    } else {
+    // } else {
       console.log("j'enregistre sans file");
       
       console.log(user);
@@ -98,8 +98,8 @@ export default function UpdateUser() {
     });
       console.log("update modifié");
     }
-    document.getElementById("msg_update").innerHTML = msg_update = "modification effectuer avec succes";
-  };
+    //document.getElementById("msg_update").innerHTML = msg_update = "modification effectuer avec succes";
+  //};
 
 
 
@@ -167,12 +167,12 @@ export default function UpdateUser() {
               <option value="Direction">Direction</option>
             </select>
 
-            <label htmlFor="user_imageUrl" className="Bloc_5">
+            {/* <label htmlFor="user_imageUrl" className="Bloc_5">
               Choisir une image:
             </label>
             <div className="underline"></div>
             <input type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
-            />
+            /> */}
 
 
             <p id="user_imageUrl">{item.user_imageUrl}</p>

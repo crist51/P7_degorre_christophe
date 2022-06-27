@@ -68,13 +68,13 @@ function PostOne() {
               <p>{item.post_contenue}</p>
               <p className="author">{item.post_author}</p>
             </article>
-            <div className="avis">
+            {/* <div className="avis">
               <button>commentaire</button>
               <div>
                 <button id="like"><i class="fa-solid fa-thumbs-up"></i></button>
                 <button><i class="fa-solid fa-thumbs-down"></i></button>
               </div>
-            </div>
+            </div> */}
             <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
               {messageBTN}
             </button>
