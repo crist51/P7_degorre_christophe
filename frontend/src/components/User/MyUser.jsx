@@ -44,8 +44,7 @@ function MyUser() {
         <>
           <div className="bloc_titre">
             <h2>
-              {item.firstname}
-              {item.lastname}
+              {item.firstname} {item.lastname}
             </h2>
           </div>
           <div className="Bloc_1Contener bloc1_img">

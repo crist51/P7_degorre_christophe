@@ -99,9 +99,10 @@ function CreateGallery() {
             id="gallery_texte"
             name="description"
             placeholder="Pas de description (opptionelle)"
-            required
             maxLength={255}
-          ></textarea>
+
+          >
+          </textarea>
         </div>
 
         <button type="submit">Postez votre Message</button>

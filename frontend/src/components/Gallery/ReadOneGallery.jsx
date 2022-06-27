@@ -68,7 +68,7 @@ function GalleryOne() {
             <article>
               <img alt="post multimedia" src={item.gallery_media || "http://localhost:3000/images/icon.png1655753820253.png"} />
               <div>
-                <p>{item.gallery_contenue || "pas de description"}</p>
+                <p>{item.gallery_texte || "pas de description"}</p>
                 <p className="author">{item.gallery_author}</p>
               </div>
             </article>
