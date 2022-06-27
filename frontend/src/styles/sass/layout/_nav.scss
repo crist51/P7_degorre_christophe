@@ -29,17 +29,17 @@ nav {
           display: none;
         }
       }
-      a:hover, a:focus{
-        background-color: gold;
-        border: 2px solid red;
+      a:hover{
+        background-color: pink;
+        //border: 2px solid red;
         i {
           color: black;
           animation: rotation 1s linear 0s 1 normal forwards;
         }
       }
       a:focus{
-        background-color: navy;
-        color: white;
+        background-color: rgb(255, 192, 233);
+
       }
     }
   }

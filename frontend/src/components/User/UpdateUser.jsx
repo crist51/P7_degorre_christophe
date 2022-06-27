@@ -28,38 +28,6 @@ export default function UpdateUser() {
     fetchData();
   }, []);
 
-  const setDataAPI = (e) => {
-    // e.preventDefault();
-
-    // console.log("je suis dans le mauvais");
-
-
-    // const firstname = document.getElementById("firstname").value;
-    // const lastname = document.getElementById("lastname").value;
-    // const affectation = document.getElementById("affectation").value;
-    // const description = document.getElementById("description").value;
-    // const poste = document.getElementById("poste").value;
-
-    // const user = {
-    //   firstname: firstname,
-    //   lastname: lastname,
-    //   affectation: affectation,
-    //   user_imageUrl: "icon.png1655753820253.png",
-    //   description: description,
-    //   poste: poste,
-    // };
-    // console.log("---- rajout pour API ----");
-    // console.log(user);
-
-    //   axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   document.getElementById("msg_update").innerHTML = msg_update =
-    //     "modification effectuer";
-  };
-
   const update = (ab) => {
     ab.preventDefault();
 
@@ -85,7 +53,8 @@ export default function UpdateUser() {
       console.log("j'enrejistre avec file");
       const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
       const file = document.getElementById("user_imageUrl").files[0];
-      //j'ajoute dans l'objet user 1 valeur
+
+      //j'ajoute dans l'objet valeur user_imageUrl
       user.user_imageUrl = user_imageUrl;
 
       console.log("---- envoie pour API ----");
@@ -95,19 +64,22 @@ export default function UpdateUser() {
       let data = new FormData()
       data.append('user', JSON.stringify(user))
       data.append('file', file)
+      
 
-      axios.put(`http://localhost:3000/api/user/${id}`,
-        data,
-        config,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json",
-            "type": "formData"
-          },
-        }
-      );
-      console.log("image modifié");
+      // axios.put(`http://localhost:3000/api/user/${id}`,
+      //   data,
+      //   config,
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //       "Accept": "application/json",
+      //       "type": "formData"
+      //     },
+      //   }
+      // );
+      // console.log("image modifié");
+
+      
     } else {
       console.log("j'enregistre sans file");
       

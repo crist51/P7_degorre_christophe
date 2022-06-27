@@ -45,7 +45,7 @@ exports.getAllTemplateUser = (req, res, next) => {
 //============================================================================================================
 
 exports.modifyTemplateUser = (req, res, next) => {
-
+console.log(req);
   console.log(' ------- req.params.id ------');
   const id = (req.params.id)
   console.log(id);
@@ -70,15 +70,6 @@ const user_imageUrl = req.body.user_imageUrl
 
 
 };
-
-
-
-
-
-
-
-
-
 
 //============================================================================================================
 

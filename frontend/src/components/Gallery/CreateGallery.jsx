@@ -64,6 +64,7 @@ function CreateGallery() {
           <label htmlFor="Titre" className="Bloc_5">
             Titre :{" "}
           </label>
+          <div className="underline"></div>
           <input
             type="text"
             name="titre"
@@ -78,6 +79,7 @@ function CreateGallery() {
           <label htmlFor="Media" className="Bloc_5">
             Choisir une image :
           </label>
+          <div className="underline"></div>
           <input
             type="file"
             name="gallery_media"
@@ -92,6 +94,7 @@ function CreateGallery() {
           <label htmlFor="description (optionelle)" className="Bloc_5">
             Message
           </label>
+          <div className="underline"></div>
           <textarea
             id="gallery_texte"
             name="description"

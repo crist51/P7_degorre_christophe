@@ -32,7 +32,7 @@ function GalleryOne() {
       setData(result.data.results);
       if (
         result.data.results[0].gallery_userId == userConnect[0].userId ||
-        userConnect[0].admin == 1
+        userConnect[0].admin === 1
       ) {
         //si je suis authentifié j'apparais le btn suprimer
         const sup = document.getElementById("auth")
@@ -46,7 +46,7 @@ function GalleryOne() {
     const ab = document.getElementById("idAuthor").innerHTML;
 
     //is userID corespond au Id qui a creer l'objet
-    if (ab == userId || userConnect[0].admin == 1) {
+    if (ab == userId || userConnect[0].admin === 1) {
       axios.delete(`http://localhost:3000/api/gallery/${id}`, config).then(() => {
         window.location.href = "http://localhost:3001/multimedia";
       });
