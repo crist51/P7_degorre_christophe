@@ -1,3 +1,11 @@
+# exclude file
 .env
-images
+# exclude folder
 /node_modules
+
+# exclude everything
+images/*
+
+# exception to the rule
+!images/.gitkeep
+!images/icon.png1655753820253.png

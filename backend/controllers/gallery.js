@@ -89,7 +89,7 @@ exports.deleteGallery = (req, res, next) => {
       fs.unlink(`images/${filename}`, () => {
         mysqlconnection.query(
           "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
-          (error, results) => {
+          (error, res) => {
             if (error) {
               res.status(404).json({ error })
               console.log(error);
