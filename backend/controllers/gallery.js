@@ -1,4 +1,3 @@
-const { log } = require('console');
 const fs = require('fs');
 const mysqlconnection = require('../db/db.mysql');
 
@@ -39,7 +38,7 @@ exports.createGallery = (req, res, next) => {
 exports.getAllGallery = async(req, res, next) => {
   try {//new mis async
     const gallery = await mysqlconnection.query(
-      "SELECT * FROM `gallery` WHERE 1  ORDER BY `gallery_dateCreate` DESC",
+      "SELECT * FROM `gallery` WHERE 1  ORDER BY `gallery_dateCreate` DESC",[1],
       (error, results) => {
         if (error) {
           console.log(error)
@@ -109,7 +108,7 @@ exports.deleteGallery = (req, res, next) => {
   //---------------------------------------------------------------------------------------
    mysqlconnection.query(
    "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
-    (error, results) => {
+    (error, res) => {
       if (error) {
         res.status(404).json({ error })
         console.log(error);
@@ -120,42 +119,3 @@ exports.deleteGallery = (req, res, next) => {
     console.log("gallery delete")
   )
 };
-
-
-
-// exports.modifyGallery = (req, res, next) => {
-//   // console.log(' ------- req.params.id ------');
-//   // const id = (req.params.id)
-//   // console.log(id); 
-//   // const galleryObject = req.file ?
-//   //   {//si image
-//   //     ...JSON.parse(req.body.gallery),//recupere tte  les info objet
-//   //     gallery_media: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`//genere la nouvelle image
-//   //   } : {
-//   //     ...req.body
-//   //   };//si pas d'iamge
-//   // if (req.file) {
-//   //   mysqlconnection.query(
-//   //     "SELECT * FROM `gallery` WHERE `gallery_id` = ?", [id],)
-//   //     .then((s) => {
-//   //       const oldImg = s.gallery_media.split('/images/')[1]
-//   //       fs.unlink(`images/${oldImg}`, (error) => {
-//   //         if (error) console.log(error)
-//   //       })
-//   //     })
-//   //     .catch(error => res.status(400).json({ error }));
-//   // }
-//   // mysqlconnection.query(
-//   //   "UPDATE `gallery` SET `gallery_titre`=?, `gallery_texte`=?, `gallery_media`=? WHERE gallery_id = ?", [req.body.gallery_titre, req.body.gallery_texte, req.body.gallery_media, id],//id sur les req.body
-//   //   console.log(req.body.gallery_titre, req.body.gallery_texte, req.body.gallery_media,),//PK je dois laisser ce LOG
-//   //   (error, results) => {
-//   //     if (error) {
-//   //       res.status(404).json({ error }),
-//   //         console.log(error)
-//   //     };
-//   //   },
-//   //   res.status(201).json({ message: "gallery update" }),
-//   //   console.log("-------------------- Resultat -------------------"),
-//   //   console.log("gallery update")
-//   // )
-// };

@@ -64,7 +64,6 @@ function SignIn() {
               name="password"
               id="password"
               placeholder="Votre mot de passe"
-              minLength={4}
               required
             />
           

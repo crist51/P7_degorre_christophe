@@ -26,7 +26,7 @@ function CorpPost() {
     <main className="corp">
       <aside className="bloc_2">
         <button onClick={( ) => setIsOpen(true)}>
-          Vous avez déja un compte? inscrivez vous !!
+          Vous avez déja un compte? Connectez-vous !!
         </button>
         <div>
           <h2>Inscrivez-vous</h2>

@@ -30,7 +30,7 @@ exports.createPost = (req, res, next) => {
 exports.getAllPost = async (req, res) => {
   try {
     const post = await mysqlconnection.query(
-      "SELECT * FROM `post` WHERE 1 ORDER BY `post_dateCreate` DESC",
+      "SELECT * FROM `post` WHERE 1 ORDER BY `post_dateCreate` DESC",[1],
       (error, results) => {
         if (error) {
           console.log(error)

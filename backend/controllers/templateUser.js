@@ -1,5 +1,4 @@
-// in controllers/template.js
-
+const fs = require('fs');
 const mysqlconnection = require("../db/db.mysql");
 
 exports.getOneTemplateUser = (req, res, next) => {
@@ -27,7 +26,7 @@ exports.getOneTemplateUser = (req, res, next) => {
 
 exports.getAllTemplateUser = (req, res, next) => {
   try {
-    mysqlconnection.query("SELECT * FROM `user` WHERE 1", (error, results) => {
+    mysqlconnection.query("SELECT * FROM `user` WHERE 1", [1], (error, results) => {
       if (error) {
         console.log(error);
         res.json({ error });
@@ -45,28 +44,53 @@ exports.getAllTemplateUser = (req, res, next) => {
 //============================================================================================================
 
 exports.modifyTemplateUser = (req, res, next) => {
-console.log(req);
   console.log(' ------- req.params.id ------');
   const id = (req.params.id)
   console.log(id);
-  console.log(' ------- req.body ------');
-  console.log(req.body);
 
-const user_imageUrl = req.body.user_imageUrl
+  if (req.file !== undefined) {
+    console.log("j'ai un fichier");
+    const userObject = JSON.parse(req.body.user);
 
-  mysqlconnection.query(
-    "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
-    [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
-    console.log(req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste),
-    (error, results) => {
-      if (error) {
-        res.status(404).json({ error }), console.log(error);
-      }
-    },
-    res.status(201).json({ message: "user update" }),
-    console.log("-------------------- Resultat -------------------"),
-    console.log("user update")
-  );
+    const firstname = userObject.firstname
+    const lastname = userObject.lastname
+    const affectation = userObject.affectation
+    const description = userObject.description
+    const poste = userObject.poste
+    const user_imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+
+    // console.log(user);
+    console.log('regard');
+    console.log(poste);
+    mysqlconnection.query(
+      "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
+      [lastname, firstname, affectation, user_imageUrl, description, poste, id], //id sur les req.body
+      console.log(lastname, firstname, affectation, user_imageUrl, description, poste),
+      (error, res) => {
+        if (error) {
+          res.status(404).json({ error }), console.log(error);
+        }
+      },
+      res.status(201).json({ message: "user update" })
+    )
+  } else {
+    console.log("sans fichier");
+    console.log(req.body);
+    const user_imageUrl = req.body.user_imageUrl
+    mysqlconnection.query(
+      "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
+      [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
+      console.log(req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste),
+      (error, results) => {
+        if (error) {
+          res.status(404).json({ error }), console.log(error);
+        }
+      },
+      res.status(201).json({ message: "user update" }),
+      console.log("-------------------- Resultat -------------------"),
+      console.log("user update")
+    );
+  }
 
 
 };
