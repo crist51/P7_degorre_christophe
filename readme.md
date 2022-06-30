@@ -1,10 +1,9 @@
 ## a faire au demarage du projet
     1. metre un dossier images dans le dossier backend
-    2. metre une image en format ".png" par defaut et la nomée " icon.png1655753820253 "
-    3. metre le fichier .env avec les valleur adéquat
-    4. importer la base de donnée
-    5. metre en place le serveur de développement
-    6. Installer les package NODE dans le frontend et backend
+    2. metre le fichier .env avec les valleur adéquat
+    3. importer la base de donnée
+    4. metre en place le serveur de développement
+    5. Installer les package NODE dans le frontend et backend
     6. allumer le backend
     7. allumer le fronend
 

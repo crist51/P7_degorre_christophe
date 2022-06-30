@@ -1,17 +1,38 @@
-// in controllers/user.js
+const passwordValidator = require('password-validator');
+const emailValidator = require('email-validator');
+
+
+const cryptojs = require("crypto-js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cryptojs = require("crypto-js");
 
 const dotenv = require("dotenv");
 const result = dotenv.config();
 
 const mysqlconnection = require("../db/db.mysql");
+const passwordSchema = new passwordValidator();
+
+passwordSchema
+  .is().min(4)                                    // Minimum length 4
+  .is().max(10)                                  // Maximum length 15
+//.has().uppercase()                              // Must have uppercase letters
+//.has().lowercase()                              // Must have lowercase letters
+//.has().digits()                                // Must have at least 1 digit
+//.has().not().symbols();                         // Has no symbols
+//.has().not().spaces()                           // Should not have spaces is a wrong rule to apply
 
 exports.signUp = (req, res, next) => {
-  const emailCrypto = cryptojs
-    .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
-    .toString();
+  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne ne corespond pas au Shema    console.log('password pas bon');
+    console.log("paswword pas bon");
+    res.status(400).json({ error: "veuillez saisir un email valide ou votre mot de passe doit contenir 4 à 10 caractere" });
+    return res.status(400).json({ message:"mot de passe incorecte" });
+    } else if (emailValidator.validate(req.body.email) & (passwordSchema.validate(req.bodypassword))) {
+    console.log("password bon");
+
+
+    const emailCrypto = cryptojs
+      .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
+      .toString();
     bcrypt
       .hash(req.body.password, 10)
       .then((hash) => {
@@ -54,6 +75,7 @@ exports.signUp = (req, res, next) => {
         );
       })
       .catch((error) => res.status(500).json({ error }));
+  };
 };
 
 //============================================================================================================
@@ -100,8 +122,8 @@ exports.signIn = (req, res, next) => {
               res.status(200).json({
                 userId: results[0].userId,
                 mail: req.body.email,
-                firstname:results[0].firstname,
-                lastname:results[0].lastname,
+                firstname: results[0].firstname,
+                lastname: results[0].lastname,
                 token,
                 admin: results[0].admin,
               });
