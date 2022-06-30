@@ -173,9 +173,6 @@ export default function UpdateUser() {
             <div className="underline"></div>
             <input type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
             />
-
-            <h1>il jeozjfz</h1>
-
             <p id="imageUrl">{item.user_imageUrl}</p>
 
             <div className="button_row">

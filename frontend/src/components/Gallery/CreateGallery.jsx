@@ -53,7 +53,7 @@ function CreateGallery() {
         },
       }
     );
-    window.location.href = "http://localhost:3001/multimedia";
+    //window.location.href = "http://localhost:3001/multimedia";
   };
 
   return (
