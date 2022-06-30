@@ -13,23 +13,21 @@ const mysqlconnection = require("../db/db.mysql");
 const passwordSchema = new passwordValidator();
 
 passwordSchema
-  .is().min(4)                                    // Minimum length 4
+  .is().min(4)                                   // Minimum length 4
   .is().max(10)                                  // Maximum length 15
-//.has().uppercase()                              // Must have uppercase letters
-//.has().lowercase()                              // Must have lowercase letters
+//.has().uppercase()                             // Must have uppercase letters
+//.has().lowercase()                             // Must have lowercase letters
 //.has().digits()                                // Must have at least 1 digit
-//.has().not().symbols();                         // Has no symbols
-//.has().not().spaces()                           // Should not have spaces is a wrong rule to apply
+.has().not().symbols()                           // Has no symbols
+.has().not().spaces()                            // Should not have spaces is a wrong rule to apply
 
 exports.signUp = (req, res, next) => {
   if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne ne corespond pas au Shema    console.log('password pas bon');
     console.log("paswword pas bon");
-    res.status(400).json({ error: "veuillez saisir un email valide ou votre mot de passe doit contenir 4 à 10 caractere" });
+    res.status(400).json({ error: "veuillez saisir un email valide et votre mot de passe doit contenir 4 à 10 caractere sans caractere special" });
     return res.status(400).json({ message:"mot de passe incorecte" });
     } else if (emailValidator.validate(req.body.email) & (passwordSchema.validate(req.bodypassword))) {
     console.log("password bon");
-
-
     const emailCrypto = cryptojs
       .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
       .toString();
