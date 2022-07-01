@@ -106,16 +106,16 @@ exports.deleteGallery = (req, res, next) => {
     res.status(500).json({ error: err });
   }
   //---------------------------------------------------------------------------------------
-   mysqlconnection.query(
-   "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
-    (error, res) => {
-      if (error) {
-        res.status(404).json({ error })
-        console.log(error);
-      };
-    },
-    res.status(204).json({ message: "gallery delete" }),
-    console.log("-------------------- Resultat -------------------"),
-    console.log("gallery delete")
-  )
+  //  mysqlconnection.query(
+  //  "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
+  //   (error, res) => {
+  //     if (error) {
+  //       res.status(404).json({ error })
+  //       console.log(error);
+  //     };
+  //   },
+  //   res.status(204).json({ message: "gallery delete" }),
+  //   console.log("-------------------- Resultat -------------------"),
+  //   console.log("gallery delete")
+  // )
 };
