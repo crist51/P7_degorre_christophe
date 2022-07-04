@@ -48,8 +48,7 @@ exports.modifyTemplateUser = (req, res, next) => {
   const id = (req.params.id)
   console.log(id);
 
-  if (req.file !== undefined) {
-    console.log("j'ai un fichier");
+  if (req.file !== undefined) { //avec file
     const userObject = JSON.parse(req.body.user);
 
     const firstname = userObject.firstname
@@ -59,9 +58,6 @@ exports.modifyTemplateUser = (req, res, next) => {
     const poste = userObject.poste
     const user_imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
 
-    // console.log(user);
-    console.log('regard');
-    console.log(poste);
     mysqlconnection.query(
       "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
       [lastname, firstname, affectation, user_imageUrl, description, poste, id], //id sur les req.body
@@ -73,8 +69,7 @@ exports.modifyTemplateUser = (req, res, next) => {
       },
       res.status(201).json({ message: "user update" })
     )
-  } else {
-    console.log("sans fichier");
+  } else { // sans file
     console.log(req.body);
     const user_imageUrl = req.body.user_imageUrl
     mysqlconnection.query(
@@ -91,8 +86,6 @@ exports.modifyTemplateUser = (req, res, next) => {
       console.log("user update")
     );
   }
-
-
 };
 
 //============================================================================================================

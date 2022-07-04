@@ -40,9 +40,11 @@ export const App = () => {
 
         <Route path="/multimedia" element={<Gallery />} />
         <Route path="multimedia/oneGallery" element={<GalleryOne />} />
-        
+
+
         <Route path="/user" element={<User />} />
         <Route path="user/oneuser" element={<UserOne />} />
+        <Route path="/author/" element={<UserOne />} />
         <Route path="myuser" element={<MyUser />} />
 
 

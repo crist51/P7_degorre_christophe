@@ -83,39 +83,39 @@ exports.deleteGallery = (req, res, next) => {
   console.log(' ------- req.params.id ------');
   const id = (req.params.id)
   console.log(id);
-  try {
-    gallery => {
-      const filename = gallery.imageUrl.split('/images/')[1];
-      fs.unlink(`images/${filename}`, () => {
-        mysqlconnection.query(
-          "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
-          (error, res) => {
-            if (error) {
-              res.status(404).json({ error })
-              console.log(error);
-            };
-          },
-          res.status(204).json({ message: "gallery delete" }),
-          console.log("-------------------- Resultat -------------------"),
-          console.log("gallery delete")
-        )
-      })
-    }
-  }
-  catch (err) {
-    res.status(500).json({ error: err });
-  }
+  // try {
+  //   gallery => {
+  //     const filename = gallery.imageUrl.split('/images/')[1];
+  //     fs.unlink(`images/${filename}`, () => {
+  //       mysqlconnection.query(
+  //         "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
+  //         (error, res) => {
+  //           if (error) {
+  //             res.status(404).json({ error })
+  //             console.log(error);
+  //           };
+  //         },
+  //         res.status(204).json({ message: "gallery delete" }),
+  //         console.log("-------------------- Resultat -------------------"),
+  //         console.log("gallery delete")
+  //       )
+  //     })
+  //   }
+  // }
+  // catch (err) {
+  //   res.status(500).json({ error: err });
+  // }
   //---------------------------------------------------------------------------------------
-  //  mysqlconnection.query(
-  //  "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
-  //   (error, res) => {
-  //     if (error) {
-  //       res.status(404).json({ error })
-  //       console.log(error);
-  //     };
-  //   },
-  //   res.status(204).json({ message: "gallery delete" }),
-  //   console.log("-------------------- Resultat -------------------"),
-  //   console.log("gallery delete")
-  // )
+   mysqlconnection.query(
+   "DELETE FROM gallery WHERE `gallery_id` = ?", [id],
+    (error, res) => {
+      if (error) {
+        res.status(404).json({ error })
+        console.log(error);
+      };
+    },
+    res.status(204).json({ message: "gallery delete" }),
+    console.log("-------------------- Resultat -------------------"),
+    console.log("gallery delete")
+  )
 };

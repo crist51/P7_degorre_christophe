@@ -5,7 +5,6 @@ function Nav() {
   const deconect = (e) => {
     e.preventDefault();
     localStorage.clear();
-    window.location.href = "http://localhost:3001/acceuil/";
   };
 
   return (

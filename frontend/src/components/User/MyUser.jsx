@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 
+import logo from '../../assets/logo/icon.png';
 
 function MyUser() {
   // ---------- on recupere id du user ---------- //
@@ -49,7 +50,7 @@ function MyUser() {
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>
-                <img alt="logo profil" src={item.user_imageUrl || "http://localhost:3000/images/icon.png1655753820253.png"} />
+                <img alt="logo profil" src={item.user_imageUrl || logo } />
                 <div>
                   <dl>
                     <dt>Un mot sur {item.lastname} :</dt>

@@ -18,7 +18,7 @@ function ReadGallery() {
     };
 
     const fetchData = async () => {
-      const result = await axios("http://localhost:3000/api/gallery", config);
+      const result = await axios("http://localhost:3000/api/gallery", config)
       setData(result.data.results);
     };
 

@@ -33,10 +33,6 @@ h1, h2{
   color: white;
 }
 
-error{
-  color: red;
-}
-
 p{
   color: pink;
 }
@@ -48,19 +44,22 @@ p{
     border: 4px ridge pink;
     p {
       color: pink;
-    }
+    }   
   }
 }
 
-
-
 .bloc1_img{
   background-color: #333333;
-}
+}     
 
-a:hover article h2 {
-  color: black;
+a:hover article h2, a:focus article h2 {
+  color: #333333;
   background-color: pink;
+}
+article a:hover p, article a:focus p{
+  background-color: pink;
+  color: #333333;
+  border-radius: 0 0 33px 33px;
 }
 
 article {

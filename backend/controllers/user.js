@@ -22,9 +22,10 @@ passwordSchema
 .has().not().spaces()                            // Should not have spaces is a wrong rule to apply
 
 exports.signUp = (req, res, next) => {
-  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne ne corespond pas au Shema    console.log('password pas bon');
+  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) {
     console.log("paswword pas bon");
-    res.status(400).json({ error: "veuillez saisir un email valide et votre mot de passe doit contenir 4 à 10 caractere sans caractere special" });
+    res.status(400).json(
+      { error: "veuillez saisir un email valide et votre mot de passe doit contenir 4 à 10 caractere sans caractere special" });
     return res.status(400).json({ message:"mot de passe incorecte" });
     } else if (emailValidator.validate(req.body.email) & (passwordSchema.validate(req.bodypassword))) {
     console.log("password bon");
@@ -39,7 +40,6 @@ exports.signUp = (req, res, next) => {
           lastname: req.body.lastname,
           firstname: req.body.firstname,
           password: hash,
-          user_imageUrl: "http://localhost:3000/images/icon.png1655753820253.png"
         };
         console.log("---- Avent envoie ----");
         console.log(user);
