@@ -29,11 +29,11 @@ nav {
           display: none;
         }
       }
-      a:hover{
+      a:hover, a:focus{
         background-color: pink;
         //border: 2px solid red;
         i {
-          color: black;
+          color: #333333;
           animation: rotation 1s linear 0s 1 normal forwards;
         }
       }

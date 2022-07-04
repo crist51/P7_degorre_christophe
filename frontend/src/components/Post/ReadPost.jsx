@@ -33,7 +33,7 @@ function ReadPost() {
     <Fragment>
       <div className="Bloc_1Contener">
         {data.map((item) => (
-            <Link to={"onePost/?id=" + item.post_id} title="lien vers post">
+            <Link to={"onePost/?id=" + item.post_id} title={"lient vers post : " + item.post_titre}>
               <article>
                 <h2>{item.post_titre}</h2>
                   <p className="author">{item.post_author}</p>

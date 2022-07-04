@@ -64,7 +64,7 @@ export default function UpdateUser() {
       let data = new FormData()
       data.append('user', JSON.stringify(user))
       data.append('file', file)
-      
+
 
       axios.put(`http://localhost:3000/api/user/${id}`,
         data,
@@ -79,23 +79,23 @@ export default function UpdateUser() {
       );
       console.log("image modifié");
 
-      
+
     } else {
       console.log("j'enregistre sans file");
-      
+
       console.log(user);
 
       const sup = document.getElementById("sup").innerHTML;
       console.log(sup);
       user.user_imageUrl = sup;
 
-   console.log(user);
+      console.log(user);
 
       axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log("update modifié");
       document.getElementById("msg_update").innerHTML = msg_update = "modification effectuer avec succes";
     }
@@ -118,6 +118,7 @@ export default function UpdateUser() {
               name="firstname"
               id="firstname"
               defaultValue={item.firstname}
+              required
             />
 
             <label htmlFor="lastname" className="Bloc_5">
@@ -129,10 +130,11 @@ export default function UpdateUser() {
               name="lastname"
               defaultValue={item.lastname}
               id="lastname"
+              required
             />
 
             <label htmlFor="affectation" className="Bloc_5">
-              votre ville
+              Votre lieu d'affectation
             </label>
             <div className="underline"></div>
             <input
@@ -144,16 +146,16 @@ export default function UpdateUser() {
             />
 
             <label htmlFor="decription" className="Bloc_5">
-              un mot sur vous
+              Un mot sur vous
             </label>
             <div className="underline"></div>
 
             <input
               type="texte"
               name="description"
-              defaultValue={item.description || "pas renseigné"}
+              defaultValue={item.description}
               id="description"
-              placeholder="Il faut croire en ces rêves"
+              placeholder="Un pour tous et tous pour un"
             />
 
             <label htmlFor="poste">Poste de travaille:</label>

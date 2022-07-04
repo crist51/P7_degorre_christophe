@@ -48,6 +48,10 @@ button:hover {
   animation: vibration 2s linear 0s 1 normal none;
 }
 
+button:focus{
+	background-color: pink;
+}
+
 .avis{
 	display: flex;
 	justify-content: space-between;

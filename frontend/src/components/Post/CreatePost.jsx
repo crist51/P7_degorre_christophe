@@ -1,4 +1,5 @@
 import axios from "axios";
+import React from "react";
 
 function CreatePost() {
   // ---------- on recupere info local storage ---------- //
@@ -6,6 +7,8 @@ function CreatePost() {
   const id = userConnect[0].userId;
   const post_author = userConnect[0].firstname + " " + userConnect[0].lastname;
   const validToken = userConnect[0].token;
+
+  let messageBtn = "Postez votre message"
 
   const setDataAPI = (e) => {
     e.preventDefault();
@@ -39,9 +42,12 @@ function CreatePost() {
         headers: {
           "Content-Type": "application/json",
         },
-      },
-      window.location.href = "http://localhost:3001/post"
-    );
+      }
+      //window.location.href = "http://localhost:3001/post"
+      );
+      const messageBtn = document.getElementById("messageBtn")
+      console.log(messageBtn);
+      messageBtn.textContent = "Votre message à bien été créer"  
   };
 
   return (
@@ -61,7 +67,7 @@ function CreatePost() {
           <div className="underline"></div>
           <textarea id="post_contenue" className="p" name="post_contenue"maxLength={1000} placeholder="le contenue de votre poste" required></textarea>
         </div>
-        <button type="submit">Postez votre Message</button>
+        <button id="messageBtn" type="submit">{ messageBtn }</button>
       </form>
     </div>
   );

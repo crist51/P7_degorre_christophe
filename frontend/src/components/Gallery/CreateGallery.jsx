@@ -9,6 +9,8 @@ function CreateGallery() {
     userConnect[0].firstname + " " + userConnect[0].lastname;
   const validToken = userConnect[0].token;
 
+  let messageBtn = "Postez votre message"
+  
   const setDataAPI = (e) => {
 
     e.preventDefault();
@@ -53,7 +55,8 @@ function CreateGallery() {
         },
       }
     );
-    //window.location.href = "http://localhost:3001/multimedia";
+    const messageBtn = document.getElementById("messageBtn")
+    messageBtn.textContent = "Votre message à bien été créer"
   };
 
   return (
@@ -105,7 +108,7 @@ function CreateGallery() {
           </textarea>
         </div>
 
-        <button type="submit">Postez votre Message</button>
+        <button id="messageBtn" type="submit">{ messageBtn }</button>
       </form>
     </div>
   );

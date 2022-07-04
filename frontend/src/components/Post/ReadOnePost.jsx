@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function PostOne() {
   //recuperation de search param
@@ -43,15 +44,13 @@ function PostOne() {
   }, []);
 
   const onDelete = (ca) => {
-    const ab = document.getElementById("idAuthor").innerHTML;
+    const authorId = document.getElementById("imageUrl").innerHTML;
 
     //is userID corespond au Id qui a creer l'objet
-    if (ab == userId || userConnect[0].admin == 1) {
+    if (authorId == userId || userConnect[0].admin == 1) {
       axios.delete(`http://localhost:3000/api/post/${id}`, config).then(() => {
-        window.location.href = "http://localhost:3001/post";
       });
     } else {
-      window.location.href = "http://localhost:3001/post";
     };
   };
 
@@ -66,8 +65,12 @@ function PostOne() {
           <div className="Bloc_1Contener bloc1_img">
             <article>
               <p>{item.post_contenue}</p>
+              <Link to={"/author/?id="+item.post_userId} title="Lien vers : Post">
               <p className="author">{item.post_author}</p>
+              </Link>
             </article>
+            <p id="imageUrl">{item.post_userId}</p>
+
             {/* <div className="avis">
               <button>commentaire</button>
               <div>
@@ -75,9 +78,11 @@ function PostOne() {
                 <button><i class="fa-solid fa-thumbs-down"></i></button>
               </div>
             </div> */}
-            <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
-              {messageBTN}
-            </button>
+            <Link to="/post" title="Lien vers : Post">
+              <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+                {messageBTN}
+              </button>
+            </Link>
           </div>
         </section>
       ))}

@@ -18,7 +18,7 @@ function ReadGallery() {
     };
 
     const fetchData = async () => {
-      const result = await axios("http://localhost:3000/api/gallery", config);
+      const result = await axios("http://localhost:3000/api/gallery", config)
       setData(result.data.results);
     };
 
@@ -29,7 +29,7 @@ function ReadGallery() {
     <Fragment>
       <div className="Bloc_1Contener bloc_img">
         {data.map((item) => (
-          <Link to={"oneGallery/?id=" + item.gallery_id} title="lien vers post multimedia">
+          <Link to={"oneGallery/?id=" + item.gallery_id} title={"lien vers post multimedia : "+ item.gallery_titre}>
             <article className="article_img">
               <h2>{item.gallery_titre}</h2>
               <img alt="post multimedia" src={item.gallery_media ||"http://localhost:3000/images/icon.png1655753820253.png"} />

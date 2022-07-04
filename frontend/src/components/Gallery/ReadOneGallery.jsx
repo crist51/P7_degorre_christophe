@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function GalleryOne() {
   //recuperation de search param
@@ -43,16 +45,13 @@ function GalleryOne() {
   }, []);
 
   const onDelete = (e) => {
-    const ab = document.getElementById("idAuthor").innerHTML;
+    const authorId = document.getElementById("imageUrl").innerHTML;
 
-    //is userID corespond au Id qui a creer l'objet
-    if (ab == userId || userConnect[0].admin === 1) {
+    if (authorId == userId || userConnect[0].admin === 1) {
       axios.delete(`http://localhost:3000/api/gallery/${id}`, config).then(() => {
-        window.location.href = "http://localhost:3001/multimedia";
       });
 
     } else {
-      window.location.href = "http://localhost:3001/multimedia";
     };
   };
 
@@ -66,23 +65,20 @@ function GalleryOne() {
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>
-              <img alt="post multimedia" src={item.gallery_media || "http://localhost:3000/images/icon.png1655753820253.png"} />
+              <img alt="post multimedia" src={item.gallery_media} />
               <div>
                 <p>{item.gallery_texte || "pas de description"}</p>
-                <p className="author">{item.gallery_author}</p>
+                <Link to={"/author/?id=" + item.gallery_userId} title="Lien vers : Post">
+                  <p className="author">{item.gallery_author}</p>
+                </Link>
+                <p id="imageUrl">{item.gallery_userId}</p>
               </div>
             </article>
-            {/* <div className="avis">
-              <button>Commentaire</button>
-              <div>
-                <button><i class="fa-solid fa-thumbs-up"></i>1</button>
-                <button><i class="fa-solid fa-thumbs-down"></i>0</button>
-              </div>
-            </div> */}
-
-            <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
-              {messageBTN}
-            </button>
+            <Link to="/multimedia" title="Lien vers : Multimedia">
+              <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+                {messageBTN}
+              </button>
+            </Link>
           </div>
         </section>
       ))}
