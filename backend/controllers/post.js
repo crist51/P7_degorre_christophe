@@ -4,11 +4,15 @@ const mysqlconnection = require('../db/db.mysql');
 
 exports.createPost = (req, res, next) => {
   console.log(req.body);
+  let comments = []
+  comments = JSON.stringify(comments)
+
   const post = {
     post_titre: req.body.post_titre,//req.query.userId
     post_userId: req.body.post_userId,
     post_contenue: req.body.post_contenue,
     post_author:req.body.post_author,
+    comments:comments
   };
   console.log(post);
   mysqlconnection.query(
