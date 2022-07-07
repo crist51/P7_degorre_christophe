@@ -11,5 +11,4 @@ router.get('/:id', auth, galleryCtrl.getOneGallery);
 //router.put('/:id', auth, multer, galleryCtrl.modifyGallery);
 router.delete('/:id', auth, galleryCtrl.deleteGallery);
 
-
 module.exports = router;

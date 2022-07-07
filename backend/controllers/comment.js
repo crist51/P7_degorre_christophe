@@ -9,6 +9,7 @@ exports.createComment = (req, res, next) => {
   //   "commentaireAuthor":commentaireAuthor,
   //   "commentaire": req.body.commentaire
   // };
+
   const commentaire= req.body.commentaire
 
   mysqlconnection.query(
