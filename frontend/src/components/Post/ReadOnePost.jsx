@@ -2,6 +2,9 @@ import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Avis from "./Avis";
+
+
 function PostOne() {
   //recuperation de search param
   var str = window.location.href;
@@ -24,6 +27,7 @@ function PostOne() {
   let messageBTN = "retour";
 
 
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -32,11 +36,12 @@ function PostOne() {
       );
       setData(result.data.results);
       if (
-        result.data.results[0].post_userId == userConnect[0].userId ||
-        userConnect[0].admin == 1
+        result.data.results[0].post_userId === userConnect[0].userId ||
+        userConnect[0].admin === 1
       ) {
-        //si je suis authentifié j'apparais le btn suprimer
+      // si je suis authentifié j'apparais le btn suprimer
         const sup = document.getElementById("auth")
+        console.log(sup);
         sup.textContent = "supprimer"
       }
     };
@@ -64,20 +69,15 @@ function PostOne() {
           </div>
           <div className="Bloc_1Contener bloc1_img">
             <article>
-              <p>{item.post_contenue}</p>
-              <Link to={"/author/?id="+item.post_userId} title="Lien vers : Post">
-              <p className="author">{item.post_author}</p>
+              <p>{item.post_contenue ||"pas de commentaire"}</p>
+              <Link to={"/author/?id=" + item.post_userId} title="Lien vers : Post">
+                <p className="author">{item.post_author}</p>
               </Link>
             </article>
             <p id="imageUrl">{item.post_userId}</p>
 
-            {/* <div className="avis">
-              <button>commentaire</button>
-              <div>
-                <button id="like"><i class="fa-solid fa-thumbs-up"></i></button>
-                <button><i class="fa-solid fa-thumbs-down"></i></button>
-              </div>
-            </div> */}
+            <Avis />
+            
             <Link to="/post" title="Lien vers : Post">
               <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
                 {messageBTN}

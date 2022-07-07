@@ -1,47 +1,67 @@
 const mysqlconnection = require('../db/db.mysql');
 
 exports.createComment = (req, res, next) => {
-    const id = (req.params.id)
-    let commentaire = {
-        "userId": req.body.comment.userId,
-        "commentaire": req.body.comment.commentaire
-    };
+  const id = (req.params.id)
 
-    const comment= []//lieu ou devra ce trouver tour les commentaire de la BD
-    const newComment = comment.push(commentaire);
+  console.log(req.body);
+  // let commentaire = {
+  //   "userId": req.body.userId,
+  //   "commentaireAuthor":commentaireAuthor,
+  //   "commentaire": req.body.commentaire
+  // };
+  const commentaire= req.body.commentaire
 
-    console.log('post ' + id +' ou le commentaire sera affilié');
-    console.log(comment);
+  mysqlconnection.query(
+    "SELECT * FROM `post` WHERE `post_id` = ?", [id],
+    (error, results) => {
+      if (error) {
+        res.json({ error })
+      } else {
+        console.log("post recuperer " + id)
+        //est ce que des commentaires on été creer?
+        let commentsResult = results[0].comments
 
-    // return res.status(200).json({ message: "commentaire publier" })
+        if (commentsResult == null) {
+          //on créer comments 
+          let comments = []
+          let newTest = comments.push(commentaire);
+          // on met le commentaire en format JSON pour SQL
+          comments = JSON.stringify(comments)
 
-    // const commentEnvoie = JSON.stringify(comment)
+          mysqlconnection.query(
+            "UPDATE `post` SET `comments`=? WHERE post_id = ?", [comments, id],
+            console.log(comments),
+            (error, res) => {
+              if (error) {
+                res.status(404).json({ error }),
+                  console.log(error)
+              };
+            },
+            res.status(201).json({ message: "commentaire créer" }),
+            console.log("commentaire créer"),
+          )
+        }
+        else {
+          // le commentaire array existe & on le traduit JSON en JS
+          let commentsResultParse = JSON.parse(commentsResult);
+          let newTest = commentsResultParse.push(commentaire);
+          // on met le commentaire en format JSON pour SQL
+          commentsResultStringnify = JSON.stringify(commentsResultParse)
 
-    mysqlconnection.query(
-        "UPDATE `post` SET `comments`=? WHERE post_id = ?"
-        [comment, id],
-      (error, results) => {
-        if (error) {
-          res.status(404).json({ error }),
-          console.log(error)
-        };
-        console.log(results)
-        res.status(201).json({ message: "commentaire publier" })
+          mysqlconnection.query(
+            "UPDATE `post` SET `comments`=? WHERE post_id = ?", [commentsResultStringnify, id],
+            console.log(commentsResultStringnify),
+            (error, res) => {
+              if (error) {
+                res.status(404).json({ error }),
+                  console.log(error)
+              };
+            },
+            res.status(201).json({ message: "post update" }),
+            console.log("post update"),
+          )
+        }
       }
-    )
-  
-
-    // mysqlconnection.query(
-    //     //"insert `post` SET `comments` = ? WHERE `post_id` =?",
-    //     "UPDATE `post` SET `comments`=? WHERE userId = ?",
-    //     [comments, id], //id sur les req.body
-    //     (error, results) => {
-    //         if (error) {
-    //             res.status(404).json({ error }), console.log(error);
-    //         }
-    //     },
-    //     res.status(201).json({ message: "commentaire creer" }),
-    //     console.log("-------------------- Resultat -------------------"),
-    //     console.log("commentaire creer")
-    // );
+    }
+  )
 }

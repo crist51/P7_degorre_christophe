@@ -23,7 +23,8 @@ function ReadPost() {
 
     const fetchData = async () => {
       const result = await axios(`http://localhost:3000/api/post`, config);
-      setData(result.data.results);
+      setData(result.data.results)
+      console.log(result.data.results);;
     };
     fetchData();
     
