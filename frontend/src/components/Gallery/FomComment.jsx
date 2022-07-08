@@ -59,7 +59,7 @@ function fomComment() {
             Commentaire
           </label>
           <div className="underline"></div>
-          <textarea id="commentaire" className="p" name="commentaire"maxLength={1000} placeholder="Votre Comentaire" required></textarea>
+          <textarea id="commentaire" className="p" name="commentaire"maxLength={150} placeholder="Votre Comentaire" required></textarea>
         </div>
         <button id="messageBtn" type="submit">{ messageBtn }</button>
       </form>

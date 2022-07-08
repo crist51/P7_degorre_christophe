@@ -82,6 +82,15 @@ article {
       div{
         width: 100%;
       }
+      p{
+        width: 95%;
+      }
+      a{
+        width: 100%;
+        p{
+          width: 100%;
+        }
+      }
     }
   }
 }
