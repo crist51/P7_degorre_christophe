@@ -12,8 +12,6 @@ exports.getOneTemplateUser = (req, res, next) => {
           res.json({ error });
         } else {
           res.status(200).json({ results })
-          // console.log("-------------------- Resultat -------------------"),
-          // console.log("getOneUser " + id);
         }
       }
     );

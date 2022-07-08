@@ -34,7 +34,7 @@ function fomComment() {
     };
 
     axios.put(
-      `http://localhost:3000/api/post/${id}/comments`,
+      `http://localhost:3000/api/gallery/${id}/comments`,
       
       {
         commentaire: commentaire,

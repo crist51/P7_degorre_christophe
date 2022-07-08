@@ -26,7 +26,7 @@ function ReadComment() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                `http://localhost:3000/api/post/${id}`,
+                `http://localhost:3000/api/gallery/${id}`,
                 config,
             );
             const comments = JSON.parse(result.data.results[0].comments)

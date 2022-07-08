@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Avis from "./Avis";
 
 function GalleryOne() {
   //recuperation de search param
@@ -74,6 +75,9 @@ function GalleryOne() {
                 <p id="imageUrl">{item.gallery_userId}</p>
               </div>
             </article>
+
+            <Avis />
+
             <Link to="/multimedia" title="Lien vers : Multimedia">
               <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
                 {messageBTN}
