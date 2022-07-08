@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 04 juil. 2022 à 15:10
+-- Généré le : ven. 08 juil. 2022 à 12:13
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -18,79 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `formationgraficart`
---
-CREATE DATABASE IF NOT EXISTS `formationgraficart` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `formationgraficart`;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ex_un`
---
-
-CREATE TABLE `ex_un` (
-  `id` int(11) NOT NULL,
-  `titre` varchar(255) NOT NULL,
-  `slug` varchar(60) NOT NULL,
-  `contenue` longtext NOT NULL,
-  `date_create` datetime NOT NULL,
-  `date_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `utilisateurs`
---
-
-CREATE TABLE `utilisateurs` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `prenon` varchar(255) NOT NULL,
-  `sexe` varchar(1) NOT NULL DEFAULT 'h',
-  `date_naissance` date NOT NULL,
-  `pays` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `ex_un`
---
-ALTER TABLE `ex_un`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Index pour la table `utilisateurs`
---
-ALTER TABLE `utilisateurs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sexe` (`sexe`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `ex_un`
---
-ALTER TABLE `ex_un`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `utilisateurs`
---
-ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- Base de données : `groupomania`
 --
-CREATE DATABASE IF NOT EXISTS `groupomania` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `groupomania`;
 
 -- --------------------------------------------------------
 
@@ -106,20 +35,22 @@ CREATE TABLE `gallery` (
   `gallery_userId` int(11) NOT NULL,
   `gallery_dateCreate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `gallery_dateUpdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `gallery_author` varchar(255) NOT NULL
+  `gallery_author` varchar(255) NOT NULL,
+  `comments` json DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `gallery`
 --
 
-INSERT INTO `gallery` (`gallery_id`, `gallery_titre`, `gallery_texte`, `gallery_media`, `gallery_userId`, `gallery_dateCreate`, `gallery_dateUpdate`, `gallery_author`) VALUES
-(117, 'La pattiserie recrute', 'La pâtisserie recherche 2 apprenti pour son service pour mi-aout c\'est le moment d\'en aviser votre entourage !!', 'http://localhost:3000/images/pexels-igor-ovsyannykov-205961_(1).jpg1656753683828.jpg', 80, '2022-07-02 11:21:23', '2022-07-02 11:21:23', 'DEGORRE Christophe'),
-(118, 'l\'atelier a deux c\'est toujours plus marrant', 'L’entrepôt principale n\'as pas changer c\'est les meilleur sur l\'ambiance ', 'http://localhost:3000/images/pexels-alexander-isreb-1797428.jpg1656753829747.jpg', 80, '2022-07-02 11:23:49', '2022-07-02 11:23:49', 'DEGORRE Christophe'),
-(119, 'Attention la jardinerie ! sa déborde', 'Dans la gallérie marchande, c\'est tout un art pour passer dans les rayon', 'http://localhost:3000/images/pexels-daria-shevtsova-880463.jpg1656753974524.jpg', 80, '2022-07-02 11:26:14', '2022-07-02 11:26:14', 'DEGORRE Christophe'),
-(120, 'Philippe Etchebest arrive', 'Et non c\'est l’apprenti communication, a la cantine c\'est mexicain aujourd’hui ', 'http://localhost:3000/images/pexels-amina-filkins-5409658.jpg1656754252471.jpg', 80, '2022-07-02 11:30:52', '2022-07-02 11:30:52', 'DEGORRE Christophe'),
-(121, 'Acquisition d\'un entrepôt à Château-Thierry', 'Des postes seront à pourvoir grâce a notre développement dans la région du Grand Est hésitez pas a vous rapprocher des ressource humaine si vous êtes intéressé', 'http://localhost:3000/images/pexels-pixabay-221047.jpg1656754705170.jpg', 80, '2022-07-02 11:38:25', '2022-07-02 11:39:24', 'DEGORRE Christophe'),
-(122, 'Le CE propose une sortit', 'Sortit programmée à la fin de l\'année  avec les CE direction Disney Land rapprochez de leur membres pour vous inscrire ( hésitez pas à invitez votre famille)', 'http://localhost:3000/images/pexels-rick-han-3428289.jpg1656857248809.jpg', 83, '2022-07-03 16:07:29', '2022-07-03 16:07:29', 'R. Stephanie');
+INSERT INTO `gallery` (`gallery_id`, `gallery_titre`, `gallery_texte`, `gallery_media`, `gallery_userId`, `gallery_dateCreate`, `gallery_dateUpdate`, `gallery_author`, `comments`) VALUES
+(117, 'La pattiserie recrute', 'La pâtisserie recherche 2 apprenti pour son service pour mi-aout c\'est le moment d\'en aviser votre entourage !!', 'http://localhost:3000/images/pexels-igor-ovsyannykov-205961_(1).jpg1656753683828.jpg', 80, '2022-07-02 11:21:23', '2022-07-02 11:21:23', 'DEGORRE Christophe', NULL),
+(118, 'l\'atelier a deux c\'est toujours plus marrant', 'L’entrepôt principale n\'as pas changer c\'est les meilleur sur l\'ambiance ', 'http://localhost:3000/images/pexels-alexander-isreb-1797428.jpg1656753829747.jpg', 80, '2022-07-02 11:23:49', '2022-07-02 11:23:49', 'DEGORRE Christophe', NULL),
+(119, 'Attention la jardinerie ! sa déborde', 'Dans la gallérie marchande, c\'est tout un art pour passer dans les rayon', 'http://localhost:3000/images/pexels-daria-shevtsova-880463.jpg1656753974524.jpg', 80, '2022-07-02 11:26:14', '2022-07-02 11:26:14', 'DEGORRE Christophe', NULL),
+(120, 'Philippe Etchebest arrive', 'Et non c\'est l’apprenti communication, a la cantine c\'est mexicain aujourd’hui ', 'http://localhost:3000/images/pexels-amina-filkins-5409658.jpg1656754252471.jpg', 80, '2022-07-02 11:30:52', '2022-07-02 11:30:52', 'DEGORRE Christophe', NULL),
+(121, 'Acquisition d\'un entrepôt à Château-Thierry', 'Des postes seront à pourvoir grâce a notre développement dans la région du Grand Est hésitez pas a vous rapprocher des ressource humaine si vous êtes intéressé', 'http://localhost:3000/images/pexels-pixabay-221047.jpg1656754705170.jpg', 80, '2022-07-02 11:38:25', '2022-07-02 11:39:24', 'DEGORRE Christophe', NULL),
+(122, 'Le CE propose une sortit', 'Sortit programmée à la fin de l\'année  avec les CE direction Disney Land rapprochez de leur membres pour vous inscrire ( hésitez pas à invitez votre famille)', 'http://localhost:3000/images/pexels-rick-han-3428289.jpg1656857248809.jpg', 83, '2022-07-03 16:07:29', '2022-07-03 16:07:29', 'R. Stephanie', NULL),
+(126, 'Trop cool le CE', 'Vise a Amneville', 'http://localhost:3000/images/DSC_0312.JPG1657281606273.jpg', 85, '2022-07-08 14:00:06', '2022-07-08 14:01:12', 'Responsable E-comunication', '[{\"userId\": 85, \"commentaire\": \"Je pouvais pas y aller dommage\", \"commentaireDate\": \"14 h 0 le : 8/7/2022\", \"commentaireAuthor\": \"Responsable E-comunication\"}, {\"userId\": 85, \"commentaire\": \"Une prochaine fois\", \"commentaireDate\": \"14 h 1 le : 8/7/2022\", \"commentaireAuthor\": \"Responsable E-comunication\"}]');
 
 -- --------------------------------------------------------
 
@@ -145,7 +76,7 @@ CREATE TABLE `post` (
 INSERT INTO `post` (`post_id`, `post_titre`, `post_contenue`, `post_dateCreate`, `post_userId`, `post_dateUpdate`, `post_author`, `comments`) VALUES
 (28, 'Résultat de l\'enquete', 'Un nouveau site social a été décidé, un appel d\'offre sera lancé d\'ici peu', '2022-06-14 10:53:01', 80, '2022-06-14 10:53:01', 'Degoore Christophe', 'null'),
 (29, 'La fin de l\'appel d\'offre', 'la société CONNECT-E rejoint notre aventure pour réalisé notre projet ambitieux', '2022-06-14 12:38:54', 80, '2022-06-14 12:38:54', 'Degoore Christophe', 'null'),
-(30, 'Le nouveau site social, avance', 'On peut créer et supprimer des post texte et multimédia, sa avance.', '2022-06-15 00:19:53', 80, '2022-06-15 00:19:53', 'Degoore Christophe', '{\"post_comment\": \"test32\", \"author_comment\": \"moi\"}');
+(30, 'Le nouveau site social, avance', 'On peut créer et supprimer des post texte et multimédia, sa avance.', '2022-06-15 00:19:53', 80, '2022-06-15 00:19:53', 'Degoore Christophe', 'null');
 
 -- --------------------------------------------------------
 
@@ -213,13 +144,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `gallery_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `post_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `user`

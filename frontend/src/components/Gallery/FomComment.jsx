@@ -48,7 +48,7 @@ function fomComment() {
       );
       const messageBtn = document.getElementById("messageBtn")
       console.log(messageBtn);
-      messageBtn.textContent = "Commentaire créer créer"  
+      messageBtn.textContent = "Commentaire à bien été créer"  
   };
 
   return (
