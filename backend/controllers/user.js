@@ -83,8 +83,6 @@ exports.signIn = (req, res, next) => {
   const emailCryptoJs = cryptojs
     .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
     .toString();
-  console.log("----> emailCrypto <----");
-  console.log(emailCryptoJs);
   const email = emailCryptoJs;
 
   mysqlconnection.query(

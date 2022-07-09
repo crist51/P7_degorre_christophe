@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import axios from "axios";
 
 let error = "";
@@ -5,23 +6,29 @@ let error = "";
 let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
 
-function SignIn() {
+function SignUp() {
+
+  const email = useRef (null);
+  const password = useRef (null);
+  const firstname = useRef (null);
+  const lastname = useRef (null);
+
+
   const setDataAPI = (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
-    const password = document.getElementById("password").value;
+
+    const user={
+      email:email.current.value,
+      password:password.current.value,
+      firstname:firstname.current.value,
+      lastname:lastname.current.value,
+    }
+
+      console.log(user);
 
     axios
       .post(
-        `http://localhost:3000/api/authentification/signUp`,
-        {
-          email: email,
-          firstname: firstname,
-          lastname: lastname,
-          password: password,
-        },
+        `http://localhost:3000/api/authentification/signUp`,user,
         {
           headers: {
             "Content-Type": "application/json",
@@ -52,8 +59,9 @@ function SignIn() {
             <input
               type="email"
               name="email"
-              id="email"
+              // id="email"
               placeholder="Votre email"
+              ref={email}
               required
             />
           
@@ -62,8 +70,10 @@ function SignIn() {
             <input
               type="password"
               name="password"
-              id="password"
+              // id="password"
               placeholder="Votre mot de passe"
+              ref={password}
+
               required
             />
           
@@ -72,8 +82,9 @@ function SignIn() {
             <input
               type="text"
               name="nom"
-              id="firstname"
+              // id="firstname"
               placeholder="Votre nom"
+              ref={firstname}
               required
             />
           
@@ -82,8 +93,9 @@ function SignIn() {
             <input
               type="text"
               name="prenom"
-              id="lastname"
+              // id="lastname"
               placeholder="Votre prenom"
+              ref={lastname}
               required
             />
           
@@ -99,4 +111,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

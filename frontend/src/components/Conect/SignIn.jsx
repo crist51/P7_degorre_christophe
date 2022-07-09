@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import axios from "axios";
 
 let error = "";
@@ -5,19 +6,24 @@ let error = "";
 let userConnect = JSON.parse(localStorage.getItem("auth"));
 userConnect = [];
 
+
 function SignIn() {
+  
+  const email = useRef (null);
+  const password = useRef (null);
+
   const setDataAPI = (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+
+    const user={
+      email:email.current.value,
+      password:password.current.value,
+    }
+    console.log(user);
 
     axios
       .post(
-        `http://localhost:3000/api/authentification/signIn`,
-        {
-          email: email,
-          password: password,
-        },
+        `http://localhost:3000/api/authentification/signIn`,user,
         {
           headers: {
             "Content-Type": "application/json",
@@ -36,7 +42,7 @@ function SignIn() {
         console.log(err.response.data.error);
         document.getElementById("emailErrorMsg").innerHTML =
           err.response.data.error;
-      }); // Ici, le cas d'erreur
+      }); // Ici, le cas d'erreur renvoyéer par le backend
   };
 
   return (
@@ -49,6 +55,7 @@ function SignIn() {
               name="Titre"
               id="email"
               placeholder="votre email"
+              ref={email}
               required
             />
           
@@ -59,6 +66,7 @@ function SignIn() {
               name="password"
               id="password"
               placeholder="votre mot de passe"
+              ref={password}
               required
             />
           
