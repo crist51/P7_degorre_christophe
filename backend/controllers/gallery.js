@@ -6,12 +6,8 @@ const mysqlconnection = require('../db/db.mysql');
 
 exports.createGallery = (req, res, next) => {
   const galleryObject = JSON.parse(req.body.gallery);
-  console.log(req);
-  console.log('-----------req.file-----------');
-  console.log(req.file);
-  console.log('-----------body-----------');
+  console.log('-----------req.body-----------');
   console.log(req.body);
-  console.log('-----------req-----------');
 
  // console.log(galleryObject);
   const gallery = {

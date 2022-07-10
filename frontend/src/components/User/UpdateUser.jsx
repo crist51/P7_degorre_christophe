@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 export default function UpdateUser() {
@@ -17,6 +17,14 @@ export default function UpdateUser() {
     },
   };
 
+  const firstname = useRef(null);
+  const lastname = useRef(null);
+  const affectation = useRef(null);
+  const description = useRef(null);
+  const poste = useRef(null);
+  const user_imageUrl = useRef(null);
+
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -31,33 +39,36 @@ export default function UpdateUser() {
   const update = (ab) => {
     ab.preventDefault();
 
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
-    const affectation = document.getElementById("affectation").value;
-    const description = document.getElementById("description").value;
-    const poste = document.getElementById("poste").value;
-
-    let user =
-    {
-      firstname: firstname,
-      lastname: lastname,
-      affectation: affectation,
-      description: description,
-      poste: poste,
+    const user = {
+      firstname: firstname.current.value,
+      lastname: lastname.current.value,
+      affectation: affectation.current.value,
+      description: description.current.value,
+      poste: poste.current.value,
     }
 
-    const inputFile = document.getElementById("user_imageUrl").files
-    console.log(inputFile);
+    const inputFile = user_imageUrl.current.files
+    // console.log(inputFile);
 
     if (inputFile.length == 1) {
-      console.log("j'enrejistre avec file");
-      const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
-      const file = document.getElementById("user_imageUrl").files[0];
+      // console.log("j'enrejistre avec file");
+
+      // console.log("id");
+      // const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
+      // const file = document.getElementById("user_imageUrl").files[0];
+      // console.log(user_imageUrl);
+      // console.log(file);
+
+      console.log("ref");
+      // console.log(inputFile[0].name);
+      // console.log(inputFile[0]);
+      const user_imageUrl = inputFile[0].name
+      const file = inputFile[0]
 
       //j'ajoute dans l'objet valeur user_imageUrl
       user.user_imageUrl = user_imageUrl;
 
-      console.log("---- envoie pour API ----");
+      // console.log("---- envoie pour API ----");
       console.log(user);
       console.log(file);
 
@@ -86,10 +97,7 @@ export default function UpdateUser() {
       console.log(user);
 
       const sup = document.getElementById("sup").innerHTML;
-      console.log(sup);
       user.user_imageUrl = sup;
-
-      console.log(user);
 
       axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
         headers: {
@@ -117,6 +125,7 @@ export default function UpdateUser() {
               type="text"
               name="firstname"
               id="firstname"
+              ref={firstname}
               defaultValue={item.firstname}
               required
             />
@@ -130,6 +139,7 @@ export default function UpdateUser() {
               name="lastname"
               defaultValue={item.lastname}
               id="lastname"
+              ref={lastname}
               required
             />
 
@@ -142,6 +152,7 @@ export default function UpdateUser() {
               id="affectation"
               name="affectation"
               placeholder="Paris"
+              ref={affectation}
               defaultValue={item.affectation || "pas renseigné"}
             />
 
@@ -155,13 +166,14 @@ export default function UpdateUser() {
               name="description"
               defaultValue={item.description}
               id="description"
+              ref={description}
               placeholder="Un pour tous et tous pour un"
             />
 
             <label htmlFor="poste">Poste de travaille:</label>
             <div className="underline"></div>
 
-            <select name="poste" id="poste" defaultValue={item.poste}>
+            <select ref={poste} name="poste" id="poste" defaultValue={item.poste}>
               <option value="non renseigné">-- non renseigné --</option>
               <option value="Employé">Employé</option>
               <option value="administration">administration</option>
@@ -173,18 +185,15 @@ export default function UpdateUser() {
               Choisir une image:
             </label>
             <div className="underline"></div>
-            <input type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
+            <input ref={user_imageUrl} type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
             />
             <p id="imageUrl">{item.user_imageUrl}</p>
 
             <div className="button_row">
-              <div className="button_row">
-
-                <button type="submit">
-                  Sauvegarder les changement
-                </button>
-                <p id="msg_update">{msg_update}</p>
-              </div>
+              <button type="submit">
+                Sauvegarder les changement
+              </button>
+              <p id="msg_update">{msg_update}</p>
             </div>
 
           </form>

@@ -42,7 +42,7 @@ function MyUser() {
   return (
     <Fragment>
       {data.map((item) => (
-        <>
+        <div key={item.userId}>
           <div className="bloc_titre">
             <h2>
               {item.firstname} {item.lastname}
@@ -74,7 +74,7 @@ function MyUser() {
         </button>
 
           
-        </>
+        </div>
       ))}
     </Fragment>
   );

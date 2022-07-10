@@ -3,8 +3,6 @@ const mysqlconnection = require('../db/db.mysql');
 
 
 exports.createPost = (req, res, next) => {
-  console.log(req.body);
-
   const post = {
     post_titre: req.body.post_titre,//req.query.userId
     post_userId: req.body.post_userId,
