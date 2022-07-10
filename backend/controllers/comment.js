@@ -11,6 +11,8 @@ exports.createCommentPost = (req, res, next) => {
   console.log(date);
   commentaire.commentaireDate = date;
 
+console.log(req.body);
+
   //securité caratere commentaire 150
   const commentaireLength = commentaire.commentaire.length
   console.log(commentaireLength);

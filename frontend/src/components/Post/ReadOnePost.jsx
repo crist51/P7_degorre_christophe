@@ -62,7 +62,7 @@ function PostOne() {
   return (
     <Fragment>
       {data.map((item) => (
-        <section className="bloc_1">
+        <section key={item.post_userId} className="bloc_1">
           <div className="bloc_titre">
             <h1>{item.post_titre}</h1>
             <p className="user_imgUrl" id="idAuthor">{item.post_userId}</p>

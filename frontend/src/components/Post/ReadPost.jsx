@@ -24,7 +24,8 @@ function ReadPost() {
     const fetchData = async () => {
       const result = await axios(`http://localhost:3000/api/post`, config);
       setData(result.data.results)
-      console.log(result.data.results);;
+      console.log("j'affiche les posts");
+      // console.log(result.data.results);;
     };
     fetchData();
     
@@ -34,12 +35,14 @@ function ReadPost() {
     <Fragment>
       <div className="Bloc_1Contener">
         {data.map((item) => (
+          <div key={item.post_id}>
             <Link to={"onePost/?id=" + item.post_id} title={"lient vers post : " + item.post_titre}>
               <article>
                 <h2>{item.post_titre}</h2>
                   <p className="author">{item.post_author}</p>
               </article>
             </Link>
+            </div>
         ))}
         </div>
     </Fragment>

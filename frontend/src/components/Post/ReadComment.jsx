@@ -33,12 +33,12 @@ function ReadComment() {
             if (comments == null) {
                 const comments =
                 [{ userId:"#", commentaire:"Pas de commentaire",commentaireAuthor:""}]
-                console.log(comments);
+                // console.log(comments);
                 console.log("j'affiche comm default");
             }else{
-                console.log(comments);
+                // console.log(comments);
                 setData(comments)
-                console.log(comments);
+                console.log("j'affiche les commentaires");
             }
         };
         fetchData();
@@ -46,7 +46,7 @@ function ReadComment() {
     return (
         <Fragment>
             {data.map((item) => (
-                <div className="comments">
+                <div key={item.userId} className="comments">
                     <p>{item.commentaire}</p>
                     <Link to={"/author/?id=" + item.userId} title="Lien vers : l'autheur du commentaire">
                         <p>{item.commentaireAuthor + " à " + item.commentaireDate}</p>

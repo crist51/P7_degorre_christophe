@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useRef } from "react";
 
 function CreateGallery() {
   // ---------- on recupere id du user ---------- //
@@ -10,24 +10,23 @@ function CreateGallery() {
   const validToken = userConnect[0].token;
 
   let messageBtn = "Postez votre message"
-  
+
+  const gallery_titre = useRef(null);
+  const gallery_media = useRef(null);
+  const gallery_texte = useRef(null);
+
   const setDataAPI = (e) => {
-
     e.preventDefault();
-    // ---------- on recupere les info et on les envoie ---------- //
-    const gallery_titre = document.getElementById("gallery_titre").value;
-    const gallery_media =  document.getElementById("gallery_media").files[0].name;
-    const gallery_texte = document.getElementById("gallery_texte").value;
-    const file = document.getElementById("gallery_media").files[0];
 
-    const gallery = 
-      {
-        gallery_titre: gallery_titre,
-        gallery_media: gallery_media,
-        gallery_texte: gallery_texte,
-        gallery_userId: id,
-        gallery_author: gallery_author,
-      }
+    // ---------- on recupere les info et on les envoie ---------- //
+    const file = gallery_media.current.files[0]
+    const gallery = {
+      gallery_titre: gallery_titre.current.value,
+      gallery_media: file.name,
+      gallery_texte: gallery_texte.current.value,
+      gallery_userId: id,
+      gallery_author: gallery_author,
+    }
 
     console.log("---- envoie pour API ----");
     console.log(gallery);
@@ -72,7 +71,7 @@ function CreateGallery() {
             type="text"
             name="titre"
             placeholder="titre"
-            id="gallery_titre"
+            ref={gallery_titre}
             required
             maxLength={255}
           />
@@ -87,7 +86,7 @@ function CreateGallery() {
             type="file"
             name="gallery_media"
             placeholder="fichier"
-            id="gallery_media"
+            ref={gallery_media}
             required
           />
           <div id="upoadedImage"></div>
@@ -99,16 +98,15 @@ function CreateGallery() {
           </label>
           <div className="underline"></div>
           <textarea
-            id="gallery_texte"
             name="description"
             placeholder="Pas de description (opptionelle)"
             maxLength={255}
-
+            ref={gallery_texte}
           >
           </textarea>
         </div>
 
-        <button id="messageBtn" type="submit">{ messageBtn }</button>
+        <button id="messageBtn" type="submit">{messageBtn}</button>
       </form>
     </div>
   );

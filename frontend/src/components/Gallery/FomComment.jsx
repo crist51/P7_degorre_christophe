@@ -1,7 +1,7 @@
 import axios from "axios";
-import React from "react";
+import React, { useRef } from "react";
 
-function fomComment() {
+function FomComment() {
   // ---------- on recupere info local storage ---------- //
   let userConnect = JSON.parse(localStorage.getItem("auth"));
   const userId = userConnect[0].userId;
@@ -14,28 +14,28 @@ function fomComment() {
 
 
   let messageBtn = "Postez commentaire"
+  const comm = useRef(null);
 
   const setDataAPI = (e) => {
     e.preventDefault();
-    // ---------- on recupere les info et on les envoie ---------- //
 
-    const comm = document.getElementById("commentaire").value;
-
+    // ---------- on recupere les info ---------- //
     const commentaire = {
-        userId:userId,
-        commentaireAuthor:commentaireAuthor,
-        commentaire:comm
-        
+      userId: userId,
+      commentaireAuthor: commentaireAuthor,
+      commentaire: comm.current.value
     }
+    console.log(commentaire);
     let config = {
       headers: {
         Authorization: "Bearer " + validToken,
       },
     };
 
+    // ---------- envoie ----------
     axios.put(
       `http://localhost:3000/api/gallery/${id}/comments`,
-      
+
       {
         commentaire: commentaire,
       },
@@ -44,11 +44,11 @@ function fomComment() {
         headers: {
           "Content-Type": "application/json",
         },
-      }
-      );
-      const messageBtn = document.getElementById("messageBtn")
-      console.log(messageBtn);
-      messageBtn.textContent = "Commentaire à bien été créer"  
+      },
+    );
+    // ---------- Retour aapres envoie
+    const messageBtn = document.getElementById("messageBtn")
+    messageBtn.textContent = "Commentaire à bien été créer"
   };
 
   return (
@@ -59,12 +59,12 @@ function fomComment() {
             Commentaire
           </label>
           <div className="underline"></div>
-          <textarea id="commentaire" className="p" name="commentaire"maxLength={150} placeholder="Votre Comentaire" required></textarea>
+          <textarea ref={comm} className="p" name="commentaire" maxLength={150} placeholder="Votre Comentaire" required></textarea>
         </div>
-        <button id="messageBtn" type="submit">{ messageBtn }</button>
+        <button id="messageBtn" type="submit">{messageBtn}</button>
       </form>
     </div>
   );
 }
 
-export default fomComment;
+export default FomComment;

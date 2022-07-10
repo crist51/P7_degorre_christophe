@@ -15,9 +15,6 @@ function FomComment() {
 
   let messageBtn = "Postez commentaire";
   const comm = useRef(null);
-  let messageBtn1 = useRef(null);
-
-
 
   const setDataAPI = (e) => {
     e.preventDefault();
