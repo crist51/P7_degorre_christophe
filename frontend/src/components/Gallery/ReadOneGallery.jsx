@@ -37,6 +37,8 @@ function GalleryOne() {
         result.data.results[0].gallery_userId == userConnect[0].userId ||
         userConnect[0].admin === 1
       ) {
+
+        console.log( "adm");
         //si je suis authentifié j'apparais le btn suprimer
         const sup = document.getElementById("auth")
         sup.textContent = "supprimer"
