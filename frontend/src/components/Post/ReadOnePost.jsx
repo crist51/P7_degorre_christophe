@@ -76,13 +76,14 @@ function PostOne() {
             </article>
             <p id="imageUrl">{item.post_userId}</p>
 
-            <Avis />
-            
             <Link to="/post" title="Lien vers : Post">
-              <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+              <button className="btnSup" id="auth" type="submit" onClick={() => onDelete(data.id)}>
                 {messageBTN}
               </button>
             </Link>
+            
+            <Avis />
+            
           </div>
         </section>
       ))}

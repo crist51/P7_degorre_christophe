@@ -76,13 +76,14 @@ function GalleryOne() {
               </div>
             </article>
 
-            <Avis />
-
             <Link to="/multimedia" title="Lien vers : Multimedia">
-              <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+              <button className="btnSup" id="auth" type="submit" onClick={() => onDelete(data.id)}>
                 {messageBTN}
               </button>
             </Link>
+
+            <Avis />
+
           </div>
         </section>
       ))}

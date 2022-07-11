@@ -48,10 +48,14 @@ button:hover {
   animation: vibration 2s linear 0s 1 normal none;
 }
 
-button:focus{
+button:focus, input:focus, textarea:focus {
 	background-color: pink;
+	color: #202020;
 }
 
+.btnSup{
+	margin: 40px 0;
+}
 .avis{
 	display: flex;
 	justify-content: space-between;

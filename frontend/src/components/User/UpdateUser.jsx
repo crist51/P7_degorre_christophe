@@ -17,8 +17,8 @@ export default function UpdateUser() {
     },
   };
 
-  const firstname = useRef(null);
-  const lastname = useRef(null);
+  // const firstname = useRef(null);
+  // const lastname = useRef(null);
   const affectation = useRef(null);
   const description = useRef(null);
   const poste = useRef(null);
@@ -40,8 +40,8 @@ export default function UpdateUser() {
     ab.preventDefault();
 
     const user = {
-      firstname: firstname.current.value,
-      lastname: lastname.current.value,
+      // firstname: firstname.current.value,
+      // lastname: lastname.current.value,
       affectation: affectation.current.value,
       description: description.current.value,
       poste: poste.current.value,
@@ -52,12 +52,6 @@ export default function UpdateUser() {
 
     if (inputFile.length == 1) {
       // console.log("j'enrejistre avec file");
-
-      // console.log("id");
-      // const user_imageUrl = document.getElementById("user_imageUrl").files[0].name;
-      // const file = document.getElementById("user_imageUrl").files[0];
-      // console.log(user_imageUrl);
-      // console.log(file);
 
       console.log("ref");
       // console.log(inputFile[0].name);
@@ -96,8 +90,8 @@ export default function UpdateUser() {
 
       console.log(user);
 
-      const sup = document.getElementById("sup").innerHTML;
-      user.user_imageUrl = sup;
+      // const sup = document.getElementById("sup").innerHTML;
+      // user.user_imageUrl = sup;
 
       axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
         headers: {
@@ -113,10 +107,11 @@ export default function UpdateUser() {
 
   return (
     <>
-      <div className="Bloc_1Contener">
+      <div className="Bloc_1Contener, bloc_2">
         {data.map((item) => (
           <form className="Bloc_6" onSubmit={update} key={item.userId}>
-            <label htmlFor="firstname" className="Bloc_5">
+            <div>
+              {/* <label htmlFor="firstname" className="Bloc_5">
               Votre nom
             </label>
             <p id="sup">{item.user_imageUrl}</p>
@@ -128,9 +123,9 @@ export default function UpdateUser() {
               ref={firstname}
               defaultValue={item.firstname}
               required
-            />
+            /> */}
 
-            <label htmlFor="lastname" className="Bloc_5">
+              {/* <label htmlFor="lastname" className="Bloc_5">
               Votre prenom
             </label>
             <div className="underline"></div>
@@ -141,61 +136,61 @@ export default function UpdateUser() {
               id="lastname"
               ref={lastname}
               required
-            />
+            /> */}
 
-            <label htmlFor="affectation" className="Bloc_5">
-              Votre lieu d'affectation
-            </label>
-            <div className="underline"></div>
-            <input
-              type="texte"
-              id="affectation"
-              name="affectation"
-              placeholder="Paris"
-              ref={affectation}
-              defaultValue={item.affectation || "pas renseigné"}
-            />
+              <label htmlFor="affectation" className="Bloc_5">
+                Votre lieu d'affectation
+              </label>
+              <div className="underline"></div>
+              <input
+                type="texte"
+                id="affectation"
+                name="affectation"
+                placeholder="Paris"
+                ref={affectation}
+                defaultValue={item.affectation || "pas renseigné"}
+              />
 
-            <label htmlFor="decription" className="Bloc_5">
-              Un mot sur vous
-            </label>
-            <div className="underline"></div>
+              <label htmlFor="decription" className="Bloc_5">
+                Un mot sur vous
+              </label>
+              <div className="underline"></div>
 
-            <input
-              type="texte"
-              name="description"
-              defaultValue={item.description}
-              id="description"
-              ref={description}
-              placeholder="Un pour tous et tous pour un"
-            />
+              <input
+                type="texte"
+                name="description"
+                defaultValue={item.description}
+                id="description"
+                ref={description}
+                placeholder="Un pour tous et tous pour un"
+              />
 
-            <label htmlFor="poste">Poste de travaille:</label>
-            <div className="underline"></div>
+              <label htmlFor="poste">Poste de travaille:</label>
+              <div className="underline"></div>
 
-            <select ref={poste} name="poste" id="poste" defaultValue={item.poste}>
-              <option value="non renseigné">-- non renseigné --</option>
-              <option value="Employé">Employé</option>
-              <option value="administration">administration</option>
-              <option value="Chef d'équipe">Chef d'équipe</option>
-              <option value="Direction">Direction</option>
-            </select>
+              <select ref={poste} name="poste" id="poste" defaultValue={item.poste}>
+                <option value="non renseigné">-- non renseigné --</option>
+                <option value="Employé">Employé</option>
+                <option value="administration">administration</option>
+                <option value="Chef d'équipe">Chef d'équipe</option>
+                <option value="Direction">Direction</option>
+              </select>
 
-            <label htmlFor="user_imageUrl" className="Bloc_5">
-              Choisir une image:
-            </label>
-            <div className="underline"></div>
-            <input ref={user_imageUrl} type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
-            />
-            <p id="imageUrl">{item.user_imageUrl}</p>
+              <label htmlFor="user_imageUrl" className="Bloc_5">
+                Choisir une image:
+              </label>
+              <div className="underline"></div>
+              <input ref={user_imageUrl} type="file" id="user_imageUrl" name="user_imageUrl" placeholder="fichier"
+              />
+              {/* <p id="imageUrl">{item.user_imageUrl}</p> */}
 
-            <div className="button_row">
-              <button type="submit">
-                Sauvegarder les changement
-              </button>
-              <p id="msg_update">{msg_update}</p>
+              <div className="button_row">
+                <button type="submit">
+                  Sauvegarder les changement
+                </button>
+                <p id="msg_update">{msg_update}</p>
+              </div>
             </div>
-
           </form>
 
         ))}

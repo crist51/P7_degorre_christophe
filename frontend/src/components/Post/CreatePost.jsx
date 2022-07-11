@@ -48,7 +48,7 @@ function CreatePost() {
   };
 
   return (
-    <div className="Bloc_1Contener">
+    <div className="Bloc_1Contener, bloc_2">
       <form className="Bloc_6" onSubmit={setDataAPI}>
         <div>
           <label htmlFor="titre" className="Bloc_5">

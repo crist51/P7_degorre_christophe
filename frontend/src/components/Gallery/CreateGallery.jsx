@@ -59,7 +59,7 @@ function CreateGallery() {
   };
 
   return (
-    <div className="Bloc_1Contener">
+    <div className="Bloc_1Contener, bloc_2">
       <form className="Bloc_6" encType="mulipart/form-data" onSubmit={setDataAPI}>
 
         <div>
