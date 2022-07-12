@@ -21,8 +21,7 @@ function SignIn() {
 
 
 
-    if (compteur.current.count < 15) {
-      console.log("ok");
+    if (compteur.current.count < 10) {
 
       const user = {
         email: email.current.value,
@@ -54,9 +53,10 @@ function SignIn() {
         }); // Ici, le cas d'erreur renvoyéer par le backend
 
     } else {
-      console.log("c'est trop");
       document.getElementById("emailErrorMsg").innerHTML =
         "Vous avez effectué trop de tentative";
+        alert("Vous avez effectué trop de tentative!!, veuillez revenir plus tard")
+
     }
 
 

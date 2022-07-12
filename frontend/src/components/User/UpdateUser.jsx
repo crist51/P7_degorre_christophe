@@ -17,8 +17,6 @@ export default function UpdateUser() {
     },
   };
 
-  // const firstname = useRef(null);
-  // const lastname = useRef(null);
   const affectation = useRef(null);
   const description = useRef(null);
   const poste = useRef(null);
@@ -40,8 +38,6 @@ export default function UpdateUser() {
     ab.preventDefault();
 
     const user = {
-      // firstname: firstname.current.value,
-      // lastname: lastname.current.value,
       affectation: affectation.current.value,
       description: description.current.value,
       poste: poste.current.value,
@@ -90,9 +86,6 @@ export default function UpdateUser() {
 
       console.log(user);
 
-      // const sup = document.getElementById("sup").innerHTML;
-      // user.user_imageUrl = sup;
-
       axios.put(`http://localhost:3000/api/user/${id}`, user, config, {
         headers: {
           "Content-Type": "application/json",
@@ -111,32 +104,6 @@ export default function UpdateUser() {
         {data.map((item) => (
           <form className="Bloc_6" onSubmit={update} key={item.userId}>
             <div>
-              {/* <label htmlFor="firstname" className="Bloc_5">
-              Votre nom
-            </label>
-            <p id="sup">{item.user_imageUrl}</p>
-            <div className="underline"></div>
-            <input
-              type="text"
-              name="firstname"
-              id="firstname"
-              ref={firstname}
-              defaultValue={item.firstname}
-              required
-            /> */}
-
-              {/* <label htmlFor="lastname" className="Bloc_5">
-              Votre prenom
-            </label>
-            <div className="underline"></div>
-            <input
-              type="texte"
-              name="lastname"
-              defaultValue={item.lastname}
-              id="lastname"
-              ref={lastname}
-              required
-            /> */}
 
               <label htmlFor="affectation" className="Bloc_5">
                 Votre lieu d'affectation
