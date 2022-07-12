@@ -147,6 +147,9 @@ export default function UpdateUser() {
                 id="affectation"
                 name="affectation"
                 placeholder="Paris"
+                maxLength="50"
+                pattern="[a-zA-Z]{2,50}"
+                title="Lettre majuscule et miniscule seulement autorsé"
                 ref={affectation}
                 defaultValue={item.affectation || "pas renseigné"}
               />
@@ -161,7 +164,8 @@ export default function UpdateUser() {
                 name="description"
                 defaultValue={item.description}
                 id="description"
-                ref={description}
+                ref={description} maxLength="250"
+                title="Lettre majuscule et miniscule seulement autorsé"
                 placeholder="Un pour tous et tous pour un"
               />
 

@@ -23,6 +23,7 @@ function GalleryOne() {
     },
   };
 
+  // let messageBTN = "retour";
   let messageBTN = "retour";
 
 
@@ -38,15 +39,17 @@ function GalleryOne() {
         userConnect[0].admin === 1
       ) {
 
-        console.log( "adm");
+        // console.log( "adm");
         //si je suis authentifié j'apparais le btn suprimer
-        const sup = document.getElementById("auth")
-        sup.textContent = "supprimer"
+         const sup = document.getElementById("auth")
+         console.log(sup);
+         sup.textContent = "supprimer"
       }
     };
     fetchData();
   }, []);
 
+  
   const onDelete = (e) => {
     const authorId = document.getElementById("imageUrl").innerHTML;
 
@@ -61,7 +64,7 @@ function GalleryOne() {
   return (
     <Fragment>
       {data.map((item) => (
-        <section className="bloc_1">
+        <section key={item.gallery_id} className="bloc_1">
           <div className="bloc_titre">
             <h1>{item.gallery_titre}</h1>
             <p className="user_imgUrl" id="idAuthor">{item.gallery_userId}</p>

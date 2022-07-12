@@ -15,47 +15,62 @@ function CreateGallery() {
   const gallery_media = useRef(null);
   const gallery_texte = useRef(null);
 
+  const compteur = useRef({ count: 0 })
+
   const setDataAPI = (e) => {
     e.preventDefault();
 
-    // ---------- on recupere les info et on les envoie ---------- //
-    const file = gallery_media.current.files[0]
-    const gallery = {
-      gallery_titre: gallery_titre.current.value,
-      gallery_media: file.name,
-      gallery_texte: gallery_texte.current.value,
-      gallery_userId: id,
-      gallery_author: gallery_author,
+    compteur.current.count++
+    console.log(compteur.current.count);
+
+    if (compteur.current.count <= 1) {
+      // ---------- on recupere les info et on les envoie ---------- //
+      const file = gallery_media.current.files[0]
+      const gallery = {
+        gallery_titre: gallery_titre.current.value,
+        gallery_media: file.name,
+        gallery_texte: gallery_texte.current.value,
+        gallery_userId: id,
+        gallery_author: gallery_author,
+      }
+
+      console.log("---- envoie pour API ----");
+      console.log(gallery);
+      console.log(file);
+
+      let config = {
+        headers: {
+          Authorization: "Bearer " + validToken,
+        },
+      };
+
+      let data = new FormData()
+      data.append('gallery', JSON.stringify(gallery))
+      data.append('file', file)
+
+      axios.post(
+        `http://localhost:3000/api/gallery`,
+        data,
+        config,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json",
+            "type": "formData"
+          },
+        }
+      );
+      const messageBtn = document.getElementById("messageBtn")
+      messageBtn.textContent = "Votre message à bien été créer"
+
+      console.log('crerr');
+    } else {
+      console.log("deja créer");
+      alert(`Votre post à déjà été créer`)
     }
 
-    console.log("---- envoie pour API ----");
-    console.log(gallery);
-    console.log(file);
 
-    let config = {
-      headers: {
-        Authorization: "Bearer " + validToken,
-      },
-    };
 
-    let data = new FormData()
-    data.append('gallery',JSON.stringify(gallery))
-    data.append('file',file)
-
-    axios.post(
-      `http://localhost:3000/api/gallery`,
-      data,
-      config,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Accept": "application/json",
-          "type": "formData"
-        },
-      }
-    );
-    const messageBtn = document.getElementById("messageBtn")
-    messageBtn.textContent = "Votre message à bien été créer"
   };
 
   return (

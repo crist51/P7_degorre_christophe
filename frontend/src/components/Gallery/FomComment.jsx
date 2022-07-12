@@ -16,9 +16,16 @@ function FomComment() {
   let messageBtn = "Postez commentaire"
   const comm = useRef(null);
 
+  const compteur = useRef({ count: 0 })
+
   const setDataAPI = (e) => {
     e.preventDefault();
 
+    compteur.current.count++
+    console.log(compteur.current.count);
+
+
+    if (compteur.current.count <= 1) {
     // ---------- on recupere les info ---------- //
     const commentaire = {
       userId: userId,
@@ -49,6 +56,11 @@ function FomComment() {
     // ---------- Retour aapres envoie
     const messageBtn = document.getElementById("messageBtn")
     messageBtn.textContent = "Commentaire à bien été créer"
+  } else {
+    console.log("deja créer");
+    alert(`Votre commentaire a déja été créer(pour en repostez un, veuillez fermer le formulaire)`)
+  }
+
   };
 
   return (
