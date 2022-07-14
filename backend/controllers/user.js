@@ -79,6 +79,12 @@ exports.signUp = (req, res, next) => {
 //============================================================================================================
 
 exports.signIn = (req, res, next) => {
+  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) {
+    console.log("paswword pas bon");
+    res.status(400).json(
+      { error: "Mot de passe ou utilisateur incorecte" });
+    return res.status(400).json({ message:"mot de passe incorecte" });
+    } else if (emailValidator.validate(req.body.email) & (passwordSchema.validate(req.bodypassword))) {
   console.log(req.body);
   const emailCryptoJs = cryptojs
     .HmacSHA256(req.body.email, `${process.env.cryptojs_key}`)
@@ -135,4 +141,4 @@ exports.signIn = (req, res, next) => {
       }
     }
   );
-};
+}}

@@ -23,6 +23,7 @@ function GalleryOne() {
     },
   };
 
+  // let messageBTN = "retour";
   let messageBTN = "retour";
 
 
@@ -37,14 +38,18 @@ function GalleryOne() {
         result.data.results[0].gallery_userId == userConnect[0].userId ||
         userConnect[0].admin === 1
       ) {
+
+        // console.log( "adm");
         //si je suis authentifié j'apparais le btn suprimer
-        const sup = document.getElementById("auth")
-        sup.textContent = "supprimer"
+         const sup = document.getElementById("auth")
+         console.log(sup);
+         sup.textContent = "supprimer"
       }
     };
     fetchData();
   }, []);
 
+  
   const onDelete = (e) => {
     const authorId = document.getElementById("imageUrl").innerHTML;
 
@@ -59,7 +64,7 @@ function GalleryOne() {
   return (
     <Fragment>
       {data.map((item) => (
-        <section className="bloc_1">
+        <section key={item.gallery_id} className="bloc_1">
           <div className="bloc_titre">
             <h1>{item.gallery_titre}</h1>
             <p className="user_imgUrl" id="idAuthor">{item.gallery_userId}</p>
@@ -76,13 +81,14 @@ function GalleryOne() {
               </div>
             </article>
 
-            <Avis />
-
             <Link to="/multimedia" title="Lien vers : Multimedia">
-              <button id="auth" type="submit" onClick={() => onDelete(data.id)}>
+              <button className="btnSup" id="auth" type="submit" onClick={() => onDelete(data.id)}>
                 {messageBTN}
               </button>
             </Link>
+
+            <Avis />
+
           </div>
         </section>
       ))}

@@ -12,9 +12,17 @@ function CreatePost() {
   const post_titre = useRef(null);
   const post_contenue = useRef(null);
 
+  const compteur = useRef({ count: 0 })
+
+
 
   const setDataAPI = (e) => {
     e.preventDefault();
+    
+    compteur.current.count++
+    console.log(compteur.current.count);
+
+    if (compteur.current.count <= 1) {
     // ---------- on recupere les info et on les envoie ---------- //
 
     console.log( post_titre.current.value);
@@ -44,11 +52,17 @@ function CreatePost() {
         );
         const messageBtn = document.getElementById("messageBtn")
         console.log(messageBtn);
-        messageBtn.textContent = "Votre message à bien été créer"  
+        messageBtn.textContent = "Votre message à bien été créer" 
+        console.log('crerr');
+      } else {
+        console.log("deja créer");
+        alert(`Votre post à déjà été créer`)
+      }
+   
   };
 
   return (
-    <div className="Bloc_1Contener">
+    <div className="Bloc_1Contener, bloc_2">
       <form className="Bloc_6" onSubmit={setDataAPI}>
         <div>
           <label htmlFor="titre" className="Bloc_5">

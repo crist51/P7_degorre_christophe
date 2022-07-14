@@ -73,7 +73,6 @@ function SignUp() {
               // id="password"
               placeholder="Votre mot de passe"
               ref={password}
-
               required
             />
           
@@ -85,6 +84,9 @@ function SignUp() {
               // id="firstname"
               placeholder="Votre nom"
               ref={firstname}
+              maxLength="50"
+              pattern="[a-zA-Z]{2,50}"
+              title="Lettre majuscule et miniscule seulement autorsé"
               required
             />
           
@@ -96,6 +98,9 @@ function SignUp() {
               // id="lastname"
               placeholder="Votre prenom"
               ref={lastname}
+              maxLength="50"
+              pattern="[a-zA-Z]{2,50}"
+              title="Lettre majuscule et miniscule seulement autorsé"
               required
             />
           

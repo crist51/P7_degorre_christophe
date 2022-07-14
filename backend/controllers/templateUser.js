@@ -49,17 +49,17 @@ exports.modifyTemplateUser = (req, res, next) => {
   if (req.file !== undefined) { //avec file
     const userObject = JSON.parse(req.body.user);
 
-    const firstname = userObject.firstname
-    const lastname = userObject.lastname
+    // const firstname = userObject.firstname
+    // const lastname = userObject.lastname
     const affectation = userObject.affectation
     const description = userObject.description
     const poste = userObject.poste
     const user_imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
 
     mysqlconnection.query(
-      "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
-      [lastname, firstname, affectation, user_imageUrl, description, poste, id], //id sur les req.body
-      console.log(lastname, firstname, affectation, user_imageUrl, description, poste),
+      "UPDATE `user` SET `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
+      [ affectation, user_imageUrl, description, poste, id], //id sur les req.body
+      console.log( affectation, user_imageUrl, description, poste),
       (error, res) => {
         if (error) {
           res.status(404).json({ error }), console.log(error);
@@ -69,11 +69,10 @@ exports.modifyTemplateUser = (req, res, next) => {
     )
   } else { // sans file
     console.log(req.body);
-    const user_imageUrl = req.body.user_imageUrl
     mysqlconnection.query(
-      "UPDATE `user` SET `lastname`=?, `firstname`=?, `affectation`=?, `user_imageUrl`=?, `description`=?, `poste`=? WHERE userId = ?",
-      [req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste, id], //id sur les req.body
-      console.log(req.body.lastname, req.body.firstname, req.body.affectation, user_imageUrl, req.body.description, req.body.poste),
+      "UPDATE `user` SET `affectation`=?,  `description`=?, `poste`=? WHERE userId = ?",
+      [ req.body.affectation, req.body.description, req.body.poste, id], //id sur les req.body
+      console.log( req.body.affectation, req.body.description, req.body.poste),
       (error, results) => {
         if (error) {
           res.status(404).json({ error }), console.log(error);
