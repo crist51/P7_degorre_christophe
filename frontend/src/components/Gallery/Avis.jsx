@@ -23,10 +23,10 @@ function Avis() {
         <>
             <div className="avis">
                 <button onClick={() => setIsOpen(true)}>Poster un commentaire</button>
-                <div>
+                {/* <div>
                     <button id="like"><i class="fa-solid fa-thumbs-up"></i></button>
                     <button><i class="fa-solid fa-thumbs-down"></i></button>
-                </div>
+                </div> */}
             </div>
             <ReadComment/>
         </>
